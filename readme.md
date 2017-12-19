@@ -13,6 +13,8 @@
 	* You should now be in the folder that contains the `laradock` folder
 * `git clone https://github.com/PersonalizedTravelMonitor/Application ptm`
 *	`cd ptm`
+* `git config user.name "YOUR NAME"`
+* `git config user.email "YOUR UNIVERSITY EMAIL"`
 * Copy the file `.env.example` to `.env`
 	* Change `DB_HOST` to `mysql`
 	* Change `DB_DATABASE` to `PTM`
@@ -32,6 +34,7 @@
 * Edit `/etc/hosts` (or the Windows equivalent), need sudo
 	* Add `127.0.0.1 ptm.test`
 * Connect to [the site](http://ptm.test)
+* Install the [EditorConfig plugin](http://editorconfig.org/#download) for your text editor (Sublime Text 3 or Visual Studio Code recommended)
 
 ### Starting/stopping the website for development
 
