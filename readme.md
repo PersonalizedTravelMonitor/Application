@@ -1,58 +1,57 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# PersonalizedTravelMonitor
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Laradock
 
-## About Laravel
+### Development setup
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+* `git clone https://github.com/laradock/laradock`
+* `cd laradock`
+* Copy the file `nginx/sites/app.conf.example` to `nginx/sites/ptm.conf`
+	* Change `app.test` to `ptm.test`
+	* Change `/var/www/app` to `/var/www/ptm`
+* `cd ..`
+	* You should now be in the folder that contains the `laradock` folder
+* `git clone https://github.com/PersonalizedTravelMonitor/Application ptm`
+*	`cd ptm`
+* Copy the file `.env.example` to `.env`
+	* Change `DB_HOST` to `mysql`
+	* Change `DB_DATABASE` to `PTM`
+	* Change `DB_USERNAME` to `root`
+	* Change `DB_PASSWORD` to `root`
+* `cd ..; cd laradock`
+* `docker-compose up -d nginx mysql phpmyadmin`
+	* Wait for everythin to load
+* `docker exec -ti laradock_mysql_1 bash`
+	* `mysql -u root -proot` (no space)
+	* `CREATE DATABASE PTM;`
+* `docker exec -ti --user=laradock laradock_workspace_1 bash`
+	* `cd ptm`
+	* `composer install`
+	* `php artisan key:generate`
+	* `php artisan migrate`
+* Edit `/etc/hosts` (or the Windows equivalent), need sudo
+	* Add `127.0.0.1 ptm.test`
+* Connect to [the site](http://ptm.test)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Starting/stopping the website for development
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+* `docker-compose up -d nginx mysql phpmyadmin`
+	* This will start the services
+	* `docker ps` to make sure they are running
+* `docker-compose down`
+	* This will stop the services
 
-## Learning Laravel
+## Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+### Useful commands
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+Make sure you are inside the `laradock_workspace` container (`docker exec -ti --user=laradock laradock_workspace_1 bash`) and inside the project folder
 
-## Laravel Sponsors
+* `php artisan migrate`: run migrations (database schema updates)
+* `php artisan migrate:reset`: rollback
+* `php artisan migrate:refresh`: rollback+migrate
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+* `php artisan make:migration migration_description --create=tableName`
+	* Example: `php artisan make:migration add_votes_to_users_table --create=users`
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+* `php artisan make:model ModelName -m`: create model and its migration
