@@ -15,7 +15,13 @@
                     @endif
 
                     You are logged in!
-                    {{ Auth::user()->email }}
+                    {{ Auth::user()->email }} <br>
+
+                    {{-- Auth::user() is the logged-in user --}}
+                    @if (Auth::user()->isAdmin)
+                        <h1>Sei Admin!</h1>
+                    @endif
+
                 </div>
             </div>
         </div>
