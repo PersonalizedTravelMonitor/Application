@@ -12,9 +12,8 @@ class TripsTableSeeder extends Seeder
     public function run()
     {
         DB::table('trips')->insert([
-            'repeatingOn' => serialize([1,2,4]),
-            'user_id' => App\User::where('name', 'admin')->first()->id,
-
+            'repeatingOn' => json_encode([1, 2, 4]),
+            'user_id' => App\User::where('name', 'admin')->first()->id
         ]);
     }
 }
