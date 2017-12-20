@@ -23,7 +23,15 @@
                     @endif
 
                     @foreach(Auth::user()->trips as $trip)
-                        {{ $trip }} <br>
+                        <code>
+                            {{ $trip }}
+                        </code>
+                        On days: 
+                        @foreach($trip->repeatingOn as $day)
+                            {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
+                            {{ \Carbon\Carbon::now()->next($day)->format('l') }}
+                        @endforeach
+                        <br>
                     @endforeach
                 </div>
             </div>
