@@ -22,6 +22,9 @@
                         <h1>Sei Admin!</h1>
                     @endif
 
+                    @foreach(Auth::user()->trips as $trip)
+                        {{ $trip }} <br>
+                    @endforeach
                 </div>
             </div>
         </div>
