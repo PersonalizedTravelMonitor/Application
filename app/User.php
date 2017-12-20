@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // this function defines the relation between trpis and user (One to many)
+    public function trips()
+    {
+        return $this->hasMany('App\Trip');
+    }
 }
