@@ -55,6 +55,13 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 * `php artisan migrate:refresh`: rollback+migrate
 
 * `php artisan make:migration migration_description --create=tableName`
-	* Example: `php artisan make:migration add_votes_to_users_table --create=users`
+	* Example: `php artisan make:migration add_votes_to_users_table --table=users`
 
 * `php artisan make:model ModelName -m`: create model and its migration
+
+
+## Troubleshooting
+
+* `Class not found` error / an error after `git pull`
+	* `composer dump-autoload`
+	* Re-run the command
