@@ -1,12 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    You are logged in!
-    {{ Auth::user()->email }} <br>
+    Welcome, {{ Auth::user()->email }} <br>
 
     {{-- Auth::user() is the logged-in user --}}
     @if (Auth::user()->isAdmin)
-        <h1>Sei Admin!</h1>
+        <h1>You are Admin!</h1>
     @endif
 
     <h2 class="is-size-2">Your Trips</h2>
