@@ -14,11 +14,11 @@ class TripsTableSeeder extends Seeder
     {
         DB::table('trips')->insert([
             'repeatingOn' => json_encode([Carbon::MONDAY, Carbon::TUESDAY]),
-            'user_id' => App\User::where('name', 'admin')->first()->id
+            'user_id' => App\User::where('name', 'traveler1')->first()->id
         ]);
         DB::table('trips')->insert([
             'repeatingOn' => json_encode([Carbon::SATURDAY, Carbon::SUNDAY]),
-            'user_id' => App\User::where('name', 'admin')->first()->id
+            'user_id' => App\User::where('name', 'traveler1')->first()->id
         ]);
     }
 }
