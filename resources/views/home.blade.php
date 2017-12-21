@@ -13,7 +13,7 @@
     <div class="card">
       <div class="card-content">
         <p class="title">
-            Trip
+            Trip {{ $trip->from() }} - {{ $trip->to() }}
         </p>
         <code>{{ $trip }}</code>
         On days:
