@@ -48,7 +48,8 @@
                     <h2>Your statistics</h2>
                     @foreach(Auth::user()->personalStatistic as $stats)
                         <code>
-                            {{ $stats }}
+                           <b>{{ $stats->year }}/{{ $stats->month }}</b> <br>
+                            {{ $stats }} <hr>
                         </code>
                         
                         <br>
