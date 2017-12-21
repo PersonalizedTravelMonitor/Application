@@ -21,18 +21,30 @@
                     @if (Auth::user()->isAdmin)
                         <h1>Sei Admin!</h1>
                     @endif
-
-                    @foreach(Auth::user()->trips as $trip)
-                        <code>
-                            {{ $trip }}
-                        </code>
+                    
+                    <h2>Your trips</h2>
+                    @forelse(Auth::user()->trips as $trip)
+                        <code>{{ $trip }}</code>
                         On days: 
                         @foreach($trip->repeatingOn as $day)
                             {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
                             {{ \Carbon\Carbon::now()->next($day)->format('l') }}
                         @endforeach
+                        <br><br>     
+                        With parts: <br>
+                        @forelse($trip->parts as $part)
+                            <code>{{ $part }}</code>
+                            @if ($part->child_type == "TrenordTripPart")
+                                {{ $part->details->trainId }} 
+                            @endif
+                        @empty
+                            <b>This should never happen</b>
+                        @endforelse
                         <br>
-                    @endforeach
+                        <hr>
+                    @empty
+                        No Trips :(
+                    @endforelse
                 </div>
             </div>
         </div>
