@@ -40,11 +40,19 @@
                         @empty
                             <b>This should never happen</b>
                         @endforelse
-                        <br>
-                        <hr>
                     @empty
                         No Trips :(
                     @endforelse
+
+                    <br>
+                    @foreach(Auth::user()->personalStatistic as $stats)
+                        <code>
+                            {{ $stats }}
+                        </code>
+                        
+                        <br>
+                        <hr>
+                    @endforeach
                 </div>
             </div>
         </div>
