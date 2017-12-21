@@ -16,7 +16,7 @@ class Trip extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function tripParts() {
+    public function parts() {
         return $this->hasMany('App\TripPart');
     }
 }

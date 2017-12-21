@@ -12,7 +12,7 @@ class TripPart extends Model
     }
 
     public function trenordTrip() {
-        return $this->hasOne('App\TrenordTripPart');
+        return $this->belongsTo('App\TrenordTripPart', 'child_id');
     }   
 
     public function details() {
