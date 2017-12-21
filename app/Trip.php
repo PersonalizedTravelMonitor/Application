@@ -11,7 +11,7 @@ class Trip extends Model
     ];
 
     // this function defines the relation between trpis and user (One to many)
-    public function trip()
+    public function user()
     {
         return $this->belongsTo('App\User');
     }
