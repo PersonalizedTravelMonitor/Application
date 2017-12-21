@@ -17,6 +17,9 @@ class CreateTripPartsTable extends Migration
             $table->increments('id');
             $table->integer('sequenceOrder')->unsigned();
             
+            $table->string('from');
+            $table->string('to');
+
             // this will be used to store the type of the child (TrenordTripPart, MetroTripPart) and its id on the corresponding table
             $table->string('child_type');
             $table->integer('child_id')->unsigned();

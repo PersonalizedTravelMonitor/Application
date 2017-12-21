@@ -11,5 +11,18 @@ class TripPart extends Model
         return $this->belongsTo('App\Trip');
     }
 
-    // TODO: add methods to get childs   
+    public function trenordTrip() {
+        return $this->hasOne('App\TrenordTripPart');
+    }   
+
+    public function details() {
+        switch ($this->child_type) {
+            case 'TrenordTripPart':
+                return $this->trenordTrip();
+                break;
+            default:
+                throw new Exception('Invalid type ' . $this->child_type . ' for TripPart');
+                break;
+        }
+    } 
 }
