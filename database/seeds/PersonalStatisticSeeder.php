@@ -11,16 +11,18 @@ class PersonalStatisticSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trips')->insert([
+        DB::table('personal_statistics')->insert([
             'year' => 2017,
             'month' => 12,
-            'numberOfDisruption' => 3,
+            'minutesOfDelay' => 666,
+            'numberOfSevereDisruption' => 3,
             'user_id' => App\User::where('name', 'traveler1')->first()->id
         ]);
-        DB::table('trips')->insert([
+        DB::table('personal_statistics')->insert([
             'year' => 2017,
             'month' => 11,
-            'numberOfDisruption' => 5,
+            'minutesOfDelay' => 777,
+            'numberOfSevereDisruption' => 10,
             'user_id' => App\User::where('name', 'traveler1')->first()->id
         ]);
     }
