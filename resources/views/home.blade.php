@@ -11,26 +11,35 @@
   <h2 class="is-size-2">Your Trips</h2>
   @forelse(Auth::user()->trips as $trip)
     <div class="card">
+      <div class="card-header">
+        <div class="level">
+          <div class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</div>
+          <div class="level-item">
+            <a href="#" class="button is-small">Check Status</a>
+          </div>
+        </div>
+      </div>
       <div class="card-content">
-        <p class="title">
-            Trip {{ $trip->from() }} - {{ $trip->to() }}
-        </p>
-        <code>{{ $trip }}</code>
         On days:
         @foreach($trip->repeatingOn as $day)
           {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
           {{ \Carbon\Carbon::now()->next($day)->format('l') }}
         @endforeach
-        <br><br>
+        <br>
+
         With parts: <br>
-        @forelse($trip->parts as $part)
-          <code>{{ $part }}</code>
-          @if ($part->child_type == "TrenordTripPart")
-            {{ $part->details->trainId }}
-          @endif
-        @empty
-          <b>This should never happen</b>
-        @endforelse
+        <ul>
+          @forelse($trip->parts as $part)
+            <li>
+              {{ $part->from }} - {{ $part->to }} ({{ $part->child_type }}):
+              @if ($part->child_type == "TrenordTripPart")
+                {{ $part->details->trainId }}
+              @endif
+            </li>
+          @empty
+            <li>This should never happen</li>
+          @endforelse
+        </ul>
       </div>
     </div>
     <br>
@@ -38,17 +47,17 @@
     No Trips :(
   @endforelse
 
-    <h2 class="is-size-2">Your Statistics</h2>
-    @foreach(Auth::user()->personalStatistic as $stats)
-      <div class="card">
-        <div class="card-content">
-          <p class="title">
-            Statistics for {{ $stats->month }}/{{ $stats->year }}
-          </p>
-          <p class="subtitle">
-            <code>{{ $stats }}</code>
-          </p>
-        </div>
+  <h2 class="is-size-2">Your Statistics</h2>
+  @foreach(Auth::user()->personalStatistic as $stats)
+    <div class="card">
+      <div class="card-content">
+        <p class="title">
+          Statistics for {{ $stats->month }}/{{ $stats->year }}
+        </p>
+        <p class="subtitle">
+          <code>{{ $stats }}</code>
+        </p>
       </div>
-    @endforeach
+    </div>
+  @endforeach
 @endsection
