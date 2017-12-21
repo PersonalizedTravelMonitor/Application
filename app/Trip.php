@@ -17,6 +17,6 @@ class Trip extends Model
     }
 
     public function parts() {
-        return $this->hasMany('App\TripPart');
+        return $this->hasMany('App\TripPart')->orderBy('sequenceOrder');
     }
 }
