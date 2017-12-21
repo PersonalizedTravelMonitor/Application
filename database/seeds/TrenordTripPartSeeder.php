@@ -45,7 +45,7 @@ class TrenordTripPartSeeder extends Seeder
             'from' => 'Monza',
             'to' => 'Milano Greco Pirelli',
             'child_type' => 'TrenordTripPart',
-            'child_id' => 1, // same bad idea as above
+            'child_id' => 2, // same bad idea as above
         ]);
     }
 }
