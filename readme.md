@@ -8,7 +8,7 @@
 * `cd laradock`
 * Copy the file `nginx/sites/app.conf.example` to `nginx/sites/ptm.conf`
 	* Change `app.test` to `ptm.test`
-	* Change `/var/www/app` to `/var/www/ptm`
+	* Change `/var/www/app` to `/var/www/ptm/public`
 * `cd ..`
 	* You should now be in the folder that contains the `laradock` folder
 * `git clone https://github.com/PersonalizedTravelMonitor/Application ptm`
@@ -21,6 +21,7 @@
 	* Change `DB_USERNAME` to `root`
 	* Change `DB_PASSWORD` to `root`
 * `cd ..; cd laradock`
+* `Copy the file `env-example` to `.env`
 * `docker-compose up -d nginx mysql phpmyadmin`
 	* Wait for everythin to load
 * `docker exec -ti laradock_mysql_1 bash`
@@ -30,7 +31,7 @@
 	* `cd ptm`
 	* `composer install`
 	* `php artisan key:generate`
-	* `php artisan migrate`
+	* `php artisan migrate --seed`
 * Edit `/etc/hosts` (or the Windows equivalent), need sudo
 	* Add `127.0.0.1 ptm.test`
 * Connect to [the site](http://ptm.test)
