@@ -16,13 +16,13 @@ class CreateTripPartsTable extends Migration
         Schema::create('trip_parts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('sequenceOrder')->unsigned()->default(0);
-            
+
             $table->string('from');
             $table->string('to');
 
             // this will be used to store the type of the child (TrenordTripPart, MetroTripPart) and its id on the corresponding table
-            $table->string('child_type');
-            $table->integer('child_id')->unsigned();
+            $table->integer('details_id')->unsigned();
+            $table->string('details_type');
 
             // this is the parent trip that is made of smaller trip_parts (from Lecco to Milano Porta Garibaldi with Train + from Milano to Assago with Metro)
             $table->integer('trip_id')->unsigned();

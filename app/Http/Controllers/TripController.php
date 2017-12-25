@@ -50,16 +50,15 @@ class TripController extends Controller
         $trenordTripPart->trainId = "10845";
         $trenordTripPart->save();
 
-        $tripPart = new TripPart; // Concreto
+        $tripPart = new TripPart;
         $tripPart->from = $request->from;
         $tripPart->to = $request->to;
-        $tripPart->child_id = $trenordTripPart->id;
-        $tripPart->child_type = "TrenordTripPart";
         $tripPart->trip_id = $trip->id;
+        $tripPart->details_id = $trenordTripPart->id;
+        $tripPart->details_type = get_class($trenordTripPart);
         $tripPart->save();
 
         return redirect()->route("home");
-
     }
 
     /**

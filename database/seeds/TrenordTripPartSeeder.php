@@ -10,7 +10,7 @@ class TrenordTripPartSeeder extends Seeder
      * @return void
      */
     public function run()
-    {      
+    {
 
         // these 4 calls will create a two part trip from Sondrio to Milano Greco Pirelli
 
@@ -35,8 +35,8 @@ class TrenordTripPartSeeder extends Seeder
             'sequenceOrder' => 0,
             'from' => 'Sondrio',
             'to' => 'Monza',
-            'child_type' => 'TrenordTripPart',
-            'child_id' => 1, // same bad idea as above
+            'details_type' => 'App\TrenordTripPart',
+            'details_id' => 1, // same bad idea as above
         ]);
 
         DB::table('trip_parts')->insert([
@@ -44,8 +44,8 @@ class TrenordTripPartSeeder extends Seeder
             'sequenceOrder' => 1,
             'from' => 'Monza',
             'to' => 'Milano Greco Pirelli',
-            'child_type' => 'TrenordTripPart',
-            'child_id' => 2, // same bad idea as above
+            'details_type' => 'App\TrenordTripPart',
+            'details_id' => 2, // same bad idea as above
         ]);
     }
 }

@@ -31,8 +31,8 @@
         <ul>
           @forelse($trip->parts as $part)
             <li>
-              {{ $part->from }} - {{ $part->to }} ({{ $part->child_type }}):
-              @if ($part->child_type == "TrenordTripPart")
+              {{ $part->from }} - {{ $part->to }} ({{ $part->details_type }}):
+              @if ($part->details_type == "App\TrenordTripPart")
                 {{ $part->details->trainId }}
               @endif
             </li>
