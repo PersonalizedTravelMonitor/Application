@@ -32,9 +32,19 @@
           @forelse($trip->parts as $part)
             <li>
               {{ $part->from }} - {{ $part->to }} ({{ $part->details_type }}):
-              @if ($part->details_type == "App\TrenordTripPart")
-                {{ $part->details->trainId }}
-              @endif
+              @php
+              switch ($part->details_type) {
+              case "App\TrenordTripPart":
+                echo $part->details->trainId;
+                break;
+              case "App\TrenitaliaTripPart":
+                echo $part->details->trainId;
+                break;
+              case "App\AtmTripPart":
+                echo $part->details->vehicleType;
+                break;
+              }
+              @endphp
             </li>
           @empty
             <li>This should never happen</li>
