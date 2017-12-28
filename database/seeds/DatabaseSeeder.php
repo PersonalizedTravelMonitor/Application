@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TripsTableSeeder::class);
         $this->call(TrenordTripPartSeeder::class);
         $this->call(PersonalStatisticSeeder::class);
+        $this->call(TrenitaliaTripPartSeeder::class);
     }
 }
