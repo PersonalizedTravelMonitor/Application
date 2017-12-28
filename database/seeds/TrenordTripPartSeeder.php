@@ -20,6 +20,7 @@ class TrenordTripPartSeeder extends Seeder
             'arrival' => '8:16:00',
             'trainId' => 'diretto',
             'line' => 'Milano-Lecco-Sondrio',
+            'departurePlatform' => '3',
         ]);
 
         DB::table('trenord_trip_parts')->insert([
@@ -27,6 +28,8 @@ class TrenordTripPartSeeder extends Seeder
             'arrival' => '8:29:00',
             'trainId' => 'regionale',
             'line' => 'Milano-Lecco-Sondrio',
+            'departurePlatform' => '2',
+
         ]);
 
         // then we create the generic trip parts
