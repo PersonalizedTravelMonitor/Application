@@ -18,11 +18,11 @@ class CreateAtmTripPartsTable extends Migration
             $table->timestamps();
 
             // the line/directive of the subway es "Verde"
-            $table->string('line'); 
+            $table->string('line');
             //  the type of veicle used es "Bus, Metro, Tram"
-            $table->string('veicleType'); 
+            $table->string('vehicleType');
             // number of stops between departure and arrival
-            $table->integer('stopsNumber'); 
+            $table->integer('stopsNumber');
 
 
         });
