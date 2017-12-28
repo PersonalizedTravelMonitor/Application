@@ -21,6 +21,11 @@ class TripsTableSeeder extends Seeder
             'repeatingOn' => json_encode([Carbon::MONDAY]),
             'user_id' => App\User::where('name', 'traveler1')->first()->id
         ]);
+
+        DB::table('trips')->insert([
+            'repeatingOn' => json_encode([Carbon::WEDNESDAY]),
+            'user_id' => App\User::where('name', 'traveler1')->first()->id
+        ]);
         /*DB::table('trips')->insert([
             'repeatingOn' => json_encode([Carbon::SATURDAY, Carbon::SUNDAY]),
             'user_id' => App\User::where('name', 'traveler1')->first()->id
