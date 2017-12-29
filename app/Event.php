@@ -10,4 +10,9 @@ class Event extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function type()
+    {
+        return $this->morphTo();
+    }
 }
