@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Announcement extends Model
 {
-    //
-
-	// TODO
-	// only Admins can publish announcements
-    public function user()
+    public function author()
     {
         return $this->belongsTo('App\User');
     }

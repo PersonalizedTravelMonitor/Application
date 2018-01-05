@@ -14,7 +14,7 @@ class AtmTripPartSeeder extends Seeder
         // 1 viaggio con 1 tratta
 
         // first we create the detailed parts
-        DB::table('Atm_trip_parts')->insert([
+        DB::table('atm_trip_parts')->insert([
             'line' => 'Linea 1 Rossa',
             'vehicleType' => 'Metro',
             'stopsNumber' => '4',

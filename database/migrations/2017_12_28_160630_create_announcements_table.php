@@ -18,9 +18,8 @@ class CreateAnnouncementsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->time('dispatchTime');
             $table->string('text');
-
+            $table->time('dispatchTime');
         });
     }
 

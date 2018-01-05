@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
-    public function event()
+    public function tripPart()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\TripPart');
     }
 
-    public function type()
+    public function details()
     {
         return $this->morphTo();
     }

@@ -23,7 +23,7 @@ class CreateTrenitaliaTripPartsTable extends Migration
             // the id of the train to follow, eg: 10846
             $table->string('trainId');
             // the platform used at the departure station
-            $table->string('departurePlatform'); 
+            $table->string('departurePlatform');
 
         });
     }

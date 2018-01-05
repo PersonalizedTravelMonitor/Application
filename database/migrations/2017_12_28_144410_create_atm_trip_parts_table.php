@@ -15,7 +15,6 @@ class CreateAtmTripPartsTable extends Migration
     {
         Schema::create('atm_trip_parts', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
 
             // the line/directive of the subway es "Verde"
             $table->string('line');
@@ -24,7 +23,7 @@ class CreateAtmTripPartsTable extends Migration
             // number of stops between departure and arrival
             $table->integer('stopsNumber');
 
-
+            $table->timestamps();
         });
     }
 
