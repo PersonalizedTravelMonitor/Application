@@ -70,7 +70,7 @@ class TripController extends Controller
      */
     public function show(Trip $trip)
     {
-        return $trip;
+        return view('trips.show', [ 'trip' => $trip ]);
     }
 
     /**

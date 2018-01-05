@@ -13,9 +13,9 @@
     <div class="card">
       <div class="card-header">
         <div class="level">
-          <div class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</div>
+          <a href="{{ route('trips.show', $trip) }}" class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</a>
           <div class="level-item">
-            <a href="#" class="button is-small">Check Status</a>
+            <a href="{{ route('trips.show', $trip) }}" class="button is-small">Details</a>
           </div>
         </div>
       </div>

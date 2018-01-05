@@ -15,4 +15,9 @@ class TripPart extends Model
     {
         return $this->morphTo();
     }
+
+    public function events()
+    {
+        return $this->hasMany('App\Event');
+    }
 }
