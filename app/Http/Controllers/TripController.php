@@ -48,6 +48,7 @@ class TripController extends Controller
         $trenordTripPart->departure = "07:37:00";
         $trenordTripPart->arrival = "08:23:00";
         $trenordTripPart->trainId = "10845";
+        $trenordTripPart->departurePlatform = "Binario Est";
         $trenordTripPart->save();
 
         $tripPart = new TripPart;
