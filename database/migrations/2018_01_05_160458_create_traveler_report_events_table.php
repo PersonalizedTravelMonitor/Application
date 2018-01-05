@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTravelerReportsEventsTable extends Migration
+class CreateTravelerReportEventsTable extends Migration
 {
     /**
      * Run the migratons.
@@ -13,7 +13,7 @@ class CreateTravelerReportsEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('traveler_reports_events', function (Blueprint $table) {
+        Schema::create('traveler_report_events', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
