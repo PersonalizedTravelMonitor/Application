@@ -33,6 +33,11 @@ With parts: <br>
       @empty
         No events for this trip part
       @endforelse
+      <form action="{{ route('tripParts.addTravelerReportEvent', $part) }}" method="POST">
+        {{ csrf_field() }}
+        <input type="text" name="message" placeholder="Your report">
+        <input type="submit" value="Send user report">
+      </form>
     </div>
   </div>
   <br>
