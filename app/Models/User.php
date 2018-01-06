@@ -38,9 +38,7 @@ class User extends Authenticatable
         return $this->hasMany('App\PersonalStatistic');
     }
 
-    // TODO
-    // Avoid publishing of announcements from 'regular' users
     public function announcements() {
-        return $this->hasMany('App\Announcement')->orderBy('sequenceOrder');
+        return $this->hasMany('App\Announcement');
     }
 }
