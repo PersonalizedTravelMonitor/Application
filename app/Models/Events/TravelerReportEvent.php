@@ -10,4 +10,9 @@ class TravelerReportEvent extends Model
     {
         return $this->morphOne('Event', 'details');
     }
+
+    public function author()
+    {
+        return $this->hasOne('App\User');
+    }
 }

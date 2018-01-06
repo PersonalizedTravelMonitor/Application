@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\TripPart;
 use App\Event;
 use App\TravelerReportEvent;
-
+use Auth;
 
 class TripPartController extends Controller
 {
@@ -14,6 +14,8 @@ class TripPartController extends Controller
 
         $travelerReportEvent = new TravelerReportEvent;
         $travelerReportEvent->message = $request->message;
+        $travelerReportEvent->author_id = Auth::user()->id;
+
         $travelerReportEvent->save();
 
         $event = new Event;

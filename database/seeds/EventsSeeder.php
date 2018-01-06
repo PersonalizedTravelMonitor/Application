@@ -13,7 +13,8 @@ class EventsSeeder extends Seeder
     {
         // first we create the details for the event
         DB::table('traveler_report_events')->insert([
-            'message' => 'Train has stopped inside the gallery'
+            'author_id' => 2,
+            'message' => 'Train has stopped inside the tunnel'
         ]);
 
         DB::table('events')->insert([
