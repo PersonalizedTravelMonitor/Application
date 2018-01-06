@@ -13,6 +13,6 @@ class TravelerReportEvent extends Model
 
     public function author()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 }

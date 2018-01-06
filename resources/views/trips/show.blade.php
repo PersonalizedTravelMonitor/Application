@@ -12,24 +12,28 @@ With parts: <br>
       <div class="card-header-title">{{ $part->from }} - {{ $part->to }} ({{ $part->details_type }})</div>
     </div>
     <div class="card-content">
-      @php
-      switch ($part->details_type) {
-        case "App\TrenordTripPart":
-          echo $part->details->trainId;
-          break;
-        case "App\TrenitaliaTripPart":
-          echo $part->details->trainId;
-          break;
-        case "App\AtmTripPart":
-          echo $part->details->vehicleType;
-          break;
-      }
-      @endphp
+      @switch($part->details_type)
+        @case("App\TrenordTripPart")
+          {{ $part->details->trainId }}
+          @break
+        @case("App\TrenitaliaTripPart")
+          {{ $part->details->trainId }}
+          @break
+        @case("App\AtmTripPart")
+          {{ $part->details->vehicleType }}
+          @break
+      @endswitch
       <br>
       <b>Events</b>
       @forelse($part->events as $event)
-        <code>{{ $event }}</code>
-        <code>{{ $event->details }}</code>
+        <div>
+          <i>{{ $event->details_type }}</i>
+          @switch($event->details_type)
+            @case("App\TravelerReportEvent")
+              <b>{{ $event->details->author->name }}</b>: {{ $event->details->message }}
+              @break
+          @endswitch
+        </div>
       @empty
         No events for this trip part
       @endforelse
