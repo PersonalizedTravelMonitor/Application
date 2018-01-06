@@ -21,7 +21,7 @@
 	* Change `DB_USERNAME` to `root`
 	* Change `DB_PASSWORD` to `root`
 * `cd ..; cd laradock`
-* `Copy the file `env-example` to `.env`
+* Copy the file `env-example` to `.env`
 * `docker-compose up -d nginx mysql phpmyadmin`
 	* Wait for everythin to load
 * `docker exec -ti laradock_mysql_1 bash`
