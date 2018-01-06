@@ -42,6 +42,14 @@
             </span>
             Documents
           </a>
+          @auth
+            <a class="navbar-item" href="#" onclick="document.querySelector('#logout-form').submit()">
+              Logout
+            </a>
+            <form action="{{ route('logout') }}" method="POST" id="logout-form">
+              {{ csrf_field() }}
+            </form>
+          @endauth
         </div>
       </div>
     </div>

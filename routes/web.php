@@ -15,7 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
+Route::get('/auth/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
+Route::get('/auth/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('callback.google');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('trips','TripController');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  Welcome, {{ Auth::user()->email }} <br>
+  Welcome, {{ Auth::user()->name }} ({{ Auth::user()->email }})<br>
 
   {{-- Auth::user() is the logged-in user --}}
   @if (Auth::user()->isAdmin)
