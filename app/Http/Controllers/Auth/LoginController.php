@@ -41,33 +41,37 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function redirectToGoogle()
+    public function redirectToProvider($provider)
     {
-        return Socialite::driver('google')->scopes(['profile','email'])->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
-    public function handleGoogleCallback()
+    public function handleProviderCallback($provider)
     {
-        $socialUser = Socialite::driver('google')->user();
+        $socialUser = Socialite::driver($provider)->user();
 
-        $userCheck = User::where('email', '=', $socialUser->email)->first();
-        $user = null;
-        if (empty($userCheck)) {
-            $user = new User;
-            $user->name = $socialUser->name;
-            $user->email = $socialUser->email;
-            $user->social_provider = "google";
-            $user->social_id = $socialUser->id;
-            $user->password = "NOPASSWORD";
-            $user->save();
-        } else {
-            $user = $userCheck;
-            $user->social_provider = "google";
-            $user->social_id = $socialUser->id;
-            $user->save();
-        }
+        $user = $this->findOrCreateUser($socialUser, $provider);
 
         Auth::login($user, true);
         return redirect()->route('home');
+    }
+
+    public function findOrCreateUser($socialUser, $provider)
+    {
+        $existingUser = User::where('email', '=', $socialUser->email)->first();
+
+        if ($existingUser) {
+            $existingUser->social_provider = $provider;
+            $existingUser->social_id = $socialUser->id;
+            $existingUser->save();
+            return $existingUser;
+        }
+
+        return User::create([
+            'name'     => $socialUser->name,
+            'email'    => $socialUser->email,
+            'social_provider' => $provider,
+            'social_id' => $socialUser->id
+        ]);
     }
 }

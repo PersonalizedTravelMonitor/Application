@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<a href="{{ route('login.google') }}">Login con Google</a>
+<a href="{{ route('social.login', 'google') }}">Login with Google</a>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">

@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 
 Auth::routes();
-Route::get('/auth/google', 'Auth\LoginController@redirectToGoogle')->name('login.google');
-Route::get('/auth/google/callback', 'Auth\LoginController@handleGoogleCallback')->name('callback.google');
+Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
+Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('trips','TripController');
