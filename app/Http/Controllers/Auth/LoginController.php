@@ -71,6 +71,8 @@ class LoginController extends Controller
             'name'     => $socialUser->name,
             'email'    => $socialUser->email,
             'social_provider' => $provider,
+            // Placeholder password for OAuth services
+            'password' => "OAUTH",  // Still safe because not encrypted
             'social_id' => $socialUser->id
         ]);
     }

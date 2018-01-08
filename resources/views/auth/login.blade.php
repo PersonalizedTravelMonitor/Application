@@ -2,6 +2,8 @@
 
 @section('content')
 <a href="{{ route('social.login', 'google') }}">Login with Google</a>
+<br>
+<a href="{{ route('social.login', 'twitter') }}">Login with Twitter</a>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
