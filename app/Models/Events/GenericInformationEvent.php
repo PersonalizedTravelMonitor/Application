@@ -8,6 +8,6 @@ class GenericInformationEvent extends Model
 {
     public function event()
     {
-        return $this->morphOne('Event', 'details');
+        return $this->morphOne('App\Event', 'details');
     }
 }

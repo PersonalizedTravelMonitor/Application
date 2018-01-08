@@ -8,6 +8,6 @@ class TrenordTripPart extends Model
 {
     public function tripPart()
     {
-        return $this->morphOne('TripPart', 'details');
+        return $this->morphOne('App\TripPart', 'details');
     }
 }
