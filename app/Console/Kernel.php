@@ -27,6 +27,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // call this function every minute (or whenever php artisan schedule:run is executed)
         $schedule->call(function () {
             $trenordTripParts = TrenordTripPart::all();
             foreach ($trenordTripParts as $trenordTripPart) {
