@@ -5,9 +5,6 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-use App\TrenordTripPart;
-use App\TripPartManagers\TrenordTripPartManager;
-
 class Kernel extends ConsoleKernel
 {
     /**
@@ -16,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\GetEventsForTripParts::class
     ];
 
     /**
@@ -27,13 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // call this function every minute (or whenever php artisan schedule:run is executed)
-        $schedule->call(function () {
-            $trenordTripParts = TrenordTripPart::all();
-            foreach ($trenordTripParts as $trenordTripPart) {
-                (new TrenordTripPartManager())->getEvents($trenordTripPart->tripPart);
-            }
-        })->everyMinute();
+        // call this command every minute (or whenever php artisan schedule:run is executed)
+        $schedule->command('getEvents')->everyMinute();
     }
 
     /**
