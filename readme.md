@@ -60,9 +60,24 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 
 * `php artisan make:model ModelName -m`: create model and its migration
 
+## Advanced things
+
+### Social login
+
+* Edit `laradock/nginx/sites/ptm.con`
+	* Add `ptm.test.com` next to to `ptm.test` on the listening domains
+* Edit `/etc/hosts` (or the Windows equivalent), need sudo
+	* Add `127.0.0.1 ptm.test.com`
+* Get the `CLIENT_ID` and `CLIENT_SECRET` tokens from the provider website
+* Add them to `.env` file inside `ptm/`.
+	* Use the format `$PROVIDER_CLIENT_ID` and `$PROVIDER_CLIENT_SECRET`
+	* For example `TWITTER_CLIENT_ID` and `TWITTER_CLIENT_SECRET`
+* Add the social provider inside `ptm/config/services` similarly to the one already present
+* Create a link for sign in via the blade directive `{{ route('social.login', '$providerName') }}` in the login/register view
 
 ## Troubleshooting
 
 * `Class not found` error / an error after `git pull`
 	* `composer dump-autoload`
 	* Re-run the command
+
