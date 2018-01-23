@@ -13,6 +13,7 @@
   <!-- Styles -->
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <body>
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
@@ -63,5 +64,6 @@
       </div>
     </div>
   </section>
+  @yield('scripts')
 </body>
 </html>
