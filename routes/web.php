@@ -1,5 +1,5 @@
 <?php
-
+use App\Notifications\StatusUpdate;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +12,10 @@
 */
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/sendNotification', function () {
+    Auth::user()->notify(new StatusUpdate("test"));
 });
 
 // automagically enable the routes for the authentication (/login, /logout...)
