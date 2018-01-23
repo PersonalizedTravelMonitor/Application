@@ -61,8 +61,6 @@
   </nav>
   <section class="section">
     <div class="container">
-      <h1 class="title">PTM</h1>
-      <p class="subtitle">Your personal travel monitor!</p>
       <div id="app">
         @yield('content')
       </div>
