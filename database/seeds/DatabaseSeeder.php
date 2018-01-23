@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(AtmTripPartSeeder::class);
 
         $this->call(EventsSeeder::class);
+        $this->call(TripToTripPartsSeeder::class);
+
 
     }
 }

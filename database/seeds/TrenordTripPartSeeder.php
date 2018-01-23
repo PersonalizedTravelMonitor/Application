@@ -34,7 +34,6 @@ class TrenordTripPartSeeder extends Seeder
 
         // then we create the generic trip parts
         DB::table('trip_parts')->insert([
-            'trip_id' => 1, // bad idea for now, won't be necessary when we have a nice interface,
             'sequenceOrder' => 0,
             'from' => 'Sondrio',
             'to' => 'Monza',
@@ -43,7 +42,6 @@ class TrenordTripPartSeeder extends Seeder
         ]);
 
         DB::table('trip_parts')->insert([
-            'trip_id' => 1, // bad idea for now, won't be necessary when we have a nice interface
             'sequenceOrder' => 1,
             'from' => 'Monza',
             'to' => 'Milano Greco Pirelli',

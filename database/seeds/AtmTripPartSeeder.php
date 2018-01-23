@@ -22,7 +22,6 @@ class AtmTripPartSeeder extends Seeder
 
         // then we create the generic trip parts
         DB::table('trip_parts')->insert([
-            'trip_id' => 3, // bad idea for now, won't be necessary when we have a nice interface,
             'sequenceOrder' => 0,
             'from' => 'Milano Duomo',
             'to' => 'Milano Piola',

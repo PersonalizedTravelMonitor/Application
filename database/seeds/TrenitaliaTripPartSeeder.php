@@ -23,7 +23,6 @@ class TrenitaliaTripPartSeeder extends Seeder
 
         // then we create the generic trip parts
         DB::table('trip_parts')->insert([
-            'trip_id' => 2, // bad idea for now, won't be necessary when we have a nice interface,
             'sequenceOrder' => 0,
             'from' => 'Roma Termini',
             'to' => 'Torino P.Nuova',
