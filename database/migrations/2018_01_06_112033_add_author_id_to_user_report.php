@@ -28,7 +28,8 @@ class AddAuthorIdToUserReport extends Migration
      {
          Schema::table('traveler_report_events', function (Blueprint $table) {
              //
-             $table->dropColumn('author_id');
+            $table->dropForeign('traveler_report_events_author_id_foreign');
+            $table->dropColumn('author_id');
          });
      }
 }
