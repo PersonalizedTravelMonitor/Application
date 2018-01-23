@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -28,4 +27,5 @@ Route::resource('trips','TripController');
 
 Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
 
-
+Route::get('/search/{infoSource}/autocompleteFrom/{from}', 'SearchInfoController@autocompleteFrom');
+Route::get('/search/{infoSource}/autocompleteTo/{to}', 'SearchInfoController@autocompleteTo');
