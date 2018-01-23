@@ -26,7 +26,7 @@
       <div class="container">
         <div class="navbar-brand">
           <a class="navbar-item" href="../">
-            <img src="../images/bulma.png" alt="Logo">
+            <img src="https://i.imgur.com/poQbpiC.png" alt="Logo">
           </a>
           <span class="navbar-burger burger" data-target="navbarMenu">
             <span></span>
@@ -58,7 +58,7 @@
         <div class="columns is-vcentered">
           <div class="column is-5">
             <figure class="image is-4by3">
-              <img src="https://thedailyblog.co.nz/wp-content/uploads/2016/08/TCT-Icons_Public_TRANSPORT_resize.png" alt="Description">
+              <img src="https://i.imgur.com/poQbpiC.png" alt="Description">
             </figure>
           </div>
           <div class="column is-6 is-offset-1">
