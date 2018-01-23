@@ -26,6 +26,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 // define a resource route, see official documentation for details on this
 Route::resource('trips','TripController');
 
-Route::post('/tripParts/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
+Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
 
 

@@ -39,7 +39,7 @@ With parts: <br>
       @endforelse
 
       @auth
-        <form action="{{ route('tripParts.addTravelerReportEvent', $part) }}" method="POST">
+        <form action="{{ route('tripParts.addTravelerReportEvent', [$trip, $part]) }}" method="POST">
           {{ csrf_field() }}
           <input type="text" name="message" placeholder="Your report">
           <input type="submit" value="Send user report">

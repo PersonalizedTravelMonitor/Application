@@ -43,21 +43,30 @@ class TripController extends Controller
         $trip->repeatingOn = [3,4];
         $trip->save();
 
-        $trenordTripPart = new TrenordTripPart;
-        $trenordTripPart->line = $request->line;
-        $trenordTripPart->departure = "07:37:00";
-        $trenordTripPart->arrival = "08:23:00";
-        $trenordTripPart->trainId = "10845";
-        $trenordTripPart->departurePlatform = "Binario Est";
-        $trenordTripPart->save();
+        $compatibleTripPart = TripPart::alreadyExists($request);
+        if ($compatibleTripPart) 
+        {
+            $trip->parts()->attach($compatibleTripPart->id);
+        } 
+        else 
+        {
+            $trenordTripPart = new TrenordTripPart;
+            $trenordTripPart->line = $request->line;
+            $trenordTripPart->departure = "07:37:00";
+            $trenordTripPart->arrival = "08:23:00";
+            $trenordTripPart->trainId = "10845";
+            $trenordTripPart->departurePlatform = "Binario Est";
+            $trenordTripPart->save();
 
-        $tripPart = new TripPart;
-        $tripPart->from = $request->from;
-        $tripPart->to = $request->to;
-        $tripPart->trip_id = $trip->id;
-        $tripPart->details_id = $trenordTripPart->id;
-        $tripPart->details_type = get_class($trenordTripPart);
-        $tripPart->save();
+            $tripPart = new TripPart;
+            $tripPart->from = $request->from;
+            $tripPart->to = $request->to;
+
+            $tripPart->trips()->attach($trip->id);
+            $tripPart->details_id = $trenordTripPart->id;
+            $tripPart->details_type = get_class($trenordTripPart);
+            $tripPart->save();
+        }
 
         return redirect()->route("home");
     }
