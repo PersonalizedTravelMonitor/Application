@@ -11,6 +11,6 @@ interface SearchInfoProvider
         This method should return any new event about for a certain TripPart
     */
     public static function searchSolutions($from, $to, $date);
-    public static function autocompleteFrom($partialFrom);
-    public static function autocompleteTo($partialTo);
+    public static function autocompleteFrom($partial);
+    public static function autocompleteTo($partial);
 }

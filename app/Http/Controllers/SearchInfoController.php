@@ -11,21 +11,21 @@ class SearchInfoController extends Controller
         'trenitalia' => TrenitaliaSearchInfoProvider::class
     ];
 
-    public function autocompleteFrom($infoSource, $from) {
+    public function autocompleteFrom($infoSource, Request $request) {
         if (!isset($this->infoSources[$infoSource])) {
             return "INVALID INFO SOURCE";
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
-        return $searchInfoProvider::autocompleteFrom($from);
+        return $searchInfoProvider::autocompleteFrom($request->term);
     }
 
-    public function autocompleteTo($infoSource, $to) {
+    public function autocompleteTo($infoSource, Request $request) {
         if (!isset($this->infoSources[$infoSource])) {
             return "INVALID INFO SOURCE";
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
-        return $searchInfoProvider::autocompleteTo($to);
+        return $searchInfoProvider::autocompleteTo($request->term);
     }
 }

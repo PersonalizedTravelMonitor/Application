@@ -31,5 +31,7 @@ Route::resource('trips','TripController');
 
 Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
 
-Route::get('/search/{infoSource}/autocompleteFrom/{from}', 'SearchInfoController@autocompleteFrom');
-Route::get('/search/{infoSource}/autocompleteTo/{to}', 'SearchInfoController@autocompleteTo');
+Route::prefix('search')->name('search.')->group(function () {
+    Route::get('/{infoSource}/autocompleteFrom', 'SearchInfoController@autocompleteFrom')->name('autocompleteFrom');
+    Route::get('/{infoSource}/autocompleteTo', 'SearchInfoController@autocompleteTo')->name('autocompleteTo');
+});
