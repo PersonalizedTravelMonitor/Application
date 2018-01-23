@@ -6,7 +6,7 @@
 
 <h1 class="title" align="center">Create your Trip</h1>
 
-  <div class="tabs is-centered is-boxed">
+<div class="tabs is-centered is-boxed">
   <ul>
     <li class="is-active select-tab" data-tab="train">
       <a>
@@ -34,16 +34,18 @@
     </li>
   </ul>
 </div>
+
 <div class="tab tab--train">
   @include('trips.createTrain')
 </div>
 <div class="tab tab--subway" style="display:none">
   @include('trips.createSubway')
+</div>
 <div class="tab tab--bus" style="display:none">
   @include('trips.createBus')
+</div>
 <div class="tab tab--tram" style="display:none">
   @include('trips.createTram')
-</div>
 </div>
 
 <br>
@@ -72,7 +74,7 @@
   </div>
 </div>
   <br>
-  <div class="buttons is-right">
+<div class="buttons is-right">
   <span class="button is-danger">Cancel</span>
   <span class="button is-success">Submit</span>
 </div>
