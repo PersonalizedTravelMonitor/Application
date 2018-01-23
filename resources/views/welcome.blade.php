@@ -1,87 +1,94 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>PTM</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Personalized Travel Monitor
-                </div>
-            </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cover - Free Bulma template</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bulma Version 0.6.0 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.0/css/bulma.min.css" integrity="sha256-HEtF7HLJZSC3Le1HcsWbz1hDYFPZCqDhZa9QsCgVUdw=" crossorigin="anonymous" />
+  <style type="text/css">
+    html,body {
+      font-family: 'Open Sans';
+    }
+  </style>
+</head>
+<body>
+  <section class="hero is-fullheight is-default is-bold">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="../">
+            <img src="../images/bulma.png" alt="Logo">
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </div>
-    </body>
+        <div id="navbarMenu" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active" a href="{{ url('/home') }}">Home
+            </a>
+            <a class="navbar-item" href="{{ route('login') }}">Login
+            </a>
+            <a class="navbar-item" href="{{ route('register') }}">Register
+            </a>
+            <a class="navbar-item">
+              Team
+            </a>
+            <a class="navbar-item">
+              Help
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="columns is-vcentered">
+          <div class="column is-5">
+            <figure class="image is-4by3">
+              <img src="https://thedailyblog.co.nz/wp-content/uploads/2016/08/TCT-Icons_Public_TRANSPORT_resize.png" alt="Description">
+            </figure>
+          </div>
+          <div class="column is-6 is-offset-1">
+            <h1 class="title is-2">
+              Personalized Travel Monitor
+            </h1>
+            <h2 class="subtitle is-4">
+              Losing a train has never been so funny!
+            </h2>
+            <br>
+            <p class="has-text-centered">
+              <a class="button is-medium is-info is-outlined">
+                Learn more
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <div class="container">
+        <div class="tabs is-centered">
+          <ul>
+            <li><a>And this at the bottom</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script async type="text/javascript" src="../js/bulma.js"></script>
+</body>
 </html>
