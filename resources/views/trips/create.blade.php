@@ -138,51 +138,35 @@
     </div>
   </div>
   </div>
-  <br><hr>
+  <br>
+  <h2 class="title is-5" align="center">Select the days</h2>
+  <div class="columns is-centered">
+  <div class="column is-narrow">
+  <a class="button is-rounded is-info is-selected">Lunedì</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Martedì</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Mercoledì</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Giovedì</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Venerdì</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Sabato</a>
+  </div>
+  <div class="column is-narrow">
+  <a class="button is-rounded">Domenica</a>
+  </div>
+</div>
 
-  <div class="columns">
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Lunedì
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Martedì
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Mercoledì
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Giovedì
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Venerdì
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Sabato
-</label>
-  </div>
-  <div class="column">
-  <label class="checkbox">
-  <input type="checkbox">
-  Domenica
-</label>
-  </div>
+<div class="buttons is-right">
+  <span class="button is-danger">Cancel</span>
+  <span class="button is-success">Submit</span>
 </div>
 
 
@@ -209,6 +193,14 @@ $(document).ready(function() {
 
     $(".select-tab").removeClass("is-active")
     $(this).addClass("is-active")
+  })
+})
+</script>
+
+<script>
+$(document).ready(function() {
+  $(".button").click(function() {
+    $(this).toggleClass("is-selected").toggleClass("is-info");
   })
 })
 </script>
