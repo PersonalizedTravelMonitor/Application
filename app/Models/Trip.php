@@ -18,6 +18,7 @@ class Trip extends Model
             // get the starting point of the first part
             return $this->parts[0]->from;
         } else {
+            dd($this);
             throw new Exception('Can\'t get "from" if a trip has no parts');
         }
     }
@@ -39,6 +40,8 @@ class Trip extends Model
     }
 
     public function parts() {
-        return $this->hasMany('App\TripPart')->orderBy('sequenceOrder');
+        return $this->belongsToMany('App\TripPart', 'trips_to_trip_parts')->orderBy('sequenceOrder');
     }
+
+
 }
