@@ -36,3 +36,8 @@ Route::prefix('search')->name('search.')->group(function () {
     Route::get('/{infoSource}/autocompleteTo', 'SearchInfoController@autocompleteTo')->name('autocompleteTo');
     Route::get('/{infoSource}/searchSolutions', 'SearchInfoController@searchSolutions')->name('searchSolutions');
 });
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', 'AdminController@index')->name('index');
+});
