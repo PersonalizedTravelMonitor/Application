@@ -2,7 +2,6 @@
 
 @section('content')
   <h1 class="title" align="center">Create your Trip</h1>
-
   <div class="tabs is-centered is-boxed">
     <ul>
       <li class="is-active select-tab" data-tab="train">
@@ -33,6 +32,8 @@
   </div>
 
   <div class="tab tab--train">
+    <p id="fromStation"></p>
+    <p id="toStation"></p>
     @include('trips.createTrain')
   </div>
   <div class="tab tab--subway" style="display:none">
@@ -71,8 +72,7 @@
   </div>
   <br>
   <div class="buttons is-right">
-    <span class="button is-danger">Cancel</span>
-    <span class="button is-success">Submit</span>
+    <span class="button is-success">Programma Viaggio</span>
   </div>
 @endsection
 
@@ -102,13 +102,29 @@
 <script>
   $(document).ready(function() {
     $(".autocompleteFrom").autocomplete({
-      source: "{{ route('search.autocompleteFrom', 'trenitalia') }}",
-      minLength: 2
+      source: "{{ route('search.autocompleteFrom', 'trenord') }}",
+      minLength: 2,
+      select: function(event, selected) {
+        $("#fromStation").text(selected.item.id);
+      }
     });
     $(".autocompleteTo").autocomplete({
-      source: "{{ route('search.autocompleteTo', 'trenitalia') }}",
-      minLength: 2
+      source: "{{ route('search.autocompleteTo', 'trenord') }}",
+      minLength: 2,
+      select: function(event, selected) {
+        $("#toStation").text(selected.item.id);
+      }
     });
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    $("#btn-search").click(function () {
+      console.log($("#fromStation").text())
+      console.log($("#toStation").text())
+      console.log($("#input-hour").val())
+    })
   });
 </script>
 @endsection

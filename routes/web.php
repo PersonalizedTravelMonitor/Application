@@ -34,4 +34,5 @@ Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartControlle
 Route::prefix('search')->name('search.')->group(function () {
     Route::get('/{infoSource}/autocompleteFrom', 'SearchInfoController@autocompleteFrom')->name('autocompleteFrom');
     Route::get('/{infoSource}/autocompleteTo', 'SearchInfoController@autocompleteTo')->name('autocompleteTo');
+    Route::get('/{infoSource}/searchSolutions', 'SearchInfoController@searchSolutions')->name('searchSolutions');
 });

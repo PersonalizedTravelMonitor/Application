@@ -2,24 +2,31 @@
 
 namespace App\SearchInfoProviders;
 
-class TrenitaliaSearchInfoProvider implements SearchInfoProvider
+use Storage;
+
+class TrenordSearchInfoProvider implements SearchInfoProvider
 {
     public static function autocompleteFrom($partialFrom) {
-        $guzzle = new \GuzzleHttp\Client();
+        $json = Storage::disk('local')->get('trenord_stations.json');
+        $stations = json_decode($json, true);
 
-        $url = 'http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/autocompletaStazione/' . $partialFrom;
-        $res = $guzzle->get($url);
-
-        $stations = self::parseStationResponse($res->getBody());
-        return response()->json($stations);
+        $filteredStations = self::filterStations($stations, $partialFrom);
+        return response()->json($filteredStations);
     }
 
     public static function autocompleteTo($partialTo) {
         return self::autocompleteFrom($partialTo);
     }
 
-    public static function searchSolutions($from, $to, $date) {
-        json_encode([$from, $to, $date]);
+    public static function searchSolutions($from, $to, $hour) {
+        return "ok";
+    }
+
+    static function filterStations($stations, $partial) {
+        $partial = strtoupper($partial);
+        return array_values(array_filter($stations, function ($station) use($partial) {
+            return substr($station['label'], 0, strlen($partial)) === $partial;
+        }));
     }
 
     static function parseStationResponse($body) {
