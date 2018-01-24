@@ -19,7 +19,6 @@ class CreateAnnouncementsTable extends Migration
 
             $table->string('title');
             $table->string('text');
-            $table->time('dispatchTime');
         });
     }
 

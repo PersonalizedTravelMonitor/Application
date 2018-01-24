@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Trip;
 use App\TripPart;
+use App\Announcement;
+use App\Notifications\GlobalAnnouncement;
 
 class AdminController extends Controller
 {
@@ -30,5 +32,17 @@ class AdminController extends Controller
             'nTrips' => $nTrips,
             'nParts' => $nParts
         ]);
+    }
+
+    public function sendAnnouncement(Request $request)
+    {
+        $announcement = new Announcement;
+        $announcement->title = "Global Announcement";
+        $announcement->text = $request->announcement;
+        $announcement->save();
+        $announcement->notify(new GlobalAnnouncement($announcement));
+
+        $request->session()->flash('status', 'Announcement was sent!');
+        return redirect()->route('admin.index');
     }
 }

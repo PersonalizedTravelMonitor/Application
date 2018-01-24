@@ -42,7 +42,8 @@
   </div>
 
   <h2 class="is-size-3">Announcements</h2>
-  <form action="" method="POST">
+  <form action="{{ route('admin.announcement') }}" method="POST">
+    {{ csrf_field() }}
     <div class="field">
       <label class="label">Text:</label>
       <div class="control">

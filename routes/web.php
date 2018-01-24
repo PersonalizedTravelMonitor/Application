@@ -40,4 +40,5 @@ Route::prefix('search')->name('search.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
+    Route::post('/annoucements/send', 'AdminController@sendAnnouncement')->name('announcement');
 });
