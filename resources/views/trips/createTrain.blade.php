@@ -21,16 +21,21 @@
     </div>
     <div class="column">
       <div class="field">
-        <label class="label">Hour: </label>
+        <label class="label">Departure Time: </label>
         <div class="control has-icons-left">
-          <input id="input-hour" class="input" type="number" min="0" max="23" placeholder="Departure Time">
+          <input id="input-hour" class="input" type="number" min="0" max="23" value="8" placeholder="Departure Time">
           <span class="icon is-small is-left">
           <i class="fas fa-clock"></i> </span>
         </div>
       </div>
     </div>
-    <div class="column">
-      <button id="btn-search" class="button">Search</button>
+    <div class="column" style="align-self: flex-end;">
+      <button id="btn-search" class="button is-fullwidth is-info">
+        <span>Search</span>
+        <span class="icon">
+          <i class="fas fa-search"></i>
+        </span>
+      </button>
     </div>
   </div>
 

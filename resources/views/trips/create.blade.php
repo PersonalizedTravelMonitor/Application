@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1 class="title" align="center">Create your Trip</h1>
+  <h1 class="title" align="center">Get updates on a trip</h1>
   <div class="tabs is-centered is-boxed">
     <ul>
       <li class="is-active select-tab" data-tab="train">
