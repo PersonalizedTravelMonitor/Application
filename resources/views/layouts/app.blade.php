@@ -35,24 +35,27 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
-        <a class="navbar-item is-active" a href="{{ url('/') }}">
+        <a class="navbar-item is-active" a href="{{ url('/home') }}">
             <span class="icon">
-              <i class="fas fa-home"></i>
+              <i class="fas fa-plane"></i>
             </span>
-            Home
+            My Trips
           </a>
+          @guest
           <a class="navbar-item" href="{{ route('login') }}">
             <span class="icon">
               <i class="fas fa-sign-in-alt"></i>
             </span>
             Login
           </a>
+
           <a class="navbar-item" href="{{ route('register') }}">
             <span class="icon">
               <i class="fas fa-user-plus"></i>
             </span>
             Register
           </a>
+          @endguest
           <a class="navbar-item" href="https://github.com/PersonalizedTravelMonitor/Application" target="_blank">
             <span class="icon">
               <i class="fab fa-github"></i>
