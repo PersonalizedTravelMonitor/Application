@@ -101,8 +101,12 @@
 
 <script>
   $(document).ready(function() {
-    $(".autocompleteStation").autocomplete({
-      source: "{{ route('search.autocompleteFrom', ['trenitalia', '']) }}",
+    $(".autocompleteFrom").autocomplete({
+      source: "{{ route('search.autocompleteFrom', 'trenitalia') }}",
+      minLength: 2
+    });
+    $(".autocompleteTo").autocomplete({
+      source: "{{ route('search.autocompleteTo', 'trenitalia') }}",
       minLength: 2
     });
   });

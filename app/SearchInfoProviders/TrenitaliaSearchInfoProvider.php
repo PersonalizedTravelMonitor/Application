@@ -8,14 +8,15 @@ class TrenitaliaSearchInfoProvider implements SearchInfoProvider
         $guzzle = new \GuzzleHttp\Client();
 
         $url = 'http://www.viaggiatreno.it/viaggiatrenonew/resteasy/viaggiatreno/autocompletaStazione/' . $partialFrom;
-        $res = $guzzle->request('GET', $url);
+        $guzzle->setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36');
+        $res = $guzzle->get($url);
 
         $stations = self::parseStationResponse($res->getBody());
         return response()->json($stations);
     }
 
     public static function autocompleteTo($partialTo) {
-        return json_encode([$partialTo, $partialTo, $partialTo]);
+        return self::autocompleteFrom($partialTo);
     }
 
     public static function searchSolutions($from, $to, $date) {
