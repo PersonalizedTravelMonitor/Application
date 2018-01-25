@@ -86,7 +86,7 @@
       </header>
       <div class="card-content">
         <div class="content">
-        <b>Minute of Delay: </b>{{ $stats->minuteOfDelay}} <br>
+        <b>Minutes of Delay: </b>{{ $stats->minutesOfDelay}} <br>
         <b>Number Of Severe Disruption: </b>{{ $stats->numberOfSevereDisruption}}
         </div>
         </div>
