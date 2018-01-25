@@ -9,6 +9,8 @@
   @endif
 
   <h2 class="is-size-2">Your Trips</h2>
+  <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
+  <br>
   @forelse(Auth::user()->trips as $trip)
     <div class="card">
       <div class="card-header">
