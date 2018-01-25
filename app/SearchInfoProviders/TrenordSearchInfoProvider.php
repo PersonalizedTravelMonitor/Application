@@ -3,6 +3,9 @@
 namespace App\SearchInfoProviders;
 
 use Storage;
+use Carbon\Carbon;
+use DateTimeZone;
+use App\ExternalAPIs\TrenordAPI;
 
 class TrenordSearchInfoProvider implements SearchInfoProvider
 {
@@ -19,15 +22,20 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
     }
 
     public static function searchSolutions($from, $to, $hour) {
-        return "ok";
+        //dd(Carbon::now());
+        return TrenordAPI::search($from,$to,Carbon::createFromTime($hour, 0, 0, 'Europe/Rome'));
+        
     }
 
     static function filterStations($stations, $partial) {
         $partial = strtoupper($partial);
+        // extract only values from the composite array returned
         return array_values(array_filter($stations, function ($station) use($partial) {
             return substr($station['label'], 0, strlen($partial)) === $partial;
         }));
     }
+
+    static function 
 
     static function parseStationResponse($body) {
         $body = trim($body);
