@@ -25,7 +25,7 @@
           <div class="field">
             <label class="label">Hours: </label>
             <div class="control has-icons-left">
-              <input id="input-hour" class="input" type="number" min="0" max="23" value="8" placeholder="Departure Hours">
+              <input id="input-hours" class="input" type="number" min="0" max="23" value="{{ Carbon\Carbon::now('Europe/Rome')->format('H') }}" placeholder="Departure Hours">
               <span class="icon is-small is-left">
               <i class="fas fa-clock"></i> </span>
             </div>

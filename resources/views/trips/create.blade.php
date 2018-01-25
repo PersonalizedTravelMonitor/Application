@@ -123,7 +123,7 @@
     $("#btn-search").click(function () {
       console.log($("#fromStation").text())
       console.log($("#toStation").text())
-      console.log($("#input-hour").val())
+      console.log($("#input-hours").val())
     })
   });
 </script>
