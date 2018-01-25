@@ -66,8 +66,11 @@
     </header>
     <div class="card-content">
       <div class="content">
-        [[ trip.journey_list.length ]] parts
-        <br>
+        <ul>
+          [[ #trip.journey_list ]]
+            <li>[[ train.train_category ]] [[ train.train_name ]] ([[ stops.length ]] stops)</li>
+          [[ /trip.journey_list ]]
+        </ul>
       </div>
     </div>
   </div>
@@ -77,23 +80,27 @@
 <script type="text/javascript">
   $(document).ready(function() {
     $("#btn-search").click(function() {
+      $(this).addClass("is-loading");
       var from = $("#input-from").val();
       var to = $("#input-to").val();
       var hours = $("#input-hours").val();
       var minutes = $("#input-minutes").val();
 
       $.get('{{ route('search.searchSolutions', 'trenord') }}', { "from": from, "to": to, "hours": hours, "minutes": minutes }, function(data){
-          displaySearchResults(data);
-        });
+        $("#btn-search").removeClass("is-loading");
+        displaySearchResults(data);
+      });
     });
   });
 
   function displaySearchResults(results){
+    results = results.slice(0, 3);
     for(trip of results){
+      console.log(trip);
       var templateViewHtml = $('script[name="search-result"]').html();
       Mustache.parse(templateViewHtml, ["[[", "]]"]);
       var renderedSearch = Mustache.render(templateViewHtml, {"trip": trip });
-      $(".results").append(renderedSearch);
+      $(".results").empty().append(renderedSearch);
     }
   }
 </script>
