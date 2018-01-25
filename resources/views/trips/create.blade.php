@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('head')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js"></script>
+@endsection
+
 @section('content')
   <h1 class="title" align="center">Get updates on a trip</h1>
   <div class="tabs is-centered is-boxed">

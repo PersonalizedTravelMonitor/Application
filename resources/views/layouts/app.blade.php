@@ -18,6 +18,7 @@
   <script src="{{ asset('js/jquery-ui.js') }}"></script>
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  @yield('head')
 </head>
 <body>
   <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
