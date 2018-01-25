@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-            <div class="panel panel-default">
 <link rel="stylesheet" type="text/css" href="{{ asset('css/login.css') }}">
       <div class="container has-text-centered">
         <div class="column is-4 is-offset-4">
