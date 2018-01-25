@@ -11,9 +11,9 @@
   <h2 class="is-size-2">Your Trips</h2>
   <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
   <br>
-  <div class="columns">
+  <div class="columns is-multiline">
   @forelse(Auth::user()->trips as $trip)
-    <div class="column">
+    <div class="column is-half">
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
@@ -61,11 +61,10 @@
           </div>
         </div>
         <footer class="card-footer">
-        <a href="{{ route('trips.show', $trip) }}" class="card-footer-item">Details</a>
+          <a href="{{ route('trips.show', $trip) }}" class="card-footer-item">Details</a>
         </footer>
-        </div>
       </div>
-
+    </div>
     @empty
     No Trips :(
   @endforelse
