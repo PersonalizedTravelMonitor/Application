@@ -30,13 +30,12 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         return self::autocompleteFrom($partialTo);
     }
 
-    public static function searchSolutions($from, $to, $hour) {
-        $searchResults = TrenordAPI::search($from,$to,Carbon::createFromTime($hour, 0, 0, 'Europe/Rome'));
+    public static function searchSolutions($from, $to, $hours, $minutes) {
+        $searchResults = TrenordAPI::search($from,$to,Carbon::createFromTime($hours, $minutes, 0, 'Europe/Rome'));
 
         $cleanedupResults = self::cleanupSearchResults($searchResults);
 
         return response()->json($cleanedupResults);
-
     }
 
     static function filterStations($stations, $partial) {
@@ -51,8 +50,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         foreach ($searchResults as $key => $trip) {
             $searchResults[$key] = self::cleanupTripResult($trip);
         }
-
-        dd($searchResults);
+        return $searchResults;
     }
 
     static function cleanupTripResult($trip) {

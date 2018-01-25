@@ -20,12 +20,26 @@
       </div>
     </div>
     <div class="column">
-      <div class="field">
-        <label class="label">Departure Time: </label>
-        <div class="control has-icons-left">
-          <input id="input-hour" class="input" type="number" min="0" max="23" value="8" placeholder="Departure Time">
-          <span class="icon is-small is-left">
-          <i class="fas fa-clock"></i> </span>
+      <div class="columns">
+        <div class="column">
+          <div class="field">
+            <label class="label">Hours: </label>
+            <div class="control has-icons-left">
+              <input id="input-hour" class="input" type="number" min="0" max="23" value="8" placeholder="Departure Hours">
+              <span class="icon is-small is-left">
+              <i class="fas fa-clock"></i> </span>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="field">
+            <label class="label">Minutes: </label>
+            <div class="control has-icons-left">
+              <input id="input-minutes" class="input" type="number" min="0" max="60" value="00" placeholder="Departure Minutes">
+              <span class="icon is-small is-left">
+              <i class="fas fa-clock"></i> </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
