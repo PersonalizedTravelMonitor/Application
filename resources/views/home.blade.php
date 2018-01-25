@@ -11,7 +11,7 @@
   <h2 class="is-size-2">Your Trips</h2>
   <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
   <br>
-  <div class="columns is-multiline">
+  <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
       <div class="card">
@@ -73,9 +73,9 @@
 <hr>
 
   <h2 class="is-size-2">Your Statistics</h2><br><br>
-  <div class="columns">
+  <div class="columns is-multiline is-centered">
   @foreach(Auth::user()->personalStatistic as $stats)
-  <div class="column">
+  <div class="column is-half">
       <div class="card">
       <header class="card-header">
         <p class="card-header-title">
