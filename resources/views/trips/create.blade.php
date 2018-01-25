@@ -117,16 +117,6 @@
     });
   });
 </script>
-
-<script>
-  $(document).ready(function() {
-    $("#btn-search").click(function () {
-      console.log($("#fromStation").text())
-      console.log($("#toStation").text())
-      console.log($("#input-hours").val())
-    })
-  });
-</script>
 @endsection
 
 

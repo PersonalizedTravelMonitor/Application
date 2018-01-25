@@ -3,7 +3,7 @@
       <div class="field">
         <label class="label">From: </label>
         <div class="control has-icons-left">
-          <input class="input autocompleteFrom" type="text" placeholder="Departure Station Name">
+          <input id="input-from" class="input autocompleteFrom" type="text" placeholder="Departure Station Name">
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -13,7 +13,7 @@
       <div class="field">
         <label class="label">To: </label>
         <div class="control has-icons-left">
-          <input class="input autocompleteTo" type="text" placeholder="Arrival Station Name">
+          <input id="input-to" class="input autocompleteTo" type="text" placeholder="Arrival Station Name">
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -53,72 +53,48 @@
     </div>
   </div>
 
-  <div class="columns">
-    <div class="column">
-      <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          Treno 5040  -  From Lecco [12:00] To Rome [18:00]
-        </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div class="card-content">
-        <div class="content">
-        <div class="columns">
-        <div class="column">
-          <b>Durata:</b> 5h 25m<br>
-                <b>Compagnia:</b> Trenitalia<br>
-                <b>Tipo di Viaggio:</b> Diretto<br>
-                <br>
-        </div>
-        <div class="column">
-          <img src="https://pbs.twimg.com/profile_images/1620236068/TRENORD_LOGO.jpg" width="80px" height="80px" align="right">
-        </div>
-        </div>
-        </div>
-      </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Più informazioni</a>
-        <a href="#" class="card-footer-item">Seleziona</a>
-      </footer>
-    </div>
-    </div>
-    <div class="column">
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          Treno 5040  -  From Naples [18:00] To Reggio Calabria [22:00]
-        </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div class="card-content">
-        <div class="content">
-        <div class="columns">
-        <div class="column">
-          <b>Durata:</b> 5h 25m<br>
-          <b>Compagnia:</b> Trenord<br>
-          <b>Tipo di Viaggio:</b> Diretto<br>
-          <br>
-        </div>
-        <div class="column">
-          <img src="https://cdn.logitravel.it/comun/images/trenes/companias/logos/logo_TIT.png" width="80px" height="80px" align="right">
-        </div>
-        </div>
-        </div>
-        </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Più informazioni</a>
-        <a href="#" class="card-footer-item">Seleziona</a>
-      </footer>
-      </div>
-      </div>
-    </div>
+  <div class="results">
   </div>
+
+<script type="text/template" name="search-result">
+  <div class="card search-result">
+    <header class="card-header">
+      <p class="card-header-title">
+        <span class="search-result-from"></span>
+        <span class="search-result-to"></span>
+        <span class="search-result-departure-time"></span>
+      </p>
+      
+    </header>
+    <div class="card-content">
+      <div class="content">
+        Bla bla bla
+      </div>
+    </div>
+
+  </div>
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#btn-search").click(function() {
+      var from = $("#input-from").val();
+      var to = $("#input-to").val();
+      var hours = $("#input-hours").val();
+      var minutes = $("#input-minutes").val();
+
+      $.get('{{ route('search.searchSolutions', 'trenord') }}', { "from": from, "to": to, "hours": hours, "minutes": minutes }, function(data){
+          displaySearchResults(data);
+        });
+    });
+  });
+
+  function displaySearchResults(results){
+    for(result of results){
+      var searchResult = $("script[name=search-result]").html();
+      $(searchResult).find(".search-result-departure-time").text("666");
+      console.log(result);
+      $(".results").append(searchResult);
+    }
+  }
+</script>
