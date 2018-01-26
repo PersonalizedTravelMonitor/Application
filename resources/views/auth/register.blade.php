@@ -14,31 +14,34 @@
         {{csrf_field() }}
         <div class="field">
           <div class="control">
-            <input class="input is-large" name="name" value="{{old('name') }}" id="name" type="text" placeholder="Your Name" autofocus="" required>
+            <input class="input" name="name" value="{{old('name') }}" id="name" type="text" placeholder="Your Name" autofocus="" required>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input is-large" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
+            <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input is-large" name="password" id="password" type="password" placeholder="Your Password" required>
+            <input class="input" name="password" id="password" type="password" placeholder="Your Password" required>
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input is-large" name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Your Password" required>
+            <input class="input" name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Your Password" required>
           </div>
         </div>
-        <button type="submit" class="button is-block is-info is-large">
+        <button type="submit" class="button is-block is-info is-fullwidth">
           Register
         </button>
       </form>
+      <hr>
+      <a class="button" href="{{ route('social.login', 'google') }}">Login with Google</a>
+      <a class="button" href="{{ route('social.login', 'twitter') }}">Login with Twitter</a>
     </div>
     <p class="has-text-grey">
-      <a href="{{ route('login') }}">Login</a> &nbsp;·&nbsp;
+      <a href="{{ route('login') }}">Login</a>
     </p>
   </div>
 </div>
