@@ -52,7 +52,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         }
         return $searchResults;
     }
-
+//TODO: Filtrare il numero di stazini intermedie es. lecco-lecco maggianico
     static function cleanupTripResult($trip) {
         $trip = renameKey($trip, "dep_time", "departure_time");
         $trip = renameKey($trip, "arr_time", "arrival_time");
