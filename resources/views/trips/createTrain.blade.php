@@ -57,14 +57,14 @@
 
 <div class="results columns is-multiline is-centered">
 </div>
-
+<!-- TO DO: Togliere i secondi-->
 <script type="text/template" name="search-result">
     <div class="column is-half">
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
             <span class="icon is-small" ><i class="fas fa-clock"></i></span>&nbsp;
-            <span>[[ trip.departure_time ]]</span>
+            <span>[[ trip.departure_time ]]</span> <span class="icon is-small" ><i class="fas fa-caret-right"></i></span>&nbsp; <span>[[ trip.arrival_time ]]</span>
           </p>
           <div class="card-header-icon">
             <button class="button id-[[ index ]] selectButton" data-index="[[ index ]]" >
@@ -81,6 +81,7 @@
                 <p class="is-size-7">Get off at [[ stops[stops.length-1].station.station_name ]]</p> </li>
                 [[ /trip.journey_list ]]
             </ul>
+            <b>Duration : </b>[[ trip.duration ]]
           </div>
         </div>
       </div>
