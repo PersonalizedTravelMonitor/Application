@@ -123,6 +123,9 @@
       $(".results").text("No compatible solutions found");
       return;
     }
+    // Mostra sezione registrazione
+    $("#repetition-days-section").show();
+
     for(var i=0; i<results.length;i++){
       var trip=results[i];
       console.log(trip);
@@ -148,6 +151,7 @@
       });
 
     }
+
 
   }
 </script>

@@ -50,34 +50,41 @@
     @include('trips.createTram')
   </div>
 
-  <h2 class="title is-5" align="center">Select the days</h2>
-  <div class="columns is-centered">
-    <div class="column is-narrow">
-      <a class="button is-rounded is-info is-selected">Lunedì</a>
+  <div id="repetition-days-section" style="display:none">
+    <h2 class="title is-5" align="center">Repetition</h2>
+    <input type="radio" id="radio-today" name="repetition" value="today" checked autocomplete="off"><label for="radio-today">just today</label>
+    <br>
+    <input type="radio" id="radio-multiple" name="repetition" value="multiple" autocomplete="off"><label for="radio-multiple">multiple days</label>
+    <div id="days-list" class="columns is-centered" style="display:none" >
+      <div class="column is-narrow">
+        <a class="button is-rounded is-info is-selected">Lunedì</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Martedì</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Mercoledì</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Giovedì</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Venerdì</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Sabato</a>
+      </div>
+      <div class="column is-narrow">
+        <a class="button is-rounded">Domenica</a>
+      </div>
     </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Martedì</a>
+    <br>
+    <div class="buttons is-right">
+      <span class="button is-success" id="btn-subscribe">Programma Viaggio</span>
     </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Mercoledì</a>
-    </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Giovedì</a>
-    </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Venerdì</a>
-    </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Sabato</a>
-    </div>
-    <div class="column is-narrow">
-      <a class="button is-rounded">Domenica</a>
-    </div>
+
   </div>
-  <br>
-  <div class="buttons is-right">
-    <span class="button is-success" id="btn-subscribe">Programma Viaggio</span>
-  </div>
+  
 @endsection
 
 
@@ -93,6 +100,21 @@
       $(this).addClass("is-active")
     })
   });
+
+</script>
+
+<script>
+  $(document).ready(function() {
+    $("#radio-multiple, #radio-today").change(function(){
+      if($("#radio-multiple").is(":checked")){
+        $("#days-list").show();
+      }
+      else
+      {
+        $("#days-list").hide();
+      }
+    })
+  });
 </script>
 
 <script>
@@ -102,6 +124,7 @@
     })
   });
 </script>
+
 
 <script>
   $(document).ready(function() {
