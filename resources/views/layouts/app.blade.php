@@ -73,7 +73,10 @@
           </a>
           @auth
             <a class="navbar-item" href="#" onclick="document.querySelector('#logout-form').submit()">
-              Logout
+            <span class="icon">
+              <i class="fas fa-sign-out-alt"></i>
+            </span>
+            Logout
             </a>
             <form action="{{ route('logout') }}" method="POST" id="logout-form">
               {{ csrf_field() }}
