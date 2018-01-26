@@ -3,6 +3,7 @@
 namespace App\ExternalAPIs;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use Carbon\Carbon;
 
 class TrenordAPI
@@ -13,29 +14,40 @@ class TrenordAPI
 	{
 		$url = self::BASE_URL . '/hafas';
 		$client = new Client;
-		$response = $client->get($url,[
-			'query' => [
-				'orig' => self::cleanStationName($from),
-				'dest' => self::cleanStationName($to),
-				'departure_date' => $date->format('Ymd'),
-				'departure_hour' => $date->format('H:i'),
-				'type' => '0',
-				'live_data' => true,
-				'plus' => true,
-				'no_changes' => 0,
-				'transfers' => 1
-			],
-			'headers' => [
-				'Secret' => env('TRENORD_SECRET')
-			]
-		]);
-
-		if($response->getStatusCode() != 200)
+		try
 		{
-			throw new Exception("Error Processing Request: " . $response->getStatusCode(), 1);
-			
+			$response = $client->get($url,[
+				'query' => [
+					'orig' => self::cleanStationName($from),
+					'dest' => self::cleanStationName($to),
+					'departure_date' => $date->format('Ymd'),
+					'departure_hour' => $date->format('H:i'),
+					'type' => '0',
+					'live_data' => true,
+					'plus' => true,
+					'no_changes' => 0,
+					'transfers' => 1
+				],
+				'headers' => [
+					'Secret' => env('TRENORD_SECRET')
+				]
+			]);
 		}
-		
+		catch(RequestException $e)
+		{
+			if($e->hasResponse()){
+				switch($e->getResponse()->getStatusCode())
+				{
+					case 432:
+						// No compatible solutions
+						return [];
+						break;
+					default:
+						throw $e;
+				}
+			}
+		}
+
 		$body = $response->getBody();
 		return json_decode($body, true);
 

@@ -91,6 +91,7 @@
 
       $.get('{{ route('search.searchSolutions', 'trenord') }}', { "from": from, "to": to, "hours": hours, "minutes": minutes }, function(data){
         $("#btn-search").removeClass("is-loading");
+
         displaySearchResults(data);
       });
     });
@@ -99,6 +100,10 @@
   function displaySearchResults(results){
     results = results.slice(0, 3);
     $(".results").empty();
+    if(results.length==0){
+      $(".results").text("No compatible solutions found");
+      return;
+    }
     for(trip of results){
       console.log(trip);
       var templateViewHtml = $('script[name="search-result"]').html();
@@ -106,5 +111,6 @@
       var renderedSearch = Mustache.render(templateViewHtml, {"trip": trip });
       $(".results").append(renderedSearch);
     }
+    
   }
 </script>
