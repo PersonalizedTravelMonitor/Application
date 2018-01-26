@@ -76,7 +76,7 @@
   </div>
   <br>
   <div class="buttons is-right">
-    <span class="button is-success">Programma Viaggio</span>
+    <span class="button is-success" id="btn-subscribe">Programma Viaggio</span>
   </div>
 @endsection
 

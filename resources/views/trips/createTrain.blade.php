@@ -69,9 +69,9 @@
         <ul>
           [[ #trip.journey_list ]]
             <li>[[ train.train_category ]] [[ train.train_name ]] ([[ stops.length ]] stops)</li>
-          [[ /trip.journey_list ]]
-          <button id="seleziona" class="button is-info">
-          <span>Seleziona</span>
+            [[ /trip.journey_list ]]
+          <button class="button is-info id-[[ index ]]" data-index="[[ index ]]" >
+            <span>Seleziona</span>
           </button>
         </ul>
       </div>
@@ -81,7 +81,10 @@
 </script>
 
 <script type="text/javascript">
+  var selectedSolutions=null;
+
   $(document).ready(function() {
+
     $("#btn-search").click(function() {
       $(this).addClass("is-loading");
       var from = $("#input-from").val();
@@ -95,6 +98,12 @@
         displaySearchResults(data);
       });
     });
+
+      $("#btn-subscribe").click(function(){
+        if(selectedSolutions){
+          $.post("{{route('trips.store')}}",{"trip": selectedSolutions});
+        }
+      });
   });
 
   function displaySearchResults(results){
@@ -104,13 +113,19 @@
       $(".results").text("No compatible solutions found");
       return;
     }
-    for(trip of results){
+    for(var i=0; i<results.length;i++){
+      var trip=results[i];
       console.log(trip);
       var templateViewHtml = $('script[name="search-result"]').html();
       Mustache.parse(templateViewHtml, ["[[", "]]"]);
-      var renderedSearch = Mustache.render(templateViewHtml, {"trip": trip });
+      var renderedSearch = Mustache.render(templateViewHtml, {"trip": trip , "index":i });
       $(".results").append(renderedSearch);
+
+      $(".results .id-" + i).click(function(){
+        selectedSolutions=results[$(this).data("index")];
+      });
+
     }
-    
+
   }
 </script>

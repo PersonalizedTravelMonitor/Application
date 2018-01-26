@@ -16,6 +16,13 @@
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
   <script src="{{ asset('js/jquery-ui.js') }}"></script>
+  <script>
+    $(document).ready(function(){
+      $.ajaxSetup({
+        headers : { 'X-CSRF-TOKEN' : document.head.querySelector('meta[name="csrf-token"]').content}
+      })
+    });
+  </script>
 
   <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
   @yield('head')
