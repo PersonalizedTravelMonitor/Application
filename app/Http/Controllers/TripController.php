@@ -43,32 +43,27 @@ class TripController extends Controller
         $trip->repeatingOn = [3,4];
         $trip->save();
 
-        $compatibleTripPart = TripPart::alreadyExists($request);
-        if ($compatibleTripPart) 
-        {
-            $trip->parts()->attach($compatibleTripPart->id);
-        } 
-        else 
-        {
+        $selectedTrip = $request->input('trip');
+
+        foreach ($selectedTrip['journey_list'] as  $selectedTripPart) {
             $trenordTripPart = new TrenordTripPart;
-            $trenordTripPart->line = $request->line;
-            $trenordTripPart->departure = "07:37:00";
-            $trenordTripPart->arrival = "08:23:00";
-            $trenordTripPart->trainId = "10845";
+            $trenordTripPart->departure = $selectedTripPart['stops'][0]['departure_time'];
+            $trenordTripPart->arrival = $selectedTripPart['stops'][sizeof($selectedTripPart['stops']) - 1]['arrival_time'];
+            $trenordTripPart->line = $selectedTripPart['train']['line'];
+            $trenordTripPart->trainId = $selectedTripPart['train']['train_name'];
             $trenordTripPart->departurePlatform = "Binario Est";
             $trenordTripPart->save();
 
             $tripPart = new TripPart;
-            $tripPart->from = $request->from;
-            $tripPart->to = $request->to;
+            $tripPart->from = $selectedTripPart['stops'][0]['station']['station_name'];
+            $tripPart->to = $selectedTripPart['stops'][sizeof($selectedTripPart['stops']) - 1]['station']['station_name'];
 
-            $tripPart->trips()->attach($trip->id);
             $tripPart->details_id = $trenordTripPart->id;
             $tripPart->details_type = get_class($trenordTripPart);
             $tripPart->save();
+            $tripPart->trips()->attach($trip->id);
         }
-
-        return redirect()->route("home");
+        return "OK";
     }
 
     /**

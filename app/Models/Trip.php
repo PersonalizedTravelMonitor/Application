@@ -18,7 +18,6 @@ class Trip extends Model
             // get the starting point of the first part
             return $this->parts[0]->from;
         } else {
-            dd($this);
             throw new Exception('Can\'t get "from" if a trip has no parts');
         }
     }
