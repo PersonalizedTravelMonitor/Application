@@ -35,12 +35,14 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
+        @auth
         <a class="navbar-item is-active" a href="{{ url('/home') }}">
             <span class="icon">
               <i class="fas fa-plane"></i>
             </span>
             My Trips
           </a>
+        @endauth
           @guest
           <a class="navbar-item" href="{{ route('login') }}">
             <span class="icon">
