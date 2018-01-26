@@ -109,5 +109,11 @@ class TripController extends Controller
     public function destroy(Trip $trip)
     {
         //
+        $owner = Auth::user();
+        if($owner->id != $trip->user_id){
+            throw new Exception("Unauthorized deletion");
+        }
+        $trip->delete();
+        return redirect()->route('home');
     }
 }

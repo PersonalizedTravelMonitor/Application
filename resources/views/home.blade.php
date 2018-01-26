@@ -62,6 +62,11 @@
         </div>
         <footer class="card-footer">
           <a href="{{ route('trips.show', $trip) }}" class="card-footer-item">Details</a>
+          <form method="POST" action="{{ route('trips.destroy', $trip) }}">
+            {{ method_field('DELETE') }}
+            {{ csrf_field() }}
+            <input type="submit" class="card-footer-item" value="Delete">
+          </form>
         </footer>
       </div>
     </div>
