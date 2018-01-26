@@ -3,7 +3,7 @@
       <div class="field">
         <label class="label">From: </label>
         <div class="control has-icons-left">
-          <input class="input" type="text" placeholder="Departure Station Name">
+          <input class="input" type="text" placeholder="Departure Station Name" autocomplete="off">
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -13,7 +13,7 @@
       <div class="field">
         <label class="label">To: </label>
         <div class="control has-icons-left">
-          <input class="input" type="text" placeholder="Arrival Station Name">
+          <input class="input" type="text" placeholder="Arrival Station Name" autocomplete="off">
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -23,7 +23,7 @@
       <div class="field">
         <label class="label">Time: </label>
         <div class="control has-icons-left">
-          <input class="input" type="text" placeholder="Departure Time">
+          <input class="input" type="text" placeholder="Departure Time" autocomplete="off">
           <span class="icon is-small is-left">
           <i class="fas fa-clock"></i> </span>
         </div>

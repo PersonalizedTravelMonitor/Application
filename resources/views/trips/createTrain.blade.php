@@ -3,7 +3,7 @@
     <div class="field">
       <label class="label">From: </label>
       <div class="control has-icons-left">
-        <input id="input-from" class="input autocompleteFrom" type="text" placeholder="Departure Station Name">
+        <input id="input-from" class="input autocompleteFrom" type="text" placeholder="Departure Station" autocomplete="off">
         <span class="icon is-small is-left">
         <i class="fas fa-map-marker"></i> </span>
       </div>
@@ -13,7 +13,7 @@
     <div class="field">
       <label class="label">To: </label>
       <div class="control has-icons-left">
-        <input id="input-to" class="input autocompleteTo" type="text" placeholder="Arrival Station Name">
+        <input id="input-to" class="input autocompleteTo" type="text" placeholder="Arrival Station">
         <span class="icon is-small is-left">
         <i class="fas fa-map-marker"></i> </span>
       </div>
@@ -70,6 +70,9 @@
           [[ #trip.journey_list ]]
             <li>[[ train.train_category ]] [[ train.train_name ]] ([[ stops.length ]] stops)</li>
           [[ /trip.journey_list ]]
+          <button id="seleziona" class="button is-info">
+          <span>Seleziona</span>
+          </button>
         </ul>
       </div>
     </div>
