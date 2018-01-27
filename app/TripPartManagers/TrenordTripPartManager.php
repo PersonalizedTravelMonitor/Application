@@ -5,6 +5,7 @@ namespace App\TripPartManagers;
 use App\TripPart;
 use App\Event;
 use App\TravelerReportEvent;
+use App\DelayEvent;
 use App\ExternalAPIs\TrenordAPI;
 use Log;
 
@@ -30,9 +31,16 @@ class TrenordTripPartManager implements TripPartManager
             $actualStation = $train["actual_station"];
             $actualTime = $train["actual_time"];
 
-            $event = new TravelerReportEvent;
-            $event->author_id = 1;
-            $event->message = "Train is delayed by " . $delay . " minutes in " . $actual_station;
+            $existingEvent = DelayEvent::where([
+                ['station', '=', $actualStation],
+                ['amount', '=', $delay],
+            ])->first();
+
+            if ($existingEvent) return;
+
+            $event = new DelayEvent;
+            $event->amount = $delay;
+            $event->station = $actualStation;
             $event->save();
 
             $parentEvent = new Event;

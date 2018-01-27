@@ -32,6 +32,9 @@ With parts: <br>
             @case("App\TravelerReportEvent")
               <b>{{ $event->details->author->name }}</b>: {{ $event->details->message }}
               @break
+            @case("App\DelayEvent")
+              <b>{{ $event->details->station }}</b>: Delay of {{ $event->details->amount }} minutes
+              @break
           @endswitch
         </div>
       @empty
