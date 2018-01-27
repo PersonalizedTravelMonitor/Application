@@ -114,9 +114,9 @@
         }
         i++;
       });
-      // filter out blank spaces
-      return repetitionDays;
+      
     }
+    return repetitionDays;
   }
   function submitForm() {
     $(this).addClass("is-loading");

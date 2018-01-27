@@ -42,9 +42,16 @@ class TripController extends Controller
         $trip->user_id = Auth::user()->id;
 
         $repetitionDays = $request->input('repetition');
-        $repetitionDays = array_map(function($element){
-            return intval($element);
-        },$repetitionDays);
+        if($repetitionDays){
+            $repetitionDays = array_map(function($element){
+                return intval($element);
+            },$repetitionDays);
+        }
+        else
+        {
+            $repetitionDays = [];
+        }
+        
         $trip->repeatingOn = $repetitionDays;
         
         $trip->save();
