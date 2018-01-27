@@ -24,7 +24,7 @@
     });
   </script>
 
-  <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   @yield('head')
 </head>
 <body>
@@ -34,7 +34,6 @@
         <a class="navbar-item" href="/">
           <img src="https://avatars3.githubusercontent.com/u/33867335" alt="PTM">
         </a>
-
         <button class="button navbar-burger">
           <span></span>
           <span></span>
@@ -43,28 +42,38 @@
       </div>
       <div class="navbar-menu">
         <div class="navbar-end">
-        @auth
-        <a class="navbar-item is-active" a href="{{ url('/home') }}">
-            <span class="icon">
-              <i class="fas fa-plane"></i>
-            </span>
-            My Trips
-          </a>
-        @endauth
+          @auth
+            @if (Auth::user()->isAdmin)
+              <a class="navbar-item" href="{{ route('admin.index') }}">
+              <span class="icon">
+                <i class="fas fa-chess-king"></i>
+              </span>
+              Admin
+            </a>
+            @endif
+          @endauth
+          @auth
+            <a class="navbar-item is-active" a href="{{ url('/home') }}">
+              <span class="icon">
+                <i class="fas fa-plane"></i>
+              </span>
+              My Trips
+            </a>
+          @endauth
           @guest
-          <a class="navbar-item" href="{{ route('login') }}">
-            <span class="icon">
-              <i class="fas fa-sign-in-alt"></i>
-            </span>
-            Login
-          </a>
+            <a class="navbar-item" href="{{ route('login') }}">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              Login
+            </a>
 
-          <a class="navbar-item" href="{{ route('register') }}">
-            <span class="icon">
-              <i class="fas fa-user-plus"></i>
-            </span>
-            Register
-          </a>
+            <a class="navbar-item" href="{{ route('register') }}">
+              <span class="icon">
+                <i class="fas fa-user-plus"></i>
+              </span>
+              Register
+            </a>
           @endguest
           <a class="navbar-item" href="https://github.com/PersonalizedTravelMonitor/Application" target="_blank">
             <span class="icon">
