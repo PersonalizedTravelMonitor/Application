@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // call this command every minute (or whenever php artisan schedule:run is executed)
         $schedule->command('getEvents')->everyMinute();
+
+        $schedule->command('cleanupDb')->daily();
     }
 
     /**
