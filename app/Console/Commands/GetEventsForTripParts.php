@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use App\TripPart;
 use App\TrenordTripPart;
 use App\TripPartManagers\TrenordTripPartManager;
 
@@ -40,9 +41,13 @@ class GetEventsForTripParts extends Command
      */
     public function handle()
     {
-        $trenordTripParts = TrenordTripPart::all();
-        foreach ($trenordTripParts as $trenordTripPart) {
-            (new TrenordTripPartManager())->getEvents($trenordTripPart->tripPart);
+        $tripParts = TripPart::where([
+            ['is_checked', '=', 0],
+            ['details_type', '=', TrenordTripPart::class]
+        ])->get();
+
+        foreach ($tripParts as $tripPart) {
+            TrenordTripPartManager::getEvents($tripPart);
         }
 
         $this->info('Events updated');
