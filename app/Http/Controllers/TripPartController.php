@@ -11,8 +11,12 @@ use Auth;
 
 class TripPartController extends Controller
 {
-    public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
+    public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
         $travelerReportEvent = new TravelerReportEvent;
         $travelerReportEvent->message = $request->message;
         $travelerReportEvent->author_id = Auth::user()->id;
