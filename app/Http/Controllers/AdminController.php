@@ -37,8 +37,8 @@ class AdminController extends Controller
     public function sendAnnouncement(Request $request)
     {
         $announcement = new Announcement;
-        $announcement->title = "Global Announcement";
-        $announcement->text = $request->announcement;
+        $announcement->title = $request->title;
+        $announcement->text = $request->text;
         $announcement->save();
         $announcement->notify(new GlobalAnnouncement($announcement));
 

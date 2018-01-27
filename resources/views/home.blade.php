@@ -79,33 +79,40 @@
 
   <h2 class="is-size-2">Your Statistics</h2><br><br>
   <div class="columns is-multiline is-centered">
-  @foreach(Auth::user()->personalStatistic as $stats)
-  <div class="column is-half">
+    @foreach(Auth::user()->personalStatistic as $stats)
+    <div class="column is-half">
       <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-        <span class="icon is-small"><i class="fas fa-info-circle"></i></span>
-            Statistics for {{ $stats->month }}/{{ $stats->year }}
-        </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </a>
-      </header>
-      <div class="card-content">
-        <div class="content">
-        <b>Minutes of Delay: </b>{{ $stats->minutesOfDelay}} <br>
-        <b>Number Of Severe Disruption: </b>{{ $stats->numberOfSevereDisruption}}
-        </div>
-        </div>
-      <footer class="card-footer">
-        <a href="#" class="card-footer-item">Più informazioni</a>
-      </footer>
+        <header class="card-header">
+          <p class="card-header-title">
+            <span class="icon is-small"><i class="fas fa-info-circle"></i></span>
+              Statistics for {{ $stats->month }}/{{ $stats->year }}
+          </p>
+        </header>
+        <div class="card-content">
+          <div class="content">
+          <b>Minutes of Delay: </b>{{ $stats->minutesOfDelay}} <br>
+          <b>Number Of Severe Disruption: </b>{{ $stats->numberOfSevereDisruption}}
+          </div>
+          </div>
+        <footer class="card-footer">
+          <a href="#" class="card-footer-item">Più informazioni</a>
+        </footer>
+      </div>
     </div>
-    </div>
-
-
-
-  @endforeach
+    @endforeach
+  </div>
+  <hr>
+  <h2 class="is-size-2">Announcements</h2>
+  @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
+    <article class="message is-light">
+      <div class="message-header">
+        <p>{{ $announcement->title }}</p>
+      </div>
+      <div class="message-body">
+        {{ $announcement->text }}
+      </div>
+    </article>
+  @empty
+    <p>No recent announcements from the Admins to show</p>
+  @endforelse
 @endsection

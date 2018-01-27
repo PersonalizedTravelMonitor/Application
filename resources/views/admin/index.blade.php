@@ -45,9 +45,15 @@
   <form action="{{ route('admin.announcement') }}" method="POST">
     {{ csrf_field() }}
     <div class="field">
+      <label class="label">Title:</label>
+      <div class="control">
+        <input name="title" class="input is-fullwidth"placeholder="Type the title">
+      </div>
+    </div>
+    <div class="field">
       <label class="label">Text:</label>
       <div class="control">
-        <textarea name="announcement" class="textarea" placeholder="Type the global announcement here"></textarea>
+        <textarea name="text" class="textarea" placeholder="Type the global announcement here"></textarea>
       </div>
     </div>
     <div class="field">
