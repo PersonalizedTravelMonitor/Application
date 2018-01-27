@@ -50,8 +50,20 @@ class TrenordAPI
 
 		$body = $response->getBody();
 		return json_decode($body, true);
+	}
 
-	} 
+    public static function getTrainInfo($trainId) {
+        $url = self::BASE_URL . '/train/' . $trainId;
+        $client = new Client;
+        // TODO catch errors
+        $response = $client->get($url, [
+            'headers' => [
+                'Secret' => env('TRENORD_SECRET')
+            ]
+        ]);
+        $body = $response->getBody();
+        return json_decode($body, true);
+    }
 
 	static function cleanStationName($stationName)
 	{
