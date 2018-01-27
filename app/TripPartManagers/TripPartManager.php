@@ -13,5 +13,5 @@ interface TripPartManager
     /*
         This method should return any new event about for a certain TripPart
     */
-    public function getEvents(TripPart $tripPart);
+    public static function getEvents(TripPart $tripPart);
 }
