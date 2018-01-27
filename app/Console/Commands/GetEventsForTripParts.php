@@ -4,9 +4,11 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
+use App\Trip;
 use App\TripPart;
 use App\TrenordTripPart;
 use App\TripPartManagers\TrenordTripPartManager;
+use Carbon\Carbon;
 
 class GetEventsForTripParts extends Command
 {
@@ -34,20 +36,21 @@ class GetEventsForTripParts extends Command
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
+    protected $handlers = [
+        TrenordTripPart::class => TrenordTripPartManager::class
+    ];
+
     public function handle()
     {
-        $tripParts = TripPart::where([
-            ['is_checked', '=', 0],
-            ['details_type', '=', TrenordTripPart::class]
-        ])->get();
+        $trips = Trip::where('repeatingOn', '=', '[]')
+            ->orWhere('repeatingOn', 'LIKE', '%' . Carbon::now()->format('N') . '%')
+            ->get();
 
-        foreach ($tripParts as $tripPart) {
-            TrenordTripPartManager::getEvents($tripPart);
+        foreach ($trips as $trip) {
+            foreach ($trip->parts as $tripPart) {
+                $manager = $this->handlers[$tripPart->details_type];
+                $manager::getEvents($tripPart);
+            }
         }
 
         $this->info('Events updated');
