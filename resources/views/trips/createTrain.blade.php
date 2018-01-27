@@ -92,6 +92,26 @@
 
 <script type="text/javascript">
   var selectedSolutions=null;
+
+  $(document).ready(function() {
+    $(".autocompleteFrom").autocomplete({
+      source: "{{ route('search.autocompleteFrom', 'trenord') }}",
+      minLength: 2,
+      delay: 100,
+      select: function(event, selected) {
+        $("#fromStation").text(selected.item.id);
+      }
+    });
+    $(".autocompleteTo").autocomplete({
+      source: "{{ route('search.autocompleteTo', 'trenord') }}",
+      minLength: 2,
+      delay: 100,
+      select: function(event, selected) {
+        $("#toStation").text(selected.item.id);
+      }
+    });
+  });
+
   $(document).ready(function() {
     $("#btn-subscribe").click(function(){
       if(selectedSolutions){
@@ -114,7 +134,7 @@
         }
         i++;
       });
-      
+
     }
     return repetitionDays;
   }

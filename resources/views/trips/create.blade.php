@@ -84,7 +84,7 @@
     </div>
 
   </div>
-  
+
 @endsection
 
 
@@ -122,26 +122,6 @@
     $(".button").click(function() {
       $(this).toggleClass("is-selected").toggleClass("is-info");
     })
-  });
-</script>
-
-
-<script>
-  $(document).ready(function() {
-    $(".autocompleteFrom").autocomplete({
-      source: "{{ route('search.autocompleteFrom', 'trenord') }}",
-      minLength: 2,
-      select: function(event, selected) {
-        $("#fromStation").text(selected.item.id);
-      }
-    });
-    $(".autocompleteTo").autocomplete({
-      source: "{{ route('search.autocompleteTo', 'trenord') }}",
-      minLength: 2,
-      select: function(event, selected) {
-        $("#toStation").text(selected.item.id);
-      }
-    });
   });
 </script>
 @endsection
