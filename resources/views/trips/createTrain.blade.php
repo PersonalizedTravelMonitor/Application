@@ -92,15 +92,32 @@
 
 <script type="text/javascript">
   var selectedSolutions=null;
-
   $(document).ready(function() {
     $("#btn-subscribe").click(function(){
       if(selectedSolutions){
-        $.post("{{route('trips.store')}}",{"trip": selectedSolutions});
+        var repetitionDays=detectRepetitionDays();
+        $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
       }
     });
+
   });
 
+  function detectRepetitionDays()
+  {
+    var repetitionDays=[];
+    var i=0;
+    if($("#radio-multiple").is(":checked")){
+      var days_list=$("#days-list");
+      $(days_list).children().each(function(){
+        if($(this).find("a").hasClass("is-selected")){
+          repetitionDays.push(i);
+        }
+        i++;
+      });
+      // filter out blank spaces
+      return repetitionDays;
+    }
+  }
   function submitForm() {
     $(this).addClass("is-loading");
     var from = $("#input-from").val();
@@ -123,7 +140,7 @@
       $(".results").text("No compatible solutions found");
       return;
     }
-    // Mostra sezione registrazione
+    // Mostra sezione ripetizione
     $("#repetition-days-section").show();
 
     for(var i=0; i<results.length;i++){
