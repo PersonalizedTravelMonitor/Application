@@ -23,12 +23,12 @@ class TripPart extends Model
     }
 
      // returns an existing trip part for recycling it
-    public static function alreadyExists(Request $request)
+    public static function findIfExisting($details)
     {
         $compatibleTripPart = TripPart::where([
-            ['from', '=', $request->from],
-            ['to', '=', $request->to]
-            // TODO: ALSO ADD TYPE FILTER
+            ['from', '=', $details['from'] ],
+            ['to', '=', $details['to'] ],
+            ['details_type', '=', $details['type'] ]
         ])->first();
 
         return $compatibleTripPart;
