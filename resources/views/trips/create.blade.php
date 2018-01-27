@@ -57,7 +57,7 @@
     <input type="radio" id="radio-multiple" name="repetition" value="multiple" autocomplete="off"><label for="radio-multiple">multiple days</label>
     <div id="days-list" class="columns is-centered" style="display:none" >
       <div class="column is-narrow">
-        <a class="button is-rounded is-info is-selected">Lunedì</a>
+        <a class="button is-rounded ">Lunedì</a>
       </div>
       <div class="column is-narrow">
         <a class="button is-rounded">Martedì</a>
