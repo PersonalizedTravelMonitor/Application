@@ -41,6 +41,8 @@ class Trip extends Model
     public function parts() {
         return $this->belongsToMany('App\TripPart', 'trips_to_trip_parts')->orderBy('sequenceOrder');
     }
-
+    public function partsToCheck() {
+        return $this->parts()->where("is_checked", '=', false);
+    }
 
 }

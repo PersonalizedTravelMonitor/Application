@@ -22,6 +22,15 @@ class TripPart extends Model
         return $this->hasMany('App\Event');
     }
 
+    public function users()
+    {
+        $users = [];
+        foreach ($this->trips as $trip) {
+            array_push($users, $trip->user);
+        }
+        return $users;
+    }
+
      // returns an existing trip part for recycling it
     public static function findIfExisting($details)
     {
