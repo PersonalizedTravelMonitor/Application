@@ -1,6 +1,6 @@
 var _registration = null;
 function registerServiceWorker() {
-  return navigator.serviceWorker.register('js/service-worker.js')
+  return navigator.serviceWorker.register('/js/service-worker.js')
   .then(function(registration) {
     console.log('Service worker successfully registered.');
     _registration = registration;
@@ -66,9 +66,7 @@ function subscribeUserToPush() {
     console.log(registration);
     const subscribeOptions = {
       userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(
-        "{{env('VAPID_PUBLIC_KEY')}}"
-      )
+      applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
     };
 
     return registration.pushManager.subscribe(subscribeOptions);
@@ -81,13 +79,7 @@ function subscribeUserToPush() {
 }
 
 function sendSubscriptionToBackEnd(subscription) {
-  return fetch('/api/save-subscription/{{Auth::user()->id}}', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(subscription)
-  })
+  return $.post('/saveSubscription', JSON.parse(JSON.stringify(subscription)))
   .then(function(response) {
     if (!response.ok) {
       throw new Error('Bad status code from server.');
@@ -96,15 +88,13 @@ function sendSubscriptionToBackEnd(subscription) {
     return response.json();
   })
   .then(function(responseData) {
-    if (!(responseData.data && responseData.data.success)) {
+    if (!(responseData && responseData.success)) {
       throw new Error('Bad response from server.');
     }
   });
 }
 
 function enableNotifications(){
-  //register service worker
-  //check permission for notification/ask
   askPermission();
 }
 registerServiceWorker();
