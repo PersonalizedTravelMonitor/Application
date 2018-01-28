@@ -7,15 +7,17 @@ use App\Event;
 use App\TravelerReportEvent;
 use App\DelayEvent;
 use App\ExternalAPIs\TrenordAPI;
+use Notification;
+use App\Notifications\GenericNotification;
 use Log;
 
 class TrenordTripPartManager implements TripPartManager
 {
     public static function getEvents(TripPart $tripPart)
     {
-        // chiedi le info a trenord
-        $info = TrenordAPI::getTrainInfo($tripPart->details->trainId);
-        // capisci cosa vogliono dire
+        $trainId = $tripPart->details->trainId;
+        $info = TrenordAPI::getTrainInfo($trainId);
+
         var_dump($info);
         $info = $info[0];
 
@@ -49,6 +51,9 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->details_type = get_class($event);
             $parentEvent->severity = "INFO";
             $parentEvent->save();
+
+            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
+
         } else if ($status == "A") {
             $tripPart->is_checked = true;
             $tripPart->save();
@@ -64,6 +69,8 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->details_type = get_class($event);
             $parentEvent->severity = "INFO";
             $parentEvent->save();
+
+            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
         }
     }
 }

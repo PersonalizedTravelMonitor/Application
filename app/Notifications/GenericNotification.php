@@ -41,7 +41,7 @@ class GenericNotification extends Notification
         $time = \Carbon\Carbon::now();
         return (new WebPushMessage)
             ->title($this->title)
-            ->icon(url('/push.png'))
+            ->icon(url('/img/logo.png'))
             ->body($this->body);
     }
 }
