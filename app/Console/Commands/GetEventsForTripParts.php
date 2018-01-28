@@ -47,7 +47,7 @@ class GetEventsForTripParts extends Command
             ->get();
 
         foreach ($trips as $trip) {
-            foreach ($trip->parts as $tripPart) {
+            foreach ($trip->partsToCheck as $tripPart) {
                 $manager = $this->handlers[$tripPart->details_type];
                 $manager::getEvents($tripPart);
             }
