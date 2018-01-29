@@ -98,10 +98,14 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $tripPart["train"] = $train;
         $tripPart = renameKey($tripPart, "pass_list", "stops");
 
+        $stops = [];
         foreach ($tripPart["stops"] as $key => $stop) {
-            $stop = self::cleanupStopResult($stop);
-            $tripPart["stops"][$key] = $stop;
+            if (in_array($stop['type'], ['start', 'pass', 'end'])) {
+                $stop = self::cleanupStopResult($stop);
+                array_push($stops, $stop);
+            }
         }
+        $tripPart["stops"] = $stops;
         return $tripPart;
     }
 
