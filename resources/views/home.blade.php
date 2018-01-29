@@ -19,21 +19,18 @@
     </div>
   </div>
 
-  <div class="tile is-ancestor" id="subscribed-trip-section" style="display:none ">
-    <div class="tile is-vertical is-8">
-      <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child">
-            <h3 id="subscribed-correctly"> </h3>
-          </article>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
-  <br>
-  
+  <article id="subscribed-trip-section" style="display:none" class="message is-success">
+    <div class="message-header">
+      <p>Success</p>
+      <button class="delete" aria-label="delete" id="delete-message"></button>
+    </div>
+    <div>
+      <span id="subscribed-correctly"></span>
+  </div>
+  </article>
+
+
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
@@ -136,10 +133,9 @@
     $("#subscribed-trip-section").show();
     $("#subscribed-correctly").text(sessionStorage.getItem("message"));
     sessionStorage.removeItem("message");
-    setTimeout(function(){
+    $("#delete-message").click(function(){
       $("#subscribed-trip-section").hide();
-    },6000);
-
+    });
 
 
   }
