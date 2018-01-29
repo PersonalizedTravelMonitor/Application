@@ -47,7 +47,7 @@ class TripPart extends Model
         ])->get();
 
         foreach($compatibleTripParts as $ctp) {
-            if($ctp->$details->$trainId == $details['trainId'])
+            if($ctp->details->trainId == $details['trainId'])
                 return $ctp;
         }
 
