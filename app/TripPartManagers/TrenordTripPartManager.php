@@ -8,17 +8,13 @@ use App\TravelerReportEvent;
 use App\DelayEvent;
 use App\CancellationEvent;
 use App\ExternalAPIs\TrenordAPI;
-use Notification;
-use App\Notifications\GenericNotification;
 use Log;
 
 class TrenordTripPartManager implements TripPartManager
 {
     public static function getEvents(TripPart $tripPart)
     {
-        $trainId = $tripPart->details->trainId;
-        $info = TrenordAPI::getTrainInfo($trainId);
-
+        $info = TrenordAPI::getTrainInfo($tripPart->details->trainId);
         $info = $info[0];
 
         if($info["cancelled"]) {
@@ -69,7 +65,6 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->save();
 
             echo "Adding delay event for tripPart " . $tripPart->id;
-            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
         } else if ($status == "A") {
             $tripPart->is_checked = true;
             $tripPart->save();
@@ -87,7 +82,6 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->save();
 
             echo "Adding arrival event for tripPart " . $tripPart->id;
-            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
         }
     }
 }
