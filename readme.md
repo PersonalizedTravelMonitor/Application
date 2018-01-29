@@ -75,6 +75,20 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 * Add the social provider inside `ptm/config/services` similarly to the one already present
 * Create a link for sign in via the blade directive `{{ route('social.login', '$providerName') }}` in the login/register view
 
+## Push notifications (required for development)
+
+* `cd /laradock`
+* `docker exec -ti laradock_workspace_1 bash`
+	* `apt-get update apt-get -y install libgmp-dev`
+* `docker exec -ti laradock_php-fpm_1 bash`
+	* `apt-get update apt-get -y install libgmp-dev`
+* `docker exec -ti --user=laradock laradock_workspace_1 bash`
+	* `cd ptm`
+	* `composer install`
+	* Check if everything works!
+	* `php artisan webpush:vapid`
+* You need HTTPS, this will work only on production
+
 ## Troubleshooting
 
 * `Class not found` error / an error after `git pull`
