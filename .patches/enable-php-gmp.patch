@@ -1,0 +1,38 @@
+diff --git a/php-fpm/Dockerfile-71 b/php-fpm/Dockerfile-71
+index 0b31f6d..8842198 100644
+--- a/php-fpm/Dockerfile-71
++++ b/php-fpm/Dockerfile-71
+@@ -335,6 +335,9 @@ RUN if [ ${INSTALL_IMAGEMAGICK} = true ]; then \
+     docker-php-ext-enable imagick \
+ ;fi
+ 
++RUN apt-get update && \
++    apt-get -y install libgmp-dev && \ 
++    docker-php-ext-install gmp
+ #
+ #--------------------------------------------------------------------------
+ # Final Touch
+@@ -349,7 +352,8 @@ ADD ./xlaravel.pool.conf /usr/local/etc/php-fpm.d/
+ RUN usermod -u 1000 www-data
+ 
+ WORKDIR /var/www
+-
++ 
+ CMD ["php-fpm"]
+ 
++
+ EXPOSE 9000
+diff --git a/workspace/Dockerfile-71 b/workspace/Dockerfile-71
+index 1b7720b..ad693d3 100644
+--- a/workspace/Dockerfile-71
++++ b/workspace/Dockerfile-71
+@@ -681,6 +681,9 @@ RUN if [ ${INSTALL_DUSK_DEPS} = true ]; then \
+ #--------------------------------------------------------------------------
+ #
+ 
++RUN apt-get update && \
++    apt-get -y install php7.1-gmp
++
+ # Clean up
+ USER root
+ RUN apt-get clean && \

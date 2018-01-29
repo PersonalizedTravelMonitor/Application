@@ -78,14 +78,16 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 ## Push notifications (required for development)
 
 * `cd /laradock`
-* `docker exec -ti laradock_workspace_1 bash`
-	* `apt-get update && apt-get -y install php7.1-gmp`
-* `docker exec -ti laradock_php-fpm_1 bash`
-	* `apt-get update && apt-get -y install libgmp-dev`
+* `docker-compose down`
+* `cp ../ptm/.patches/enable-php-gmp.patch .`
+* `git apply enable-php-gmp.patch`
+* `docker-compose build php-fpm workspace`
+* `docker-compose up nginx mysql`
 * `docker exec -ti --user=laradock laradock_workspace_1 bash`
 	* `cd ptm`
 	* `composer install`
 	* Check if everything works!
+	* `php artisan migrate`
 	* `php artisan webpush:vapid`
 * You need HTTPS, this will work only on production
 
