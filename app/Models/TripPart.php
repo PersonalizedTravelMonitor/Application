@@ -40,12 +40,17 @@ class TripPart extends Model
      // returns an existing trip part for recycling it
     public static function findIfExisting($details)
     {
-        $compatibleTripPart = TripPart::where([
+        $compatibleTripParts = TripPart::where([
             ['from', '=', $details['from'] ],
             ['to', '=', $details['to'] ],
             ['details_type', '=', $details['type'] ]
-        ])->first();
+        ])->get();
 
-        return $compatibleTripPart;
+        foreach($compatibleTripParts as $ctp) {
+            if($ctp->$details->$trainId == $details['trainId'])
+                return $ctp;
+        }
+
+        return null;
     }
 }

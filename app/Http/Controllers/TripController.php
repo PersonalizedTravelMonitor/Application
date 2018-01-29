@@ -60,6 +60,7 @@ class TripController extends Controller
             $existingTripPart = TripPart::findIfExisting([
                 'from' => $from,
                 'to' => $to,
+                'trainId' => $selectedTripPart['train']['train_name'],
                 'type' => TrenordTripPart::class
             ]);
 
