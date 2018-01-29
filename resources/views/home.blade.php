@@ -48,12 +48,15 @@
         </header>
         <div class="card-content">
           <div class="content">
-          <b>On days:</b>
-          @foreach($trip->repeatingOn as $day)
-            {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
-            {{ \Carbon\Carbon::now()->next($day)->format('l') }}
-          @endforeach
-          <br><br>
+          @if($trip->repeatingOn!=[]) 
+            <b>On days:</b>
+            @foreach($trip->repeatingOn as $day)
+              {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
+              {{ \Carbon\Carbon::now()->next($day)->format('l') }}
+            @endforeach
+            <br><br>
+          @endif
+
 
           <b>With parts:</b> <br>
           <ul>
@@ -83,7 +86,7 @@
       </div>
     </div>
     @empty
-    No Trips :(
+    No Trips Seected
   @endforelse
   </div>
 
