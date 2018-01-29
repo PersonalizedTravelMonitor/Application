@@ -14,7 +14,7 @@
               Personalized Travel Monitor
             </h1>
             <h2 class="subtitle is-4">
-              Losing a train has never been so funny!
+              Follow your trips, get notified and stay up to date!
             </h2>
             <br>
             <p class="has-text-centered">
