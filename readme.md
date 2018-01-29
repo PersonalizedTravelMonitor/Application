@@ -81,6 +81,15 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 * `docker-compose down`
 * `cp ../ptm/.patches/enable-php-gmp.patch .`
 * `git apply enable-php-gmp.patch`
+	* If it is not working:
+		* In `laradock/php-fpm/Dockerfile-71`
+			* Add `RUN apt-get update && apt-get -y install libgmp-dev && docker-php-ext-install gmp`
+			* At the bottom, before (prima) `# Final Touch`
+			* If you don't find it, search for it
+		* In `laradock/workspace/Dockerfile-71`
+			* Add `RUN apt-get update && apt-get -y install php7.1-gmp`
+			* At the bottom, before (prima) `# Final Touch`
+			* If you don't find it, search for it
 * `docker-compose build php-fpm workspace`
 * `docker-compose up nginx mysql`
 * `docker exec -ti --user=laradock laradock_workspace_1 bash`
