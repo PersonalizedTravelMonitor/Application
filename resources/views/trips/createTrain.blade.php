@@ -111,27 +111,21 @@
       $("#btn-subscribe").addClass("is-loading");
 
       if(selectedSolutions){
-
         var repetitionDays = detectRepetitionDays();
         var  subscribeResult = $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
 
-
         subscribeResult.done(function (data, textStatus, jqXHR){
-          $("#btn-subscribe").removeClass("is-loading");  
+          $("#btn-subscribe").removeClass("is-loading");
           sessionStorage.setItem("inserted",true);
           sessionStorage.setItem("message","The trip was correctly submitted");
           $(window.location).attr('href', "{{route('home')}}");
-
         })
-
         subscribeResult.fail(function( jqXHR, textStatus, errorThrown ) {
+          $("#btn-subscribe").removeClass("is-loading");
           alert("Something bad happened sendind the request");
         });
-
       }
-
     });
-
   });
 
   function detectRepetitionDays()
@@ -173,7 +167,7 @@
       $(".results").text("No compatible solutions found");
       return;
     }
-    
+
 
     for(var i=0; i<results.length;i++){
       var trip=results[i];

@@ -15,8 +15,8 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('repeatingOn')->default('[]');
-            $table->text('tripPartsInOrder')->default('[]');
+            $table->text('repeatingOn');
+            $table->text('tripPartsInOrder');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

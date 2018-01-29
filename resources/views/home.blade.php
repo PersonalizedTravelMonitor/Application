@@ -48,7 +48,7 @@
         </header>
         <div class="card-content">
           <div class="content">
-          @if($trip->repeatingOn!=[]) 
+          @if($trip->repeatingOn!=[])
             <b>On days:</b>
             @foreach($trip->repeatingOn as $day)
               {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
@@ -60,7 +60,7 @@
 
           <b>With parts:</b> <br>
           <ul>
-          @forelse($trip->parts as $part)
+          @forelse($trip->orderedParts as $part)
             <li>
               <b>{{ $part->from }} - {{ $part->to }}:</b>
               @switch ($part->details_type)

@@ -51,9 +51,11 @@ class TripController extends Controller
             return intval($element);
         }, $repetitionDays);
         $trip->repeatingOn = $repetitionDays;
+        $trip->tripPartsInOrder = [];
         $trip->save();
 
         $selectedTrip = $request->input('trip');
+
         foreach ($selectedTrip['journey_list'] as  $selectedTripPart) {
             $from = $selectedTripPart['stops'][0]['station']['station_name'];
             $to = $selectedTripPart['stops'][sizeof($selectedTripPart['stops']) - 1]['station']['station_name'];
@@ -66,7 +68,8 @@ class TripController extends Controller
 
             if ($existingTripPart) {
                 $existingTripPart->trips()->attach($trip->id);
-                echo "REUSING PART";
+                $trip->addPartInOrderList($existingTripPart->id);
+                $trip->save();
             } else {
                 $trenordTripPart = new TrenordTripPart;
                 $trenordTripPart->departure = $selectedTripPart['stops'][0]['departure_time'];
@@ -84,6 +87,8 @@ class TripController extends Controller
                 $tripPart->details_type = get_class($trenordTripPart);
                 $tripPart->save();
                 $tripPart->trips()->attach($trip->id);
+                $trip->addPartInOrderList($tripPart->id);
+                $trip->save();
             }
         }
         return "OK";

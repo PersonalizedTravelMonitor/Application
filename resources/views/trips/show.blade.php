@@ -6,7 +6,7 @@
 <br>
 
 With parts: <br>
-@forelse($trip->parts as $part)
+@forelse($trip->orderedParts as $part)
   <div class="card">
     <div class="card-header">
       <div class="card-header-title">{{ $part->from }} - {{ $part->to }} ({{ $part->details_type }})</div>
