@@ -22,7 +22,7 @@ class CreateTrenordTripPartsTable extends Migration
             // the id of the train to follow, eg: 10846
             $table->string('trainId');
             // the line/directive of the train, eg: S8 or Milano-Lecco 
-            $table->string('line'); 
+            $table->string('line')->nullable(); 
             $table->string('departurePlatform');
 
             $table->timestamps();
