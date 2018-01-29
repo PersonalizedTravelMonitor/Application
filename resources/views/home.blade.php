@@ -1,16 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-  Welcome, {{ Auth::user()->name }} ({{ Auth::user()->email }})<br>
-
-  {{-- Auth::user() is the logged-in user --}}
-  @if (Auth::user()->isAdmin)
-    <h1>You are Admin!</h1>
-  @endif
-
-  <h2 class="is-size-2">Your Trips</h2>
-  <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
-  <br>
+  <p>
+    Welcome, <b>{{ Auth::user()->name }}</b>!
+  </p>
+  <hr>
+  <div class="columns is-vcentered">
+    <div class="column">
+      <h2 class="is-size-2">Your Trips</h2>
+    </div>
+    <div class="column is-narrow">
+      <a href="{{ route("trips.create") }}" class="button is-success is-medium">
+        <span class="icon">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span>Follow a new trip</span>
+      </a>
+    </div>
+  </div>
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
