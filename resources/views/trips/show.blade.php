@@ -14,7 +14,7 @@ With parts: <br>
     <div class="card-content">
       @switch($part->details_type)
         @case("App\TrenordTripPart")
-          {{ $part->details->trainId }}
+          Train {{ $part->details->trainId }}
           @break
         @case("App\TrenitaliaTripPart")
           {{ $part->details->trainId }}
@@ -27,7 +27,7 @@ With parts: <br>
       <b>Events</b>
       @forelse($part->events as $event)
         <div>
-          <i>{{ $event->details_type }}</i>
+          <i>{{ $event->created_at->format('H:i') }}</i>
           @switch($event->details_type)
             @case("App\TravelerReportEvent")
               <b>{{ $event->details->author->name }}</b>: {{ $event->details->message }}
@@ -35,19 +35,31 @@ With parts: <br>
             @case("App\DelayEvent")
               <b>{{ $event->details->station }}</b>: Delay of {{ $event->details->amount }} minutes
               @break
+            @case("App\CancellationEvent")
+              <span class="tag is-danger is-medium">Service is cancelled!</span>
+              @break
           @endswitch
         </div>
       @empty
         No events for this trip part
       @endforelse
+      <br>
 
       @auth
+        <b>Create user reports</b>
         <form action="{{ route('tripParts.addTravelerReportEvent', [$trip, $part]) }}" method="POST">
           {{ csrf_field() }}
-          <input type="text" name="message" placeholder="Your report">
-          <input type="submit" value="Send user report">
+            <div class="columns">
+              <div class="column">
+                <input class="input" name="message" type="text" placeholder="Your report">
+              </div>
+              <div class="column is-narrow">
+                <button type="submit" class="button is-warning">Submit</button>
+              </div>
+            </div>
         </form>
       @endauth
+
     </div>
   </div>
   <br>
