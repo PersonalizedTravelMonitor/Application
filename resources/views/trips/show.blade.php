@@ -25,7 +25,7 @@ With parts: <br>
       @endswitch
       <br>
       <b>Events</b>
-      @forelse($part->events as $event)
+      @forelse($part->todayEvents as $event)
         <div>
           <i>{{ $event->created_at->format('H:i') }}</i>
           @switch($event->details_type)

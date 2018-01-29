@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TripPart extends Model
 {
@@ -20,6 +21,11 @@ class TripPart extends Model
     public function events()
     {
         return $this->hasMany('App\Event');
+    }
+
+    public function todayEvents()
+    {
+        return $this->events()->where('created_at', '>=', Carbon::today());
     }
 
     public function users()
