@@ -43,6 +43,14 @@
       <div class="navbar-menu">
         <div class="navbar-end">
           @auth
+            <a class="navbar-item is-active" a href="{{ route('home') }}">
+              <span class="icon">
+                <i class="fas fa-plane"></i>
+              </span>
+              Dashboard
+            </a>
+          @endauth
+          @auth
             @if (Auth::user()->isAdmin)
               <a class="navbar-item" href="{{ route('admin.index') }}">
               <span class="icon">
@@ -51,14 +59,6 @@
               Admin
             </a>
             @endif
-          @endauth
-          @auth
-            <a class="navbar-item is-active" a href="{{ url('/home') }}">
-              <span class="icon">
-                <i class="fas fa-plane"></i>
-              </span>
-              My Trips
-            </a>
           @endauth
           @guest
             <a class="navbar-item" href="{{ route('login') }}">

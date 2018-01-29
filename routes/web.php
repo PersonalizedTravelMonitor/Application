@@ -10,17 +10,13 @@ use App\Notifications\StatusUpdate;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 // automagically enable the routes for the authentication (/login, /logout...)
 Auth::routes();
 // These routes are for handling oauth login requests from the users and oauth callbacks from the providers
 Route::get('/auth/{provider}', 'Auth\LoginController@redirectToProvider')->name('social.login');
 Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 // define a resource route, see official documentation for details on this
 Route::resource('trips','TripController');
