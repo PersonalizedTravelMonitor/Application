@@ -14,10 +14,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/sendNotification', function () {
-    Auth::user()->notify(new StatusUpdate("test"));
-});
-
 // automagically enable the routes for the authentication (/login, /logout...)
 Auth::routes();
 // These routes are for handling oauth login requests from the users and oauth callbacks from the providers
@@ -42,3 +38,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
     Route::post('/annoucements/send', 'AdminController@sendAnnouncement')->name('announcement');
 });
+
+Route::post('/saveSubscription', 'NotificationController@saveSubscription')->name('notifications.saveSubscription');

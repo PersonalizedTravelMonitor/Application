@@ -8,6 +8,8 @@ use App\Trip;
 use App\TripPart;
 use App\Announcement;
 use App\Notifications\GlobalAnnouncement;
+use App\Notifications\GenericNotification;
+use Notification;
 
 class AdminController extends Controller
 {
@@ -41,6 +43,8 @@ class AdminController extends Controller
         $announcement->text = $request->text;
         $announcement->save();
         $announcement->notify(new GlobalAnnouncement($announcement));
+
+        Notification::send(User::all(), new GenericNotification($announcement->title, $announcement->text));
 
         $request->session()->flash('status', 'Announcement was sent!');
         return redirect()->route('admin.index');
