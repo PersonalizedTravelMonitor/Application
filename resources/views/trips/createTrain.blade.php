@@ -99,7 +99,7 @@
       minLength: 2,
       delay: 100,
       select: function(event, selected) {
-        $("#fromStation").text(selected.item.id);
+        // Not useful $("#fromStation").text(selected.item.id);
       }
     });
     $(".autocompleteTo").autocomplete({
@@ -107,7 +107,7 @@
       minLength: 2,
       delay: 100,
       select: function(event, selected) {
-        $("#toStation").text(selected.item.id);
+        // Not useful  $("#toStation").text(selected.item.id);
       }
     });
   });
@@ -115,9 +115,21 @@
   $(document).ready(function() {
     $("#btn-subscribe").click(function(){
       if(selectedSolutions){
-        var repetitionDays=detectRepetitionDays();
-        $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
+        var repetitionDays = detectRepetitionDays();
+        var  subscribeResult = $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
+
+        subscribeResult.done(function (data, textStatus, jqXHR){
+          alert("Dati inviati correttamente");
+          $(window.location).attr('href', "{{route('home')}}");
+
+        })
+
+        subscribeResult.fail(function( jqXHR, textStatus, errorThrown ) {
+          alert("Something bad happened sendind the request");
+        });
+
       }
+
     });
 
   });
@@ -160,8 +172,7 @@
       $(".results").text("No compatible solutions found");
       return;
     }
-    // Mostra sezione ripetizione
-    $("#repetition-days-section").show();
+    
 
     for(var i=0; i<results.length;i++){
       var trip=results[i];
@@ -185,6 +196,8 @@
         $(this).addClass("is-info");
         $(this).text("Selezionato");
         selectedSolutions=results[$(this).data("index")];
+        // Mostra sezione ripetizione
+        $("#repetition-days-section").show();
       });
 
     }
