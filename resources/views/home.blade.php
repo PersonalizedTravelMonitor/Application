@@ -2,7 +2,7 @@
 
 @section('content')
   <p>
-    Welcome, <b>{{ Auth::user()->name }}</b>!
+    Welcome, <b>{{ Auth::user()->name }}</b>! <button class="button" onclick="enableNotifications()">Register for notifications</button>
   </p>
   <hr>
   <div class="columns is-vcentered">
@@ -140,4 +140,13 @@
 
   }
 </script>
+@endsection
+
+@section('scripts')
+  @auth
+    <script>
+      VAPID_PUBLIC_KEY = "{{env('VAPID_PUBLIC_KEY')}}"
+    </script>
+    <script src="{{ asset('/js/notifications.js')}}"></script>
+  @endauth
 @endsection
