@@ -80,7 +80,7 @@
     </div>
     <br>
     <div class="buttons is-right">
-      <span class="button is-success" id="btn-subscribe">Programma Viaggio</span>
+      <button class="button is-success" id="btn-subscribe">Programma Viaggio</button>
     </div>
 
   </div>
@@ -119,7 +119,7 @@
 
 <script>
   $(document).ready(function() {
-    $(".button").click(function() {
+    $("#days-list div a").click(function() {
       $(this).toggleClass("is-selected").toggleClass("is-info");
     })
   });

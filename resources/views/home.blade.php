@@ -18,6 +18,22 @@
       </a>
     </div>
   </div>
+
+  <div class="tile is-ancestor" id="subscribed-trip-section" style="display:none ">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child">
+            <h3 id="subscribed-correctly"> </h3>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a class="is-size-4" href="{{ route('trips.create') }}">Create a trip</a>
+  <br>
+  
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
@@ -114,4 +130,18 @@
   @empty
     <p>No recent announcements from the Admins to show</p>
   @endforelse
+  <script type="text/javascript">
+  if(sessionStorage.getItem("inserted")){
+    sessionStorage.removeItem("inserted");
+    $("#subscribed-trip-section").show();
+    $("#subscribed-correctly").text(sessionStorage.getItem("message"));
+    sessionStorage.removeItem("message");
+    setTimeout(function(){
+      $("#subscribed-trip-section").hide();
+    },6000);
+
+
+
+  }
+</script>
 @endsection
