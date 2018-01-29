@@ -42,7 +42,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $partial = strtoupper($partial);
         // extract only values from the composite array returned
         return array_values(array_filter($stations, function ($station) use($partial) {
-            return substr($station['label'], 0, strlen($partial)) === $partial;
+            return preg_match("/(^|\b)" . $partial . "/i", $station['label']);
         }));
     }
 

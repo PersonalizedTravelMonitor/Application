@@ -98,17 +98,11 @@
       source: "{{ route('search.autocompleteFrom', 'trenord') }}",
       minLength: 2,
       delay: 100,
-      select: function(event, selected) {
-        // Not useful $("#fromStation").text(selected.item.id);
-      }
     });
     $(".autocompleteTo").autocomplete({
       source: "{{ route('search.autocompleteTo', 'trenord') }}",
       minLength: 2,
       delay: 100,
-      select: function(event, selected) {
-        // Not useful  $("#toStation").text(selected.item.id);
-      }
     });
   });
 
@@ -119,7 +113,7 @@
         var  subscribeResult = $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
 
         subscribeResult.done(function (data, textStatus, jqXHR){
-          alert("Dati inviati correttamente");
+          //alert("Dati inviati correttamente");
           $(window.location).attr('href', "{{route('home')}}");
 
         })
