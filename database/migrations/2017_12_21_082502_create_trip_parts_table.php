@@ -15,7 +15,6 @@ class CreateTripPartsTable extends Migration
     {
         Schema::create('trip_parts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('sequenceOrder')->unsigned()->default(0);
 
             $table->string('from');
             $table->string('to');
