@@ -12,7 +12,7 @@ class EventsSeeder extends Seeder
     public function run()
     {
         // first we create the details for the event
-        DB::table('traveler_report_events')->insert([
+        /*DB::table('traveler_report_events')->insert([
             'author_id' => 2,
             'message' => 'Train has stopped inside the tunnel'
         ]);
@@ -22,7 +22,6 @@ class EventsSeeder extends Seeder
             'severity' => 'INFO',
             'details_id' => '1',
             'details_type' => 'App\TravelerReportEvent'
-        ]);
-
+        ]);*/
     }
 }

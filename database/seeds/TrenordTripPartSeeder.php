@@ -15,7 +15,7 @@ class TrenordTripPartSeeder extends Seeder
         // these 4 calls will create a two part trip from Sondrio to Milano Greco Pirelli
 
         // first we create the detailed parts
-        DB::table('trenord_trip_parts')->insert([
+        /*DB::table('trenord_trip_parts')->insert([
             'departure' => '7:07:00',
             'arrival' => '8:16:00',
             'trainId' => 'diretto',
@@ -47,6 +47,6 @@ class TrenordTripPartSeeder extends Seeder
             'to' => 'Milano Greco Pirelli',
             'details_type' => 'App\TrenordTripPart',
             'details_id' => 2, // same bad idea as above
-        ]);
+        ]);*/
     }
 }

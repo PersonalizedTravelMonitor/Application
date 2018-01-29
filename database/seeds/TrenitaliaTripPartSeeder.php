@@ -14,7 +14,7 @@ class TrenitaliaTripPartSeeder extends Seeder
         // 1 viaggio con 1 tratta
 
         // first we create the detailed parts
-        DB::table('trenitalia_trip_parts')->insert([
+        /*DB::table('trenitalia_trip_parts')->insert([
             'departure' => '16:05:00',
             'arrival' => '20:40:00',
             'trainId' => 'FR9578',
@@ -28,6 +28,6 @@ class TrenitaliaTripPartSeeder extends Seeder
             'to' => 'Torino P.Nuova',
             'details_type' => 'App\TrenitaliaTripPart',
             'details_id' => 1, // same bad idea as above
-        ]);
+        ]);*/
     }
 }
