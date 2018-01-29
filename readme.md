@@ -79,7 +79,7 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 
 * `cd /laradock`
 * `docker exec -ti laradock_workspace_1 bash`
-	* `apt-get update && apt-get -y install libgmp-dev`
+	* `apt-get update && apt-get -y install php7.1-gmp`
 * `docker exec -ti laradock_php-fpm_1 bash`
 	* `apt-get update && apt-get -y install libgmp-dev`
 * `docker exec -ti --user=laradock laradock_workspace_1 bash`
