@@ -3,6 +3,7 @@
 @section('content')
   <p>
     Welcome, <b>{{ Auth::user()->name }}</b>!
+    <button class="button" onclick="enableNotifications()">Register for notifications</button>
   </p>
   <hr>
   <div class="columns is-vcentered">
@@ -29,7 +30,6 @@
       <span id="subscribed-correctly"></span>
   </div>
   </article>
-
 
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
@@ -87,7 +87,7 @@
   @endforelse
   </div>
 
-<hr>
+  <hr>
 
   <h2 class="is-size-2">Your Statistics</h2><br><br>
   <div class="columns is-multiline is-centered">
@@ -140,4 +140,13 @@
 
   }
 </script>
+@endsection
+
+@section('scripts')
+  @auth
+    <script>
+      VAPID_PUBLIC_KEY = "{{env('VAPID_PUBLIC_KEY')}}"
+    </script>
+    <script src="{{ asset('/js/notifications.js')}}"></script>
+  @endauth
 @endsection
