@@ -114,9 +114,28 @@
   @endforelse
   </div>
 
-<hr>
 
-  <h2 class="is-size-2">Your Statistics</h2><br><br>
+  <hr>
+  <h2 class="is-size-2">Announcements</h2>
+  <div class="notification is-primary">
+  Here you can find the announcements of the lines you are following
+  </div>
+  @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
+    <article class="message is-light">
+      <div class="message-header">
+        <p>{{ $announcement->title }}</p>
+      </div>
+      <div class="message-body">
+        {{ $announcement->text }}
+      </div>
+    </article>
+  @empty
+    <p>No recent announcements from the Admins to show</p>
+  @endforelse
+
+  <hr>
+
+  <h2 class="is-size-2">Your Statistics</h2><br>
   <div class="notification is-primary">
     Here you can find your monthly statistics of the trips you are following.
   </div>
@@ -146,23 +165,6 @@
       <div class="column">Number of events on your trips: {{ $eventsCount }}</div>
     </div>
   </div>
-  <hr>
-  <h2 class="is-size-2">Announcements</h2>
-  <div class="notification is-primary">
-  Here you can find the announcements of the lines you are following
-  </div>
-  @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
-    <article class="message is-light">
-      <div class="message-header">
-        <p>{{ $announcement->title }}</p>
-      </div>
-      <div class="message-body">
-        {{ $announcement->text }}
-      </div>
-    </article>
-  @empty
-    <p>No recent announcements from the Admins to show</p>
-  @endforelse
   <script type="text/javascript">
   if(sessionStorage.getItem("inserted")){
     sessionStorage.removeItem("inserted");
