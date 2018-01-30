@@ -15,7 +15,15 @@ class HomeController extends Controller
     public function index()
     {
         if(Auth::user()) {
-            return view('home');
+            $user = Auth::user();
+            $trips = $user->trips;
+            $eventsCount = 0;
+            foreach ($trips as $trip) {
+                foreach ($trip->parts as $part) {
+                    $eventsCount += $part->events->count();
+               }
+            }
+            return view('home', [ 'eventsCount' => $eventsCount]);
         } else {
             return view('welcome');
         }

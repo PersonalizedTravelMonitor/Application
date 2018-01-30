@@ -18,6 +18,10 @@ class TripPart extends Model
         return $this->morphTo();
     }
 
+    public function latestEvent() {
+        return $this->events()->orderBy('created_at', 'DESC')->first();
+    }
+
     public function events()
     {
         return $this->hasMany('App\Event');

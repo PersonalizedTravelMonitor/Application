@@ -36,6 +36,7 @@
 	* Add `127.0.0.1 ptm.test`
 * Connect to [the site](http://ptm.test)
 * Install the [EditorConfig plugin](http://editorconfig.org/#download) for your text editor (Sublime Text 3 or Visual Studio Code recommended)
+* Follow the steps in the **Push Notifications** section at the bottom
 
 ### Starting/stopping the website for development
 
@@ -77,6 +78,8 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 
 ## Push notifications (required for development)
 
+* You need HTTPS for sending/receiving notifications, they will work only on production, these steps are just for making the thing work in development
+	* For testing the notifications locally the process is a bit longer and requires setting up Caddy for HTTPS and starting the browser with a few flags to skip checking for HTTPS certificate signatures
 * `cd /laradock`
 * `docker-compose down`
 * `cp ../ptm/.patches/enable-php-gmp.patch .`
@@ -91,14 +94,13 @@ Make sure you are inside the `laradock_workspace` container (`docker exec -ti --
 			* At the bottom, before (prima) `# Final Touch`
 			* If you don't find it, search for it
 * `docker-compose build php-fpm workspace`
-* `docker-compose up nginx mysql`
+* `docker-compose up -d nginx mysql`
 * `docker exec -ti --user=laradock laradock_workspace_1 bash`
 	* `cd ptm`
 	* `composer install`
 	* Check if everything works!
 	* `php artisan migrate`
 	* `php artisan webpush:vapid`
-* You need HTTPS, this will work only on production
 
 ## Troubleshooting
 
