@@ -24,6 +24,10 @@
       </a>
     </div>
   </div>
+  <div class="notification is-primary">
+      Here you find the trips you are following.
+      You can view details, edit or delete them.
+  </div>
 
 
   <article id="subscribed-trip-section" style="display:none" class="message is-success">
@@ -99,6 +103,9 @@
 <hr>
 
   <h2 class="is-size-2">Your Statistics</h2><br><br>
+  <div class="notification is-primary">
+    Here you can find your monthly statistics of the trips you are following.
+  </div>
   <div class="columns is-multiline is-centered">
     @foreach(Auth::user()->personalStatistic as $stats)
     <div class="column is-half">
@@ -124,6 +131,9 @@
   </div>
   <hr>
   <h2 class="is-size-2">Announcements</h2>
+  <div class="notification is-primary">
+  Here you can find the announcements of the lines you are following
+  </div>
   @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
     <article class="message is-light">
       <div class="message-header">
