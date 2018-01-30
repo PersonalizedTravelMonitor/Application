@@ -46,11 +46,6 @@
           <span class="icon is-small"><i class="fa fa-train"></i></span>
           <a href="{{ route('trips.show', $trip) }}" class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</a>
           </p>
-          <a href="#" class="card-header-icon" aria-label="more options">
-            <span class="icon">
-              <i class="fas fa-angle-down" aria-hidden="true"></i>
-            </span>
-          </a>
         </header>
         <div class="card-content">
           <div class="content">
@@ -100,11 +95,13 @@
         </div>
         <footer class="card-footer">
           <a href="{{ route('trips.show', $trip) }}" class="card-footer-item">Details</a>
-          <form method="POST" action="{{ route('trips.destroy', $trip) }}">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-            <input type="submit" class="card-footer-item" value="Delete">
-          </form>
+          <div class="card-footer-item">
+            <form method="POST" action="{{ route('trips.destroy', $trip) }}">
+              {{ method_field('DELETE') }}
+              {{ csrf_field() }}
+              <input type="submit" class="button is-danger is-inverted" value="Delete">
+            </form>
+          </div>
         </footer>
       </div>
     </div>
