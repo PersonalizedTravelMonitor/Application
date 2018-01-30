@@ -101,7 +101,7 @@
       </div>
     </div>
   </nav>
-  <section class="section">
+  <section class="section" style="min-height:100vh">
     <div class="container">
       <div id="app">
         @yield('content')

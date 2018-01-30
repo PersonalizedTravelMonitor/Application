@@ -9,7 +9,7 @@
 @forelse($trip->orderedParts as $part)
   <div class="card">
     <div class="card-header">
-      <div class="card-header-title">{{ $part->from }} - {{ $part->to }} ({{ $part->details_type }})</div>
+      <div class="card-header-title">{{ $part->from }} - {{ $part->to }}</div>
     </div>
     <div class="card-content content">
       @switch($part->details_type)
