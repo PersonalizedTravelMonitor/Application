@@ -29,17 +29,7 @@ With parts: <br>
         <div>
           <i>{{ $event->created_at->format('H:i') }}</i>
 
-          @switch($event->details_type)
-            @case("App\TravelerReportEvent")
-              <b>{{ $event->details->author->name }}</b>: {{ $event->details->message }}
-              @break
-            @case("App\DelayEvent")
-              {{ $event->details->toHTML() }}
-              @break
-            @case("App\CancellationEvent")
-              <span class="tag is-danger is-medium">Service is cancelled!</span>
-              @break
-          @endswitch
+              - {{ $event->details->toHTML() }}
 
         </div>
       @empty

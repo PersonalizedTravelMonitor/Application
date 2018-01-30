@@ -3,7 +3,7 @@
 @section('content')
   <div class="columns">
     <div class="column">
-      Welcome, <b>{{ Auth::user()->name }}</b>!
+      <h2>Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
     </div>
     <div class="column is-narrow">
       <button class="button" style="display:none;" id="notifications-button" onclick="enableNotifications()">Register for notifications</button>
@@ -76,17 +76,9 @@
               @if ($part->events->count() > 0)
                 <ul>
                   <li>Last update:
-                    @switch ($part->latestEvent()->details_type)
-                      @case("App\DelayEvent")
-                        {{ $part->latestEvent()->details->amount }} minutes delay @ {{ $part->latestEvent()->details->station }}
-                        @break
-                      @case("App\CancellationEvent")
-                        <span class="tag is-danger is-medium">Service is cancelled!</span>
-                        @break
-                      @case("App\TravelerReportEvent")
-                        <b>{{ $part->latestEvent()->details->author->name }}</b>: {{ $part->latestEvent()->details->message }}
-                        @break
-                    @endswitch
+
+                    {{ $part->latestEvent()->details->toHTML() }}
+
                   </li>
                 </ul>
               @endif
