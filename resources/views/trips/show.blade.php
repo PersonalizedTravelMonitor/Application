@@ -11,7 +11,7 @@ With parts: <br>
     <div class="card-header">
       <div class="card-header-title">{{ $part->from }} - {{ $part->to }} ({{ $part->details_type }})</div>
     </div>
-    <div class="card-content">
+    <div class="card-content content">
       @switch($part->details_type)
         @case("App\TrenordTripPart")
           Train {{ $part->details->trainId }}
@@ -25,16 +25,15 @@ With parts: <br>
       @endswitch
       <br>
       <b>Events</b>
+      <ul>
       @forelse($part->todayEvents as $event)
-        <div>
-          <i>{{ $event->created_at->format('H:i') }}</i>
-
-              - {{ $event->details->toHTML() }}
-
-        </div>
+        <li>
+          {!! $event->details->toHTML() !!}
+        </li>
       @empty
         No events for this trip part
       @endforelse
+      </ul>
       <br>
 
       @auth
@@ -46,7 +45,7 @@ With parts: <br>
                 <input class="input" name="message" type="text" placeholder="Your report">
               </div>
               <div class="column is-narrow">
-                <button type="submit" class="button is-warning">Submit</button>
+                <button type="submit" class="button is-dark">Submit</button>
               </div>
             </div>
         </form>

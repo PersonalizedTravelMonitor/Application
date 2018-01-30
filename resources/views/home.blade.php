@@ -75,10 +75,8 @@
               @endswitch
               @if ($part->events->count() > 0)
                 <ul>
-                  <li>Last update:
-
-                    {{ $part->latestEvent()->details->toHTML() }}
-
+                  <li>
+                    {!! $part->latestEvent()->details->toHTML() !!}
                   </li>
                 </ul>
               @endif
