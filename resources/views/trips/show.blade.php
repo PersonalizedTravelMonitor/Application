@@ -28,17 +28,19 @@ With parts: <br>
       @forelse($part->todayEvents as $event)
         <div>
           <i>{{ $event->created_at->format('H:i') }}</i>
+
           @switch($event->details_type)
             @case("App\TravelerReportEvent")
               <b>{{ $event->details->author->name }}</b>: {{ $event->details->message }}
               @break
             @case("App\DelayEvent")
-              <b>{{ $event->details->station }}</b>: Delay of {{ $event->details->amount }} minutes
+              {{ $event->details->toHTML() }}
               @break
             @case("App\CancellationEvent")
               <span class="tag is-danger is-medium">Service is cancelled!</span>
               @break
           @endswitch
+
         </div>
       @empty
         No events for this trip part

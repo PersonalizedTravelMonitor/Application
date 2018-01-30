@@ -21,7 +21,7 @@ class TrenordTripPartManager implements TripPartManager
         $info = TrenordAPI::getTrainInfo($trainId);
 
         $info = $info[0];
-
+        var_dump($info);
         if($info["cancelled"]) {
             $event = new CancellationEvent;
             $event->save();
