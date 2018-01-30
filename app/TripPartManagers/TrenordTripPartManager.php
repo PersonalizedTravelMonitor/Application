@@ -17,7 +17,7 @@ class TrenordTripPartManager implements TripPartManager
 {
     public static function getEvents(TripPart $tripPart)
     {
-        $trainId = $tripPart->details->trainId;
+        $trainId = $tripPart->details->internalTrainId;
         $info = TrenordAPI::getTrainInfo($trainId);
         if(!isset($info[0]))
             return;

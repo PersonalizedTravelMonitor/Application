@@ -10,6 +10,7 @@
 @endif
 
 @forelse($trip->orderedParts as $part)
+  {{ $part->internalTrainId }}
   @include('trips.showCard', [
     'part' => $part,
     'showHeader' => ($trip->orderedParts->count() > 0),
