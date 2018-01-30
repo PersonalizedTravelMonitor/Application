@@ -11,6 +11,7 @@ use App\ExternalAPIs\TrenordAPI;
 use Notification;
 use App\Notifications\GenericNotification;
 use Log;
+use Carbon\Carbon;
 
 class TrenordTripPartManager implements TripPartManager
 {
@@ -52,6 +53,7 @@ class TrenordTripPartManager implements TripPartManager
             $existingEvent = DelayEvent::where([
                 ['station', '=', $actualStation],
                 ['amount', '=', $delay],
+                ['created_at', '>=', Carbon::today()] // make sure only today events are checked
             ])->first();
 
             if ($existingEvent) return;
