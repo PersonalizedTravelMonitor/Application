@@ -121,6 +121,9 @@
       </div>
     </div>
     @endforeach
+    <div class="columns">
+      <div class="column">Number of events on your trips: {{ $eventsCount }}</div>
+    </div>
   </div>
   <hr>
   <h2 class="is-size-2">Announcements</h2>
