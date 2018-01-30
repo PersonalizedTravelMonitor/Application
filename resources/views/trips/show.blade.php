@@ -5,7 +5,7 @@
 
 <br>
 
-With parts: <br>
+<h2><b>With parts:</b></h2><br>
 @forelse($trip->orderedParts as $part)
   <div class="card">
     <div class="card-header">
