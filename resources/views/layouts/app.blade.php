@@ -23,7 +23,6 @@
       })
     });
   </script>
-
   <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
   @yield('head')
 </head>
@@ -34,13 +33,13 @@
         <a class="navbar-item" href="/">
           <img src="https://avatars3.githubusercontent.com/u/33867335" alt="PTM">
         </a>
-        <button class="button navbar-burger">
+        <button class="button navbar-burger" data-target="navMenu">
           <span></span>
           <span></span>
           <span></span>
         </button>
       </div>
-      <div class="navbar-menu">
+      <div class="navbar-menu" id="navMenu">
         <div class="navbar-end">
           @auth
             <a class="navbar-item is-active" a href="{{ route('home') }}">
@@ -109,6 +108,28 @@
       </div>
     </div>
   </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get all "navbar-burger" elements
+      var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+        // Add a click event on each of them
+        $navbarBurgers.forEach(function ($el) {
+          $el.addEventListener('click', function () {
+            // Get the target from the "data-target" attribute
+            var target = $el.dataset.target;
+            var $target = document.getElementById(target);
+
+            // Toggle the class on both the "navbar-burger" and the "navbar-menu"
+            $el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+    });
+  </script>
   @yield('scripts')
 </body>
 </html>
