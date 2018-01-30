@@ -1,4 +1,6 @@
-<div class="columns">
+  <h4 class="title">Sorry</h4>
+  <p>This feature will be implemented in the future</p>
+<!-- Reference outlook
     <div class="column">
       <div class="field">
         <label class="label">From: </label>
@@ -30,6 +32,7 @@
       </div>
     </div>
 </div>
+
 
   <div class="columns">
     <div class="column">
@@ -99,3 +102,4 @@
       </div>
       </div>
     </div>
+-->

@@ -1,3 +1,6 @@
+<h4 class="title">Sorry</h4>
+<p>This feature will be implemented in the future</p>
+<!--
 <div class="columns">
     <div class="column">
       <div class="field">
@@ -99,3 +102,4 @@
       </div>
       </div>
     </div>
+-->
