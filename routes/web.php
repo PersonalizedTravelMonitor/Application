@@ -36,3 +36,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::post('/saveSubscription', 'NotificationController@saveSubscription')->name('notifications.saveSubscription');
+Route::post('/disableSubscription', 'NotificationController@disableSubscription')->name('notifications.disableSubscription');

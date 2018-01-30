@@ -80,18 +80,6 @@ function subscribeUserToPush() {
 
 function sendSubscriptionToBackEnd(subscription) {
   return $.post('/saveSubscription', JSON.parse(JSON.stringify(subscription)))
-  .then(function(response) {
-    if (!response.ok) {
-      throw new Error('Bad status code from server.');
-    }
-
-    return response.json();
-  })
-  .then(function(responseData) {
-    if (!(responseData && responseData.success)) {
-      throw new Error('Bad response from server.');
-    }
-  });
 }
 
 function enableNotifications(){

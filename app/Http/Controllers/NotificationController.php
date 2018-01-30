@@ -23,4 +23,12 @@ class NotificationController extends Controller
             'success' => true
         ]);
     }
+
+    public function disableSubscription(Request $request) {
+        $user = Auth::user();
+        $user->deletePushSubscription($request->input('endpoint'));
+        return response()->json([
+            'success' => true
+        ]);
+    }
 }
