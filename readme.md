@@ -1,5 +1,9 @@
 # PersonalizedTravelMonitor
 
+## Status of the project
+
+To check out the status of the project please [check the board here](https://github.com/PersonalizedTravelMonitor/Application/projects/1).
+
 ## Laradock
 
 ### Development setup
