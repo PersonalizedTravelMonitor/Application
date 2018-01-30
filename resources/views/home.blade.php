@@ -1,8 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-  <p>
-    Welcome, <b>{{ Auth::user()->name }}</b>! <button class="button" onclick="enableNotifications()">Register for notifications</button>
+  <div class="columns">
+    <div class="column">
+      Welcome, <b>{{ Auth::user()->name }}</b>!
+    </div>
+    <div class="column is-narrow">
+      <button class="button" style="display:none;" id="notifications-button" onclick="enableNotifications()">Register for notifications</button>
+    </div>
+  </div>
   </p>
   <hr>
   <div class="columns is-vcentered">

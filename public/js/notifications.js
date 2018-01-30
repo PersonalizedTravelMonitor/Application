@@ -1,9 +1,21 @@
+$(document).ready(function() {
+  if (Notification.permission == "granted") {
+    $("")
+  }
+})
+
 var _registration = null;
 function registerServiceWorker() {
   return navigator.serviceWorker.register('/js/service-worker.js')
   .then(function(registration) {
     console.log('Service worker successfully registered.');
     _registration = registration;
+
+    _registration.pushManager.getSubscription()
+        .then(function(sub) {
+          if(!sub) $("#notifications-button").show();
+        });
+
     return registration;
   })
   .catch(function(err) {
@@ -61,6 +73,7 @@ function getSWRegistration(){
 }
 
 function subscribeUserToPush() {
+  $("#notifications-button").addClass("is-loading");
   getSWRegistration()
   .then(function(registration) {
     console.log(registration);
@@ -80,6 +93,9 @@ function subscribeUserToPush() {
 
 function sendSubscriptionToBackEnd(subscription) {
   return $.post('/saveSubscription', JSON.parse(JSON.stringify(subscription)))
+    .then(function() {
+      $("#notifications-button").removeClass("is-loading").addClass("is-success").text("Success");
+    })
 }
 
 function enableNotifications(){
