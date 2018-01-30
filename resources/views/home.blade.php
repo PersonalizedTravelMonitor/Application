@@ -74,6 +74,23 @@
                   Train {{ $part->details->trainId }} @ {{ $part->details->departure }}
                   @break
               @endswitch
+              @if ($part->events->count() > 0)
+                <ul>
+                  <li>Last update:
+                    @switch ($part->latestEvent()->details_type)
+                      @case("App\DelayEvent")
+                        {{ $part->latestEvent()->details->amount }} minutes delay @ {{ $part->latestEvent()->details->station }}
+                        @break
+                      @case("App\CancellationEvent")
+                        <span class="tag is-danger is-medium">Service is cancelled!</span>
+                        @break
+                      @case("App\TravelerReportEvent")
+                        <b>{{ $part->latestEvent()->details->author->name }}</b>: {{ $part->latestEvent()->details->message }}
+                        @break
+                    @endswitch
+                  </li>
+                </ul>
+              @endif
             </li>
           @empty
             <li>This should never happen</li>
