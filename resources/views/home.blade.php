@@ -31,7 +31,7 @@
       <p>Success</p>
       <button class="delete" aria-label="delete" id="delete-message"></button>
     </div>
-    <div>
+    <div class="message-body">
       <span id="subscribed-correctly"></span>
   </div>
   </article>
