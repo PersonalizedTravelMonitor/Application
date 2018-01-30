@@ -6,8 +6,7 @@
 
 @section('content')
   <h1 class="title" align="center">Get updates on a trip</h1>
-  <div class="notification is-primary">
-    <!-- <button class="delete"></button> Da aggiungere per eliminarla?-->
+  <div class="notification is-light">
     Here you can search for a trip you wish to follow.<br>
     Search, select your vehicle, select the days of the week and you're done!
     <br><br>

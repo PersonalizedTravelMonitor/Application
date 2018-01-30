@@ -24,7 +24,7 @@
       </a>
     </div>
   </div>
-  <div class="notification is-primary">
+  <div class="notification is-light">
       Here you find the trips you are following.
       You can view details, edit or delete them.
   </div>
@@ -107,7 +107,7 @@
 
   <hr>
   <h2 class="is-size-2">Announcements</h2>
-  <div class="notification is-primary">
+  <div class="notification is-light">
   Here you can find the announcements of the lines you are following
   </div>
   @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
@@ -126,7 +126,7 @@
   <hr>
 
   <h2 class="is-size-2">Your Statistics</h2><br>
-  <div class="notification is-primary">
+  <div class="notification is-light">
     Here you can find your monthly statistics of the trips you are following.
   </div>
   <div class="columns is-multiline is-centered">
