@@ -58,25 +58,30 @@
   </div>
 
   <div id="repetition-days-section" style="display:none">
-    <h2 class="title is-5" align="center">Repetition</h2>
-    <input type="radio" id="radio-today" name="repetition" value="today" checked autocomplete="off"><label for="radio-today">just today</label>
+    <h2 class="title is-5" align="center">Repeting on</h2>
+    <div class="buttons has-addons is-centered">
+        <span class="button is-selected is-info" id="radio-today" >Just Today
+      </span>
+        <span class="button" id="radio-multiple" v >Multiple Days
+      </span>
+    </div>
     <br>
-    <input type="radio" id="radio-multiple" name="repetition" value="multiple" autocomplete="off"><label for="radio-multiple">multiple days</label>
+
     <div id="days-list" class="columns is-centered" style="display:none" >
       <div class="column is-narrow">
-        <a class="button is-rounded ">Lunedì</a>
+        <a class="button is-rounded is-selected is-info">Lunedì</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Martedì</a>
+        <a class="button is-rounded is-selected is-info">Martedì</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Mercoledì</a>
+        <a class="button is-rounded is-selected is-info">Mercoledì</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Giovedì</a>
+        <a class="button is-rounded is-selected is-info">Giovedì</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Venerdì</a>
+        <a class="button is-rounded is-selected is-info">Venerdì</a>
       </div>
       <div class="column is-narrow">
         <a class="button is-rounded">Sabato</a>
@@ -112,14 +117,20 @@
 
 <script>
   $(document).ready(function() {
-    $("#radio-multiple, #radio-today").change(function(){
-      if($("#radio-multiple").is(":checked")){
+    $("#radio-multiple").click(function(){
+        $("#radio-today").removeClass("is-selected").removeClass("is-info");
+        $(this).toggleClass("is-selected").toggleClass("is-info");
         $("#days-list").show();
-      }
-      else
-      {
+    })
+  });
+</script>
+
+<script>
+  $(document).ready(function() {
+    $("#radio-today").click(function(){
+        $("#radio-multiple").removeClass("is-selected").removeClass("is-info");
+        $(this).toggleClass("is-selected").toggleClass("is-info");
         $("#days-list").hide();
-      }
     })
   });
 </script>
