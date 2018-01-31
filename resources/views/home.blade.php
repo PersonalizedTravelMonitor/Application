@@ -114,7 +114,7 @@
   Here you can find the announcements of the lines you are following.
   </div>
   @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
-    <article class="message is-light">
+    <article class="message">
       <div class="message-header">
         <p>{{ $announcement->title }}</p>
       </div>
