@@ -65,7 +65,6 @@
           @endif
           <br><br>
 
-
           <b>With parts:</b> <br>
           <ul>
           @forelse($trip->orderedParts as $part)
