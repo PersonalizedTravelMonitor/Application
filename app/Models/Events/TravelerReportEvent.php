@@ -18,6 +18,6 @@ class TravelerReportEvent extends Model
 
     public function toHTML()
     {
-        return "<span class=\"tag is-info\">" . $this->event->created_at->format('H:i') . "</span> - <b>" . $this->author->name . ": " . $this->message . "</b>:";
+        return "<span class=\"tag is-info\">" . $this->event->created_at->format('H:i') . "</span> - <b>" . $this->author->name . ": " . $this->message . "</b>";
     }
 }
