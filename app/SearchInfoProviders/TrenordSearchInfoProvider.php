@@ -95,6 +95,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $train["train_name"] = $tripPart["train"]["train_name"];
         $train["train_category"] = $tripPart["train"]["train_category"];
         $train["line"] = $tripPart["train"]["direttrice"] ?? "";
+        $train["internal_id"] = $tripPart["train"]["CodiceTrasporto1"] ?? $tripPart["train"]["train_name"];
         $tripPart["train"] = $train;
         $tripPart = renameKey($tripPart, "pass_list", "stops");
 

@@ -17,12 +17,16 @@ class TrenordTripPartManager implements TripPartManager
 {
     public static function getEvents(TripPart $tripPart)
     {
-        $trainId = $tripPart->details->trainId;
+        $trainId = $tripPart->details->internalTrainId;
         $info = TrenordAPI::getTrainInfo($trainId);
-        //var_dump($tripPart->details->trainId);
         if(!isset($info[0]))
-            return ;
+            return;
+
         $info = $info[0];
+
+        $date = Carbon::createFromFormat('Ymd', $info["date"]);
+        if ($date->lt(Carbon::today()))
+            return;
 
         if($info["cancelled"]) {
             $event = new CancellationEvent;

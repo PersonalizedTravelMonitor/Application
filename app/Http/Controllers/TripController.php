@@ -76,6 +76,7 @@ class TripController extends Controller
                 $trenordTripPart->arrival = $selectedTripPart['stops'][sizeof($selectedTripPart['stops']) - 1]['arrival_time'];
                 $trenordTripPart->line = $selectedTripPart['train']['line'];
                 $trenordTripPart->trainId = $selectedTripPart['train']['train_name'];
+                $trenordTripPart->internalTrainId = $selectedTripPart['train']['internal_id'];
                 $trenordTripPart->departurePlatform = "Binario Est";
                 $trenordTripPart->save();
 

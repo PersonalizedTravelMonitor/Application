@@ -32,6 +32,21 @@ class TripPart extends Model
         return $this->events()->where('created_at', '>=', Carbon::today());
     }
 
+    public function yesterdayEvents()
+    {
+        return $this->events()->where([
+            ['created_at', '>=', Carbon::yesterday()],
+            ['created_at', '<=', Carbon::today()]
+        ]);
+    }
+
+    public function getEventsForDate($date) {
+        return $this->events()->where([
+            ['created_at', '>=', $date],
+            ['created_at', '<=', (clone $date)->addDay()]
+        ])->get();
+    }
+
     public function users()
     {
         $users = [];
