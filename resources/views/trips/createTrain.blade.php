@@ -56,6 +56,12 @@
 </form>
 
 <div class="results columns is-multiline is-centered">
+  <div class="column">
+    <br>
+    <div class="notification is-light has-text-centered">
+      Use the form above to search for a trip
+    </div>
+  </div>
 </div>
 <script type="text/template" name="search-result">
     <div class="column is-half">
