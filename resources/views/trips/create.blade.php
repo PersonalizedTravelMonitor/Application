@@ -96,9 +96,7 @@
     </div>
 
   </div>
-
 @endsection
-
 
 @section('scripts')
 <script>

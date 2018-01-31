@@ -12,7 +12,7 @@
     @endswitch
     <br>
     <br>
-    <b class="is-size-4">Events</b>
+    <b class="is-size-4">Events:</b>
     <ul>
       @forelse($part->getEventsForDate($date) as $event)
         <li>

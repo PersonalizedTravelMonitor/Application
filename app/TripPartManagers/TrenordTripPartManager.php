@@ -7,6 +7,7 @@ use App\Event;
 use App\TravelerReportEvent;
 use App\DelayEvent;
 use App\CancellationEvent;
+use App\GenericInformationEvent;
 use App\ExternalAPIs\TrenordAPI;
 use Notification;
 use App\Notifications\GenericNotification;
@@ -82,9 +83,8 @@ class TrenordTripPartManager implements TripPartManager
             $tripPart->is_checked = true;
             $tripPart->save();
 
-            $event = new TravelerReportEvent;
-            $event->author_id = 1;
-            $event->message = "Train is arrived at destination " . $delay . " minutes late";
+            $event = new GenericInformationEvent;
+            $event->message = "Train has arrived at destination " . $delay . " minutes late";
             $event->save();
 
             $parentEvent = new Event;
