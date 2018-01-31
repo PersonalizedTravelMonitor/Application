@@ -60,6 +60,8 @@
               {{ \Carbon\Carbon::now()->next($day)->format('l') }}
             @endforeach
             <br><br>
+          @else
+          <b>Just for today</b>
           @endif
 
 
