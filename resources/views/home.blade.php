@@ -61,7 +61,7 @@
             @endforeach
 
           @else
-          <b>Just for today</b><br><br>
+          <b>Just for today</b>
           @endif
           <br><br>
 

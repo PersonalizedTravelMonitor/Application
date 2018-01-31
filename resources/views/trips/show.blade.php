@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<span align="center"><h1 class="title is-4">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1></span>
+<h1 class="title is-4 has-text-centered">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
 
 @if ($trip->orderedParts->count() > 1)
   <br>
-  <span align="center"><b>Your trip consists of {{$trip->orderedParts->count()}} parts:</b></span>
+  <div><b class="has-text-centered">Your trip consists of {{$trip->orderedParts->count()}} parts:</b></div>
   <br>
 @endif
 <div class="columns is-multiline is-centered">
