@@ -13,7 +13,7 @@
   <hr>
   <div class="columns is-vcentered">
     <div class="column">
-      <h2 class="is-size-2">Your Trips</h2>
+    <h2 class="is-size-2"><span class="icon is-medium"><i class="fas fa-flag-checkered"></i></span>&nbsp; Your Trips</h2>
     </div>
     <div class="column is-narrow">
       <a href="{{ route("trips.create") }}" class="button is-success is-medium">
@@ -61,7 +61,7 @@
             @endforeach
 
           @else
-          <b>Just for today</b>
+          <b>Just for today</b><br><br>
           @endif
           <br><br>
 
@@ -109,7 +109,8 @@
 
 
   <hr>
-  <h2 class="is-size-2">Announcements</h2>
+  <span align="center">
+  <h2 class="is-size-2 is-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i></span>&nbsp; Announcements</h2></span>
   <div class="notification is-light">
   Here you can find the announcements of the lines you are following.
   </div>
@@ -130,7 +131,7 @@
 
   <hr>
 
-  <h2 class="is-size-2">Your Statistics</h2><br>
+  <span align="center"><h2 class="is-size-2"><span class="icon is-medium"><i class="fas fa-chart-bar"></i></span>&nbsp;Your Statistics</h2><br></span>
   <div class="notification is-light">
     Here you can find your monthly statistics of the trips you are following.
   </div>
