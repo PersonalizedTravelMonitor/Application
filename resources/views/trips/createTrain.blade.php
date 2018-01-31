@@ -57,7 +57,6 @@
 
 <div class="results columns is-multiline is-centered">
 </div>
-<!-- TO DO: Togliere i secondi-->
 <script type="text/template" name="search-result">
     <div class="column is-half">
       <div class="card">
@@ -82,6 +81,13 @@
                 [[ /trip.journey_list ]]
             </ul>
             <b>Duration : </b>[[ trip.duration ]]
+            [[ #trip.skipped_some ]]
+            <br>
+            <br>
+            <div class="notification is-light">
+              Some parts of the trips were not included since are currently not supported. For example busses, metros or walking to the destination.
+            </div>
+            [[ /trip.skipped_some]]
           </div>
         </div>
       </div>

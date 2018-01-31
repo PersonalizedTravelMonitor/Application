@@ -41,11 +41,16 @@ class TrenordSearchResultsCleaner {
         $trip["arr_station"] = Utils::renameKey($trip["arr_station"], "station_ori_name", "station_name");
         $trip = Utils::renameKey($trip, "arr_station", "arrival_station");
 
+        $parts = [];
         foreach ($trip["journey_list"] as $key => $tripPart) {
+            if($tripPart["journey_type"] != 'train') {
+                $trip["skipped_some"] = true;
+                continue;
+            }
             $tripPart = self::cleanupTripPartResult($tripPart);
-
-            $trip["journey_list"][$key] = $tripPart;
+            array_push($parts, $tripPart);
         }
+        $trip["journey_list"] = $parts;
         return $trip;
     }
 
@@ -54,6 +59,7 @@ class TrenordSearchResultsCleaner {
         $train["train_name"] = $tripPart["train"]["train_name"];
         $train["train_category"] = $tripPart["train"]["train_category"];
         $train["line"] = $tripPart["train"]["direttrice"] ?? "";
+        $train["direction"] = $tripPart["train"]["direction"];
         $train["internal_id"] = $tripPart["train"]["CodiceTrasporto1"] ?? $tripPart["train"]["train_name"];
         $tripPart["train"] = $train;
         $tripPart = Utils::renameKey($tripPart, "pass_list", "stops");
