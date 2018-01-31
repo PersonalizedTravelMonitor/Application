@@ -132,7 +132,7 @@
   {
     var repetitionDays=[];
     var i=0;
-    if($("#radio-multiple").is(":checked")){
+    if($("#radio-multiple").hasClass("is-selected")){
       var days_list=$("#days-list");
       $(days_list).children().each(function(){
         if($(this).find("a").hasClass("is-selected")){
