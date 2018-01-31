@@ -109,7 +109,7 @@
 
   <hr>
 
-  <h2 class="is-size-2 has-text-centered has-text-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i>&nbsp; Announcements</h2></span>
+  <h2 class="is-size-2 has-text-centered has-text-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i>&nbsp; Announcements</h2></span><br>
   <div class="notification is-light">
   Here you can find the announcements of the lines you are following.
   </div>
