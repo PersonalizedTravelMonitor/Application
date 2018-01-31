@@ -108,8 +108,8 @@
 
 
   <hr>
-  <span align="center">
-  <h2 class="is-size-2 is-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i></span>&nbsp; Announcements</h2></span>
+
+  <h2 class="is-size-2 has-text-centered has-text-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i>&nbsp; Announcements</h2></span>
   <div class="notification is-light">
   Here you can find the announcements of the lines you are following.
   </div>
@@ -134,7 +134,7 @@
 
   <hr>
 
-  <span align="center"><h2 class="is-size-2"><span class="icon is-medium"><i class="fas fa-chart-bar"></i></span>&nbsp;Your Statistics</h2><br></span>
+  <h2 class="is-size-2 has-text-centered"><span class="icon is-medium"><i class="fas fa-chart-bar"></i></span>&nbsp;Your Statistics</h2><br>
   <div class="notification is-light">
     Here you can find your monthly statistics of the trips you are following.
   </div>
