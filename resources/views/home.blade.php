@@ -59,10 +59,11 @@
               {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
               {{ \Carbon\Carbon::now()->next($day)->format('l') }}
             @endforeach
-            <br><br>
+
           @else
           <b>Just for today</b>
           @endif
+          <br><br>
 
 
           <b>With parts:</b> <br>
@@ -102,7 +103,7 @@
       </div>
     </div>
     @empty
-    No Trips Selected
+    No Trips Followed
   @endforelse
   </div>
 
