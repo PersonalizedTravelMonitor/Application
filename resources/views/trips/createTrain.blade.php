@@ -83,7 +83,7 @@
               [[ #trip.journey_list ]]
                 <li>[[ train.train_category ]] [[ train.train_name ]] to <b>[[ train.direction ]]</b> ([[ stops.length ]] stops)
                 <br>
-                <p class="is-size-7">Get off at [[ stops[stops.length-1].station.station_name ]]</p> </li>
+                <p class="is-size-7">Get off at [[ last_stop.station.station_name ]] ([[ last_stop.arrival_time ]])</p> </li>
                 [[ /trip.journey_list ]]
             </ul>
             <b>Duration : </b>[[ trip.duration ]]
@@ -183,9 +183,13 @@
 
     for(var i=0; i<results.length;i++){
       var trip=results[i];
-      console.log(trip);
       var templateViewHtml = $('script[name="search-result"]').html();
       Mustache.parse(templateViewHtml, ["[[", "]]"]);
+      for (var j=0; j < trip.journey_list.length; j++) {
+        stops = trip.journey_list[j].stops;
+        trip.journey_list[j].last_stop = stops[stops.length-1];
+      }
+      console.log(trip)
       var renderedSearch = Mustache.render(templateViewHtml, {
         "trip": trip,
         "index": i,
