@@ -61,10 +61,9 @@
             @endforeach
 
           @else
-          <b>Just for today</b><br>
+          <b>Just for today</b>
           @endif
           <br><br>
-
 
           <b>With parts:</b> <br>
           <ul>
