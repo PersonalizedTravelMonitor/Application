@@ -108,22 +108,23 @@
       </div>
     </div>
   </section>
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Personalized Travel Monitor
-        </h1>
-        <h2 class="subtitle">
-          A project by Cristian Baldi, Simone Galimberti, Fabrizio Olivadese, Simone Vitali
-          <br>
-          Developed for the Software Engineering course
-          <br>
-          UniMiB 2017/2018.
-        </h2>
-      </div>
-    </div>
-  </section>
+  <footer class="footer">
+  <span class="container">
+    <span class="content has-text-centered">
+      <p>
+      <h1 class="title is-4">
+      <b>Personalized Travel Monitor</b>
+    </h1>
+    <h2 class="subtitle is-6">
+      A project by <br><i>Cristian Baldi, Simone Galimberti, Fabrizio Olivadese, Simone Vitali</i>
+      <br><br></h2>
+      <h2 class="subtitle is-7">
+      Developed for the Software Engineering course - UniMiB 2017/2018
+    </h2>
+      </p>
+    </span>
+  </span>
+</footer>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       // Get all "navbar-burger" elements
