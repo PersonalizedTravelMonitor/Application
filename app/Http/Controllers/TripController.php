@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Trip;
 use App\TrenordTripPart;
 use App\TripPart;
+use App\TripPartManagers\TrenordTripPartManager;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -90,6 +91,9 @@ class TripController extends Controller
                 $tripPart->trips()->attach($trip->id);
                 $trip->addPartInOrderList($tripPart->id);
                 $trip->save();
+
+                // force a check
+                TrenordTripPartManager::getEvents($tripPart);
             }
         }
         return "OK";
