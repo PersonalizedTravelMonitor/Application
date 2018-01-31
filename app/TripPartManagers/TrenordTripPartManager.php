@@ -40,8 +40,6 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->severity = "CRITICAL";
             $parentEvent->save();
 
-            echo "Adding cancellation event for tripPart " . $tripPart->id;
-
             $tripPart->is_checked = true;
             $tripPart->save();
             return;
@@ -76,7 +74,6 @@ class TrenordTripPartManager implements TripPartManager
                     $parentEvent->severity = "INFO";
                     $parentEvent->save();
 
-                    echo "Adding arrival event for tripPart " . $tripPart->id;
                     Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at ". $pl["actual_data"]["actual_station_name"]));
                     return ;
                 }
@@ -102,8 +99,6 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->severity = "WARN";
             $parentEvent->save();
 
-            echo "Adding delay event for tripPart " . $tripPart->id;
-
             Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
         } else if ($status == "A") {
             $tripPart->is_checked = true;
@@ -120,7 +115,6 @@ class TrenordTripPartManager implements TripPartManager
             $parentEvent->severity = "INFO";
             $parentEvent->save();
 
-            echo "Adding arrival event for tripPart " . $tripPart->id;
             Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
         }
     }
