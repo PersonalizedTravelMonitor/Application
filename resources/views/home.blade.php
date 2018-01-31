@@ -114,13 +114,16 @@
   <div class="notification is-light">
   Here you can find the announcements of the lines you are following.
   </div>
+  <div class="columns is-multiline is-centered">
   @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
+    <div class="column is-half">
     <article class="message">
       <div class="message-header">
-        <p>{{ $announcement->title }}</p>
+        <p>{{ $announcement->title }}</p> <span align="left">{{ $announcement->created_at->format('d/m/Y H:i') }}</span>
       </div>
       <div class="message-body">
         {{ $announcement->text }}
+      </div>
       </div>
     </article>
   @empty
@@ -128,6 +131,7 @@
     <p>No recent announcements from the Admins to show</p>
   </div>
   @endforelse
+  </div>
 
   <hr>
 
