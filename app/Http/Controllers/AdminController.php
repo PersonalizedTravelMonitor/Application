@@ -49,4 +49,10 @@ class AdminController extends Controller
         $request->session()->flash('status', 'Announcement was sent!');
         return redirect()->route('admin.index');
     }
+
+    public function delete(Announcement $announcement)
+    {
+        $announcement->delete();
+        return redirect()->route('home');
+    }
 }
