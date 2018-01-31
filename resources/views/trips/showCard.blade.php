@@ -7,7 +7,7 @@
   <div class="card-content content">
     @switch($part->details_type)
       @case("App\TrenordTripPart")
-        On <b>Train {{ $part->details->trainId }}</b>
+        On <b>Train {{ $part->details->trainId }}</b> leaving at: {{ $part->details->departure }}
         @break
     @endswitch
     <br>
