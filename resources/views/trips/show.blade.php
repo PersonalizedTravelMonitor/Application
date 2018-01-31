@@ -13,6 +13,7 @@
 <div class="column is-half">
   {{ $part->internalTrainId }}
   @include('trips.showCard', [
+    'number' => $loop->index,
     'part' => $part,
     'showHeader' => ($trip->orderedParts->count() > 0),
     'showUserReport' => true,
@@ -28,6 +29,7 @@
 <h2 class="title is-4">Yesterday Report</h2>
 @forelse($trip->orderedParts as $part)
   @include('trips.showCard', [
+    'number' => $loop->index,
     'part' => $part,
     'showHeader' => ($trip->orderedParts->count() > 0),
     'showUserReport' => false,

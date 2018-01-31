@@ -13,6 +13,6 @@ class GenericInformationEvent extends Model
 
     public function toHTML()
     {
-        return "<span class=\"tag is-info\">" . $this->event->created_at->format('H:i') . "</span> - <b> Info: </b>" . $this->message;
+        return "<span class=\"tag is-light\">" . $this->event->created_at->format('H:i') . "</span> - <b> Info: </b>" . $this->message;
     }
 }

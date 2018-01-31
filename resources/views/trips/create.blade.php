@@ -27,18 +27,6 @@
           <span>Subway</span>
         </a>
       </li>
-      <li class="select-tab" data-tab="bus">
-        <a>
-          <span class="icon is-small"><i class="fas fa-bus"></i></span>
-          <span>Bus</span>
-        </a>
-      </li>
-      <li class="select-tab" data-tab="tram">
-        <a>
-          <span class="icon is-small"><i class="fas fa-train"></i></span>
-          <span>Tram</span>
-        </a>
-      </li>
     </ul>
   </div>
 
@@ -50,15 +38,10 @@
   <div class="tab tab--subway" style="display:none">
     @include('trips.createSubway')
   </div>
-  <div class="tab tab--bus" style="display:none">
-    @include('trips.createBus')
-  </div>
-  <div class="tab tab--tram" style="display:none">
-    @include('trips.createTram')
-  </div>
 
+  <hr>
   <div id="repetition-days-section" style="display:none">
-    <h2 class="title is-5" align="center">Repeting on</h2>
+    <h2 class="title is-4" align="center">Choose wich days to repeat</h2>
     <div class="buttons has-addons is-centered">
         <span class="button is-selected is-info" id="radio-today" >Just Today
       </span>
@@ -91,10 +74,16 @@
       </div>
     </div>
     <br>
-    <div class="buttons is-right">
-      <button class="button is-success" id="btn-subscribe">Programma Viaggio</button>
+    <div class="columns is-centered">
+      <div class="column is-narrow">
+        <button class="button is-success is-medium" id="btn-subscribe">
+          <span class="icon is-small">
+            <i class="fas fa-check"></i>
+          </span>
+          <span>Follow this trip</span>
+        </button>
+      </div>
     </div>
-
   </div>
 @endsection
 

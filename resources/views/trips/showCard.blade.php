@@ -1,7 +1,7 @@
 <div class="card">
   @if ($showHeader)
     <div class="card-header">
-      <div class="card-header-title">From {{ $part->from }} to {{ $part->to }}</div>
+      <div class="card-header-title">{{ $number+1 }}.</span> From {{ $part->from }} to {{ $part->to }}</div>
     </div>
   @endif
   <div class="card-content content">
