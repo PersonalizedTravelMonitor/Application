@@ -31,7 +31,7 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-        <img src="https://i.imgur.com/oYHwPyR.png" alt="Logo" ></img>
+        <img src={{ asset('img/logonavbar.png') }} alt="Logo" ></img>
         </a>
         <button class="button navbar-burger" data-target="navMenu">
           <span></span>
