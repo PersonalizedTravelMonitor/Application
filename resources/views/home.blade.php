@@ -3,7 +3,7 @@
 @section('content')
   <div class="columns">
     <div class="column">
-      <h2>Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
+      <h2 class="subtitle is-4">Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
     </div>
     <div class="column is-narrow">
       <button class="button" style="display:none;" id="notifications-button" onclick="enableNotifications()">Register for notifications</button>
@@ -100,7 +100,7 @@
       </div>
     </div>
     @empty
-    No Trips Seected
+    No Trips Selected
   @endforelse
   </div>
 
@@ -108,7 +108,7 @@
   <hr>
   <h2 class="is-size-2">Announcements</h2>
   <div class="notification is-light">
-  Here you can find the announcements of the lines you are following
+  Here you can find the announcements of the lines you are following.
   </div>
   @forelse(\App\Announcement::orderBy('created_at', 'desc')->get() as $announcement)
     <article class="message is-light">
@@ -120,7 +120,9 @@
       </div>
     </article>
   @empty
+  <div class="has-text-centered">
     <p>No recent announcements from the Admins to show</p>
+  </div>
   @endforelse
 
   <hr>
