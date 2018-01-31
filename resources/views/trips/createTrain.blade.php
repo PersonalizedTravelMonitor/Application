@@ -4,7 +4,7 @@
       <div class="field">
         <label class="label">From: </label>
         <div class="control has-icons-left">
-          <input id="input-from" class="input autocompleteFrom" type="text" placeholder="Departure Station" autocomplete="off">
+          <input id="input-from" class="input autocompleteFrom" type="text" placeholder="Departure Station" autocomplete="off" required>
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -14,7 +14,7 @@
       <div class="field">
         <label class="label">To: </label>
         <div class="control has-icons-left">
-          <input id="input-to" class="input autocompleteTo" type="text" placeholder="Arrival Station">
+          <input id="input-to" class="input autocompleteTo" type="text" placeholder="Arrival Station" autocomplete="off" required>
           <span class="icon is-small is-left">
           <i class="fas fa-map-marker"></i> </span>
         </div>
@@ -26,7 +26,7 @@
           <div class="field">
             <label class="label">Hours: </label>
             <div class="control has-icons-left">
-              <input id="input-hours" class="input" type="number" min="0" max="23" value="{{ Carbon\Carbon::now('Europe/Rome')->format('H') }}" placeholder="Departure Hours">
+              <input id="input-hours" class="input" type="number" min="0" max="23" value="{{ Carbon\Carbon::now('Europe/Rome')->format('H') }}" placeholder="Departure Hours" required>
               <span class="icon is-small is-left">
               <i class="fas fa-clock"></i> </span>
             </div>
@@ -36,7 +36,7 @@
           <div class="field">
             <label class="label">Minutes: </label>
             <div class="control has-icons-left">
-              <input id="input-minutes" class="input" type="number" min="0" max="60" value="00" placeholder="Departure Minutes">
+              <input id="input-minutes" class="input" type="number" min="0" max="60" value="00" placeholder="Departure Minutes" required>
               <span class="icon is-small is-left">
               <i class="fas fa-clock"></i> </span>
             </div>
