@@ -3,7 +3,7 @@
 @section('content')
   <div class="columns">
     <div class="column">
-      <h2 class="subtitle is-4">Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
+      <h2 class="subtitle is-6">Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
     </div>
     <div class="column is-narrow">
       <button class="button" style="display:none;" id="notifications-button" onclick="enableNotifications()">Register for notifications</button>
