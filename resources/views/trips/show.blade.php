@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="title is-3">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
+<span align="center"><h1 class="title is-4">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1></span>
 
 @if ($trip->orderedParts->count() > 1)
   <br>
-  <b>With parts:</b>
+  <span align="center"><b>Your trip consists of {{$trip->orderedParts->count()}} parts:</b></span>
   <br>
 @endif
-
+<div class="columns is-multiline is-centered">
 @forelse($trip->orderedParts as $part)
+<div class="column is-half">
   {{ $part->internalTrainId }}
   @include('trips.showCard', [
     'part' => $part,
@@ -17,9 +18,11 @@
     'showUserReport' => true,
     'date' => \Carbon\Carbon::today()
   ])
+  </div>
 @empty
   This should never happen
 @endforelse
+</div>
 
 <hr>
 <h2 class="title is-4">Yesterday Report</h2>
