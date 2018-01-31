@@ -77,7 +77,7 @@ class TrenordTripPartManager implements TripPartManager
                     $parentEvent->save();
 
                     echo "Adding arrival event for tripPart " . $tripPart->id;
-                    Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
+                    Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at ". $pl["actual_data"]["actual_station_name"]));
                     return ;
                 }
             }
