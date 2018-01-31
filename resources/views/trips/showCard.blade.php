@@ -30,10 +30,25 @@
           {{ csrf_field() }}
             <div class="columns">
               <div class="column">
-                <input class="input" name="message" type="text" placeholder="Your report" required>
+                <input class="input" name="message"
+                  type="text"
+                    @if ($part->is_checked)
+                      placeholder="Can't add a report for a trip that has already concluded"
+                    @else
+                      placeholder="Your report"
+                    @endif
+                  required
+                  @if ($part->is_checked)
+                    disabled
+                  @endif
+                >
               </div>
               <div class="column is-narrow">
-                <button type="submit" class="button is-dark">Submit</button>
+                <button type="submit" class="button is-dark"
+                  @if ($part->is_checked)
+                    disabled
+                  @endif
+                  >Submit</button>
               </div>
             </div>
         </form>

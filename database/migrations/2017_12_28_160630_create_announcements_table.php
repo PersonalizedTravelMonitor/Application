@@ -17,8 +17,8 @@ class CreateAnnouncementsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('title');
-            $table->string('text');
+            $table->text('title');
+            $table->text('text');
         });
     }
 
