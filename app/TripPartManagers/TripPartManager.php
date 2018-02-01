@@ -6,7 +6,6 @@ use App\TripPart;
 
 /*
     This interface defines methods to be implemented by the concrete managers
-    TODO: rename in TripPartWorker
 */
 interface TripPartManager
 {

@@ -26,15 +26,6 @@ class GetEventsForTripParts extends Command
      */
     protected $description = 'Get events for all the trip parts';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
 
     protected $handlers = [
         TrenordTripPart::class => TrenordTripPartManager::class

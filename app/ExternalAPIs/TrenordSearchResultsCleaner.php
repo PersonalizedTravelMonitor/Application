@@ -42,7 +42,7 @@ class TrenordSearchResultsCleaner {
         $trip = Utils::renameKey($trip, "arr_station", "arrival_station");
 
         $parts = [];
-        foreach ($trip["journey_list"] as $key => $tripPart) {
+        foreach ($trip["journey_list"] as $tripPart) {
             if($tripPart["journey_type"] != 'train') {
                 $trip["skipped_some"] = true;
                 continue;
@@ -65,7 +65,7 @@ class TrenordSearchResultsCleaner {
         $tripPart = Utils::renameKey($tripPart, "pass_list", "stops");
 
         $stops = [];
-        foreach ($tripPart["stops"] as $key => $stop) {
+        foreach ($tripPart["stops"] as $stop) {
             if (in_array($stop['type'], ['start', 'pass', 'end'])) {
                 $stop = self::cleanupStopResult($stop);
                 array_push($stops, $stop);
