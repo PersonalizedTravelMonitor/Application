@@ -6,9 +6,11 @@ use App\TripPart;
 use App\Event;
 use App\TravelerReportEvent;
 use App\DelayEvent;
-use App\CancellationEvent;
 use App\GenericInformationEvent;
 use App\ExternalAPIs\TrenordAPI;
+use App\Factories\CancellationEventFactory;
+use App\Factories\GenericInformationEventFactory;
+use App\Factories\DelayEventFactory;
 use Notification;
 use App\Notifications\GenericNotification;
 use Log;
@@ -32,93 +34,77 @@ class TrenordTripPartManager implements TripPartManager
         }
 
         if($info["cancelled"]) {
-            $event = new CancellationEvent;
-            $event->save();
-
-            $parentEvent = new Event;
-            $parentEvent->trip_part_id = $tripPart->id;
-            $parentEvent->details_id = $event->id;
-            $parentEvent->details_type = get_class($event);
-            $parentEvent->severity = "CRITICAL";
-            $parentEvent->save();
-
+            CancellationEventFactory::create($tripPart);
             $tripPart->is_checked = true;
             $tripPart->save();
             return;
         }
 
+        $train = $info["journey_list"][0]["train"];
+        $status = $train["status"];
+        switch ($status) {
+            case 'N':
+                // still to depart
+                break;
+            case 'V':
+                // train is travelling
+                self::handleTravelling($tripPart, $info);
+                break;
+            case 'A':
+                self::handleArrived($tripPart, $info);
+                // train has arrived at destination
+                break;
+            default:
+                break;
+        }
+    }
+
+    static function handleTravelling($tripPart, $info) {
+        $trainId = $tripPart->details->internalTrainId;
         $delay = $info["delay"];
         $train = $info["journey_list"][0]["train"];
         $passList = $info["journey_list"][0]["pass_list"];
-        $status = $train["status"];
-        if($status == "N") {
-            // deve ancora partire
-        } else if ($status == "V") {
-            // in viaggio ?
-            $actualStation = $train["actual_station"];
+        $actualStation = $train["actual_station"];
 
-            foreach($passList as $pl)
+        foreach($passList as $pl)
+        {
+            if((isset($pl["actual_data"]["actual_station_name"])) && ($pl["actual_data"]["actual_station_name"] == $tripPart->to))
             {
-                if((isset($pl["actual_data"]["actual_station_name"])) && ($pl["actual_data"]["actual_station_name"] == $tripPart->to))
-                {
-                    $tripPart->is_checked = true;
-                    $tripPart->save();
+                $tripPart->is_checked = true;
+                $tripPart->save();
 
-                    $event = new GenericInformationEvent;
-                    $event->message = "Train has arrived at " . $pl["actual_data"]["actual_station_name"] ." " . $delay . " minutes late";
-                    $event->save();
+                $message = "Train has arrived at " . $pl["actual_data"]["actual_station_name"] ." " . $delay . " minutes late";
+                GenericInformationEventFactory::create($tripPart, $message);
 
-                    $parentEvent = new Event;
-                    $parentEvent->trip_part_id = $tripPart->id;
-                    $parentEvent->details_id = $event->id;
-                    $parentEvent->details_type = get_class($event);
-                    $parentEvent->severity = "INFO";
-                    $parentEvent->save();
-
-                    Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at ". $pl["actual_data"]["actual_station_name"]));
-                    return ;
-                }
-            }
-
-            $existingEvent = DelayEvent::where([
-                ['station', '=', $actualStation],
-                ['amount', '=', $delay],
-                ['created_at', '>=', Carbon::today()] // make sure only today events are checked
-            ])->first();
-
-            if ($existingEvent) {
+                Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at ". $pl["actual_data"]["actual_station_name"]));
                 return;
             }
-
-            $event = new DelayEvent;
-            $event->amount = $delay;
-            $event->station = $actualStation;
-            $event->save();
-
-            $parentEvent = new Event;
-            $parentEvent->trip_part_id = $tripPart->id;
-            $parentEvent->details_id = $event->id;
-            $parentEvent->details_type = get_class($event);
-            $parentEvent->severity = "WARN";
-            $parentEvent->save();
-
-            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
-        } else if ($status == "A") {
-            $tripPart->is_checked = true;
-            $tripPart->save();
-
-            $event = new GenericInformationEvent;
-            $event->message = "Train has arrived at destination " . $delay . " minutes late";
-            $event->save();
-
-            $parentEvent = new Event;
-            $parentEvent->trip_part_id = $tripPart->id;
-            $parentEvent->details_id = $event->id;
-            $parentEvent->details_type = get_class($event);
-            $parentEvent->severity = "INFO";
-            $parentEvent->save();
-
-            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
         }
+
+        $existingEvent = DelayEvent::where([
+            ['station', '=', $actualStation],
+            ['amount', '=', $delay],
+            ['created_at', '>=', Carbon::today()] // make sure only today events are checked
+        ])->first();
+
+        if ($existingEvent) {
+            return;
+        }
+
+        DelayEventFactory::create($tripPart, $delay, $actualStation);
+
+        Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
+    }
+
+    static function handleArrived($tripPart, $info) {
+        $trainId = $tripPart->details->internalTrainId;
+        $tripPart->is_checked = true;
+        $tripPart->save();
+
+        $delay = $info["delay"];
+        $message = "Train has arrived at destination " . $delay . " minutes late";
+        GenericInformationEventFactory::create($tripPart, $message);
+
+        Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train has arrived at destination"));
     }
 }
