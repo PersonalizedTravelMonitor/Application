@@ -21,7 +21,7 @@ Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCall
 // define a resource route, see official documentation for details on this
 Route::resource('trips','TripController');
 
-Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
+Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','UserReportController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
 
 Route::prefix('search')->name('search.')->group(function () {
     Route::get('/{infoSource}/autocompleteFrom', 'SearchInfoController@autocompleteFrom')->name('autocompleteFrom');
