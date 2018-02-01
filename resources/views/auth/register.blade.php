@@ -8,7 +8,7 @@
     <p class="subtitle has-text-grey">Please register to proceed.</p>
     <div class="box">
       <figure class="avatar">
-        <img src="https://placehold.it/128x128">
+      <img src="https://i.imgur.com/oWaOvLu.png">
       </figure>
       <form method="POST" action={{ route('register') }}>
         {{csrf_field() }}
