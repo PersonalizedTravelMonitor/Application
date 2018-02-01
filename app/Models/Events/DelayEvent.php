@@ -20,7 +20,7 @@ class DelayEvent extends Model
         }
 
         if ($this->amount < 0) {
-            return "<span class=\"tag is-success\">" . $time . "</span> - Advance of " . abs($this->amount) . " minutes at " . $this->station;
+            return "<span class=\"tag is-success\">" . $time . "</span> - " . abs($this->amount) . " minutes early at " . $this->station;
         }
 
         return "<span class=\"tag is-light\">" . $time . "</span> - Train on time at " . $this->station;

@@ -2,7 +2,7 @@
 
 namespace App\Factories;
 
-use App\GenericInformationEvent;
+use App\DelayEvent;
 use App\Event;
 
 class DelayEventFactory {

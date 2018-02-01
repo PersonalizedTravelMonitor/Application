@@ -93,7 +93,9 @@ class TrenordTripPartManager implements TripPartManager
 
         DelayEventFactory::create($tripPart, $delay, $actualStation);
 
-        Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
+        if ($delay > 5) {
+            Notification::send($tripPart->users(), new GenericNotification("New update for train " . $trainId, "Train is " . $delay . " minutes late"));
+        }
     }
 
     static function handleArrived($tripPart, $info) {
