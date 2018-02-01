@@ -72,8 +72,8 @@
             <span>[[ trip.departure_time ]]</span> <span class="icon is-small" ><i class="fas fa-caret-right"></i></span>&nbsp; <span>[[ trip.arrival_time ]]</span>
           </p>
           <div class="card-header-icon">
-            <button class="button id-[[ index ]] selectButton" data-index="[[ index ]]" >
-              <span>Seleziona</span>
+            <button class="button id-[[ index ]] selectButton" data-index="[[ index ]]">
+              <span>Select</span>
             </button>
           </div>
         </header>
@@ -166,7 +166,6 @@
     $.get('{{ route('search.searchSolutions', 'trenord') }}', { "from": from, "to": to, "hours": hours, "minutes": minutes }, function(data){
 
       displaySearchResults(data);
-      $("#btn-search").removeClass("is-loading");
 
     });
     return false;
@@ -203,12 +202,17 @@
 
       $(".results .id-" + i).click(function(){
         $(".selectButton").removeClass("is-info");
-        $(".selectButton").text("Seleziona");
+        $(".selectButton").text("Select");
         $(this).addClass("is-info");
-        $(this).text("Selezionato");
+        $(this).text("Selected");
         selectedSolutions=results[$(this).data("index")];
         // Mostra sezione ripetizione
         $("#repetition-days-section").show();
+        $('html, body').animate({
+          scrollTop: $("#repetition-days-section").offset().top
+        }, 500);
+        $("#btn-search").removeClass("is-loading");
+
       });
 
     }
