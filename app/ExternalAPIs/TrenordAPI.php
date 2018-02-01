@@ -41,7 +41,6 @@ class TrenordAPI
 					case 432:
 						// No compatible solutions
 						return [];
-						break;
 					default:
 						throw $e;
 				}
