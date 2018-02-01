@@ -46,7 +46,7 @@
     <div class="column">
       <span class="icon"><i class="fas fa-clock fa-5x"></i></span>
       <h3 class="is-size-3">Stay up to date</h3>
-      <p>Write and read the report of other users for your schedules. You will never lose any information about your trip!</p>
+      <p>Write and read reports of other users for your scheduled trip. You will never lose any information about your trip!</p>
     </div>
   </div>
 </div>
