@@ -7,7 +7,7 @@
   <div class="card-content content">
     @switch($part->details_type)
       @case("App\TrenordTripPart")
-        On <b>Train {{ $part->details->trainId }}</b> leaving at: {{ $part->details->departure }}
+        - On <b>Train {{ $part->details->trainId }}</b> ({{ $part->details->departure }} -> {{ $part->details->arrival }})
         @break
     @endswitch
     <br>
@@ -31,7 +31,7 @@
     </ul>
     @if ($showUserReport)
       @auth
-        <br>
+        <hr>
         <b class="is-size-5">Create user report</b>
         <form action="{{ route('tripParts.addTravelerReportEvent', [$trip, $part]) }}" method="POST">
           {{ csrf_field() }}

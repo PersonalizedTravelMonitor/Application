@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="title is-4 has-text-centered">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
+<h1 class="title is-4 has-text-centered">Here your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
 
 @if ($trip->orderedParts->count() > 1)
   <br>
