@@ -13,19 +13,41 @@
       <form method="POST" action={{ route('login') }}>
         {{csrf_field() }}
         <div class="field">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
+          <p class="control has-icons-left">
+            <input
+              @if ($errors->has('email'))
+                class="input is-danger"
+              @else
+                class="input"
+              @endif
+              name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
+            @if ($errors->has('email'))
+              <span class="help is-danger">
+                {{ $errors->first('email') }}
+              </span>
+            @endif
           </p>
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input class="input" name="password" id="password" type="password" placeholder="Your Password" required>
+            <input
+              @if ($errors->has('password'))
+                class="input is-danger"
+              @else
+                class="input"
+              @endif
+              name="password" id="password" type="password" placeholder="Your Password" required>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
+            @if ($errors->has('password'))
+              <span class="help is-danger">
+                {{ $errors->first('password') }}
+              </span>
+            @endif
           </p>
         </div>
         <div class="field">
