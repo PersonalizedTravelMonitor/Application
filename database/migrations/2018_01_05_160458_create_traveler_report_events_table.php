@@ -17,7 +17,6 @@ class CreateTravelerReportEventsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            // TODO: improve the model with more details
             $table->string('message');
         });
     }

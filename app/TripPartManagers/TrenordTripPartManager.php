@@ -56,7 +56,6 @@ class TrenordTripPartManager implements TripPartManager
         } else if ($status == "V") {
             // in viaggio ?
             $actualStation = $train["actual_station"];
-            $actualTime = $train["actual_time"];
 
             foreach($passList as $pl)
             {
@@ -87,7 +86,9 @@ class TrenordTripPartManager implements TripPartManager
                 ['created_at', '>=', Carbon::today()] // make sure only today events are checked
             ])->first();
 
-            if ($existingEvent) return ;
+            if ($existingEvent) {
+                return;
+            }
 
             $event = new DelayEvent;
             $event->amount = $delay;
