@@ -32,8 +32,8 @@ Route::prefix('search')->name('search.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
-    Route::get('/announcements/{announcementId}/delete','AdminController@delete')->name('deleteAnnouncement');
-    Route::post('/annoucements/send', 'AdminController@sendAnnouncement')->name('announcement');
+    Route::get('/announcements/{announcement}/delete','AdminController@delete')->name('deleteAnnouncement');
+    Route::post('/announcements/send', 'AdminController@sendAnnouncement')->name('announcement');
 });
 
 Route::post('/saveSubscription', 'NotificationController@saveSubscription')->name('notifications.saveSubscription');
