@@ -120,6 +120,8 @@
       <br><br></h2>
       <h2 class="subtitle is-7">
       Developed for the Software Engineering course - UniMiB 2017/2018
+      <br><br>
+      Contact of the supervisor: s.vitali@campus.unimib.it
     </h2>
       </p>
     </span>
