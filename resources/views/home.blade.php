@@ -168,7 +168,7 @@
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            <span class="icon is-small"><i class="fas fa-info-circle"></i></span>
+              <i class="fas fa-info-circle"></i>&nbsp;
               Statistics for {{ $stats->month }}/{{ $stats->year }}
           </p>
         </header>
