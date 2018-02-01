@@ -61,6 +61,9 @@
             @foreach($trip->repeatingOn as $day)
               {{-- This will get the next $day date and only print the day of the week name, "Monday" for example --}}
               {{ \Carbon\Carbon::now()->next($day)->format('l') }}
+              @if(!$loop->last)
+              -
+              @endif
             @endforeach
 
           @else
@@ -168,7 +171,7 @@
       <div class="card">
         <header class="card-header">
           <p class="card-header-title">
-            <span class="icon is-small"><i class="fas fa-info-circle"></i></span>
+              <i class="fas fa-info-circle"></i>&nbsp;
               Statistics for {{ $stats->month }}/{{ $stats->year }}
           </p>
         </header>
