@@ -18,7 +18,7 @@
       <li class="is-active select-tab" data-tab="train">
         <a>
           <span class="icon is-small"><i class="fa fa-train"></i></span>
-          <span>Train</span>
+          <span>Trenord</span>
         </a>
       </li>
       <li class="select-tab" data-tab="subway">
@@ -43,34 +43,34 @@
   <div id="repetition-days-section" style="display:none">
     <h2 class="title is-4" align="center">Choose wich days to repeat</h2>
     <div class="buttons has-addons is-centered">
-        <span class="button is-selected is-info" id="radio-today" >Just Today
+        <span class="button is-selected is-info" id="button-today" >Just Today
       </span>
-        <span class="button" id="radio-multiple" v >Multiple Days
+        <span class="button" id="button-multiple" v >Multiple Days
       </span>
     </div>
     <br>
 
     <div id="days-list" class="columns is-centered" style="display:none" >
       <div class="column is-narrow">
-        <a class="button is-rounded is-selected is-info">Lunedì</a>
+        <a class="button is-rounded is-selected is-info">Monday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded is-selected is-info">Martedì</a>
+        <a class="button is-rounded is-selected is-info">Tuesday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded is-selected is-info">Mercoledì</a>
+        <a class="button is-rounded is-selected is-info">Wednesday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded is-selected is-info">Giovedì</a>
+        <a class="button is-rounded is-selected is-info">Thursday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded is-selected is-info">Venerdì</a>
+        <a class="button is-rounded is-selected is-info">Friday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Sabato</a>
+        <a class="button is-rounded">Saturday</a>
       </div>
       <div class="column is-narrow">
-        <a class="button is-rounded">Domenica</a>
+        <a class="button is-rounded">Sunday</a>
       </div>
     </div>
     <br>
@@ -104,8 +104,8 @@
 
 <script>
   $(document).ready(function() {
-    $("#radio-multiple").click(function(){
-        $("#radio-today").removeClass("is-selected").removeClass("is-info");
+    $("#button-multiple").click(function(){
+        $("#button-today").removeClass("is-selected").removeClass("is-info");
         $(this).toggleClass("is-selected").toggleClass("is-info");
         $("#days-list").show();
     })
@@ -114,8 +114,8 @@
 
 <script>
   $(document).ready(function() {
-    $("#radio-today").click(function(){
-        $("#radio-multiple").removeClass("is-selected").removeClass("is-info");
+    $("#button-today").click(function(){
+        $("#button-multiple").removeClass("is-selected").removeClass("is-info");
         $(this).toggleClass("is-selected").toggleClass("is-info");
         $("#days-list").hide();
     })
