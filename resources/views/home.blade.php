@@ -47,14 +47,14 @@
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
-      <div class="card">
+      <div class="card" style="display:flex; flex-direction:column; height:100%">
         <header class="card-header">
           <p class="card-header-title">
           <span class="icon is-small"><i class="fa fa-train"></i></span>
           <a href="{{ route('trips.show', $trip) }}" class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</a>
           </p>
         </header>
-        <div class="card-content">
+        <div class="card-content" style="flex:1;">
           <div class="content">
           @if($trip->repeatingOn!=[])
             <b>On days:</b>
