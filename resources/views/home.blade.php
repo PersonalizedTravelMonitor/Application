@@ -11,9 +11,12 @@
   </div>
   </p>
   <hr>
-  <div class="columns is-vcentered">
+  <div class="columns is-centered">
     <div class="column">
-    <h2 class="is-size-2"><span class="icon is-medium"><i class="fas fa-flag-checkered"></i></span>&nbsp; Your Trips</h2>
+      <h2 class="is-size-2 has-text-left">
+        <i class="fas fa-flag-checkered"></i>&nbsp;
+        <span>Your Trips</span>
+      </h2>
     </div>
     <div class="column is-narrow">
       <a href="{{ route("trips.create") }}" class="button is-success is-medium">
@@ -109,7 +112,11 @@
 
   <hr>
 
-  <h2 class="is-size-2 has-text-centered has-text-centered"><span class="icon is-medium"><i class="fas fa-bullhorn"></i>&nbsp; Announcements</h2></span><br>
+  <h2 class="is-size-2 has-text-centered">
+      <i class="fas fa-bullhorn"></i> &nbsp;
+    <span>Announcements</span>
+  </h2>
+  <br>
   <div class="notification is-light">
   Here you can find the announcements of the lines you are following.
   </div>
@@ -118,13 +125,13 @@
     <div class="column is-half">
     <article class="message">
       <div class="message-header">
-        
-        <p>{{ $announcement->title }}</p> 
+
+        <p>{{ $announcement->title }}</p>
         <span align="left">{{ $announcement->created_at->format('d/m/Y H:i') }}
         </span>
-        
+
       </div>
-     
+
       <div class="message-body">
         {{ $announcement->text }}
         <br>
@@ -133,7 +140,7 @@
           <a href="{{ route('admin.deleteAnnouncement', $announcement) }}" >
             <i class="fas fa-trash-alt"></i>
           </a>
-        </div> 
+        </div>
       @endif
       </div>
       </div>
@@ -147,7 +154,11 @@
 
   <hr>
 
-  <h2 class="is-size-2 has-text-centered"><span class="icon is-medium"><i class="fas fa-chart-bar"></i></span>&nbsp;Your Statistics</h2><br>
+  <h2 class="is-size-2 has-text-centered">
+      <i class="fas fa-chart-bar"></i>&nbsp;
+      <span>Your Statistics</span>
+  </h2>
+  <br>
   <div class="notification is-light">
     Here you can find your monthly statistics of the trips you are following.
   </div>
@@ -187,7 +198,7 @@
       $("#subscribed-trip-section").hide();
     });
 
-   
+
   }
 </script>
 @endsection
