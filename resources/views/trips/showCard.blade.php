@@ -32,7 +32,7 @@
     @if ($showUserReport)
       @auth
         <hr>
-        <b class="is-size-5">Create user report</b>
+        <b class="is-size-5">Create user report</b><br><br>
         <form action="{{ route('tripParts.addTravelerReportEvent', [$trip, $part]) }}" method="POST">
           {{ csrf_field() }}
             <div class="columns">
