@@ -13,14 +13,20 @@
       <form method="POST" action={{ route('login') }}>
         {{csrf_field() }}
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left has-icons-right">
             <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left">
             <input class="input" name="password" id="password" type="password" placeholder="Your Password" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
           <label class="checkbox">
