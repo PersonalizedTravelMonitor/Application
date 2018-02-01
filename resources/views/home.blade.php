@@ -118,10 +118,23 @@
     <div class="column is-half">
     <article class="message">
       <div class="message-header">
-        <p>{{ $announcement->title }}</p> <span align="left">{{ $announcement->created_at->format('d/m/Y H:i') }}</span>
+        
+        <p>{{ $announcement->title }}</p> 
+        <span align="left">{{ $announcement->created_at->format('d/m/Y H:i') }}
+        </span>
+        
       </div>
+     
       <div class="message-body">
         {{ $announcement->text }}
+        <br>
+        @if(Auth::user()->isAdmin)
+        <div class="has-text-right">
+          <a href="{{ route('admin.deleteAnnouncement', $announcement) }}" >
+            <i class="fas fa-trash-alt"></i>
+          </a>
+        </div> 
+      @endif
       </div>
       </div>
     </article>
@@ -164,7 +177,7 @@
       <div class="column">Number of events on your trips: {{ $eventsCount }}</div>
     </div>
   </div>
-  <script type="text/javascript">
+<script type="text/javascript">
   if(sessionStorage.getItem("inserted")){
     sessionStorage.removeItem("inserted");
     $("#subscribed-trip-section").show();
@@ -174,7 +187,7 @@
       $("#subscribed-trip-section").hide();
     });
 
-
+   
   }
 </script>
 @endsection

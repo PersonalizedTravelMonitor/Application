@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Exception;
+use App\Exceptions\CantFindTripFieldException;
 use Illuminate\Database\Eloquent\Model;
 
 class Trip extends Model
@@ -18,7 +18,7 @@ class Trip extends Model
             // get the starting point of the first part
             return $this->orderedParts[0]->from;
         } else {
-            throw new Exception('Can\'t get "from" if a trip has no parts');
+            throw new CantFindTripFieldException('Can\'t get "from" if a trip has no parts');
         }
     }
 
@@ -28,7 +28,7 @@ class Trip extends Model
             // get the destination of the last part
             return $this->orderedParts[count($this->parts) - 1]->to;
         } else {
-            throw new Exception('Can\'t get "to" if a trip has no parts');
+            throw new CantFindTripFieldException('Can\'t get "to" if a trip has no parts');
         }
     }
 

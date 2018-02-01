@@ -8,37 +8,62 @@
     <p class="subtitle has-text-grey">Please register to proceed.</p>
     <div class="box">
       <figure class="avatar">
-        <img src="https://placehold.it/128x128">
+      <img src="https://i.imgur.com/oWaOvLu.png">
       </figure>
       <form method="POST" action={{ route('register') }}>
         {{csrf_field() }}
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left has-icons-right">
             <input class="input" name="name" value="{{old('name') }}" id="name" type="text" placeholder="Your Name" autofocus="" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-pencil-alt"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left has-icons-right">
             <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left">
             <input class="input" name="password" id="password" type="password" placeholder="Your Password" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left">
             <input class="input" name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Your Password" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
-        <button type="submit" class="button is-block is-info is-fullwidth">
-          Register
+        <button type="submit" class="button is-info is-fullwidth">
+          <span>Register</span>
+          <span class="icon">
+            <i class="fas fa-user-plus"></i>
+          </span>
         </button>
       </form>
       <hr>
-      <a class="button" href="{{ route('social.login', 'google') }}">Login with Google</a>
-      <a class="button" href="{{ route('social.login', 'twitter') }}">Login with Twitter</a>
+      <a class="button is-rounded" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
+        <span class="icon">
+          <i class="fab fa-google"></i>
+        </span>
+        <span>Login with Google</span>
+      </a>
+      <a class="button is-rounded" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
+        <span class="icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+        <span>Login with Twitter</span>
+      </a>
     </div>
     <p class="has-text-grey">
       <a href="{{ route('login') }}">Login</a>

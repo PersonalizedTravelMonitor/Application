@@ -20,7 +20,6 @@ class GenericNotification extends Notification
      */
     public function __construct($title, $body)
     {
-        //
         $this->title = $title;
         $this->body = $body;
     }
@@ -38,7 +37,6 @@ class GenericNotification extends Notification
 
     public function toWebPush($notifiable, $notification)
     {
-        $time = \Carbon\Carbon::now();
         return (new WebPushMessage)
             ->title($this->title)
             ->icon(url('/img/logo.png'))

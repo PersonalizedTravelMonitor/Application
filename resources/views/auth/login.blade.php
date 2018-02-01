@@ -13,14 +13,20 @@
       <form method="POST" action={{ route('login') }}>
         {{csrf_field() }}
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left has-icons-right">
             <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
-          <div class="control">
+          <p class="control has-icons-left">
             <input class="input" name="password" id="password" type="password" placeholder="Your Password" required>
-          </div>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </p>
         </div>
         <div class="field">
           <label class="checkbox">
@@ -28,13 +34,26 @@
             Remember me
           </label>
         </div>
-        <button type="submit" class="button is-block is-info is-fullwidth">
-          Login
+        <button type="submit" class="button is-info is-fullwidth">
+          <span>Login</span>
+          <span class="icon">
+            <i class="fas fa-sign-out-alt"></i>
+          </span>
         </button>
       </form>
       <hr>
-      <a class="button" href="{{ route('social.login', 'google') }}">Login with Google</a>
-      <a class="button" href="{{ route('social.login', 'twitter') }}">Login with Twitter</a>
+      <a class="button is-rounded" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
+        <span class="icon">
+          <i class="fab fa-google"></i>
+        </span>
+        <span>Login with Google</span>
+      </a>
+      <a class="button is-rounded" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
+        <span class="icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+        <span>Login with Twitter</span>
+      </a>
     </div>
     <p class="has-text-grey">
       <a href="{{ route('register') }}">Sign Up</a> &nbsp;·&nbsp;
