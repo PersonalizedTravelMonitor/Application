@@ -7,13 +7,15 @@ use Illuminate\Http\Request;
 
 class SearchInfoController extends Controller
 {
+    const ERROR_INVALID_SOURCE = "Error: Invalid Source Specified";
+
     protected $infoSources = [
         'trenord' => TrenordSearchInfoProvider::class
     ];
 
     public function autocompleteFrom($infoSource, Request $request) {
         if (!isset($this->infoSources[$infoSource])) {
-            return "INVALID INFO SOURCE";
+            return self::ERROR_INVALID_SOURCE;
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
@@ -22,7 +24,7 @@ class SearchInfoController extends Controller
 
     public function autocompleteTo($infoSource, Request $request) {
         if (!isset($this->infoSources[$infoSource])) {
-            return "INVALID INFO SOURCE";
+            return self::ERROR_INVALID_SOURCE;
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
@@ -31,7 +33,7 @@ class SearchInfoController extends Controller
 
     public function searchSolutions($infoSource, Request $request) {
         if (!isset($this->infoSources[$infoSource])) {
-            return "INVALID INFO SOURCE";
+            return self::ERROR_INVALID_SOURCE;
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
