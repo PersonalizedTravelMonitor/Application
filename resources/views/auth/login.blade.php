@@ -28,18 +28,21 @@
             Remember me
           </label>
         </div>
-        <button type="submit" class="button is-block is-info is-fullwidth">
-          Login
+        <button type="submit" class="button is-info is-fullwidth">
+          <span>Login</span>
+          <span class="icon">
+            <i class="fas fa-sign-out-alt"></i>
+          </span>
         </button>
       </form>
       <hr>
-      <a class="button" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
+      <a class="button is-rounded" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
         <span class="icon">
           <i class="fab fa-google"></i>
         </span>
         <span>Login with Google</span>
       </a>
-      <a class="button" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
+      <a class="button is-rounded" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
         <span class="icon">
           <i class="fab fa-twitter"></i>
         </span>

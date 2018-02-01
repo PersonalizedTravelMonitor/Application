@@ -32,18 +32,21 @@
             <input class="input" name="password_confirmation" id="password_confirmation" type="password" placeholder="Confirm Your Password" required>
           </div>
         </div>
-        <button type="submit" class="button is-block is-info is-fullwidth">
-          Register
+        <button type="submit" class="button is-info is-fullwidth">
+          <span>Register</span>
+          <span class="icon">
+            <i class="fas fa-user-plus"></i>
+          </span>
         </button>
       </form>
       <hr>
-      <a class="button" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
+      <a class="button is-rounded" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
         <span class="icon">
           <i class="fab fa-google"></i>
         </span>
         <span>Login with Google</span>
       </a>
-      <a class="button" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
+      <a class="button is-rounded" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
         <span class="icon">
           <i class="fab fa-twitter"></i>
         </span>
