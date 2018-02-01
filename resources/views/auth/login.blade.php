@@ -55,9 +55,8 @@
         <span>Login with Twitter</span>
       </a>
     </div>
-    <p class="has-text-grey">
-      <a href="{{ route('register') }}">Sign Up</a> &nbsp;·&nbsp;
-      <a href="{{ route('password.request') }}/">Forgot Password</a> &nbsp;·&nbsp;
+    <p class="has-text-gray">
+      <a href="{{ route('register') }}">Sign Up</a>
     </p>
   </div>
 </div>

@@ -22,7 +22,7 @@
         </div>
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" autofocus="" required>
+            <input class="input" name="email" value="{{old('email') }}" id="email" type="email" placeholder="Your Email" required>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
