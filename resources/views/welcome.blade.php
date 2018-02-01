@@ -36,17 +36,17 @@
         <i class="fas fa-train fa-5x"></i>
       </span>
       <h3 class="is-size-3">Follow Trips</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus rem provident, sapiente ea eaque enim debitis eos accusantium nesciunt!</p>
+      <p>Search for your usual trip and schedule it on the days you want!</p>
     </div>
     <div class="column">
       <span class="icon"><i class="fas fa-bell fa-5x"></i></span>
       <h3 class="is-size-3">Get Notified</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus rem provident, sapiente ea eaque enim debitis eos accusantium nesciunt!</p>
+      <p>Receive notifications about delays, modifications or alerts for your programmed trips!</p>
     </div>
     <div class="column">
       <span class="icon"><i class="fas fa-clock fa-5x"></i></span>
       <h3 class="is-size-3">Stay up to date</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit repellendus rem provident, sapiente ea eaque enim debitis eos accusantium nesciunt!</p>
+      <p>Write and read the report of other users for your schedules. You will never lose any information about your trip!</p>
     </div>
   </div>
 </div>
