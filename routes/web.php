@@ -21,7 +21,7 @@ Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCall
 // define a resource route, see official documentation for details on this
 Route::resource('trips','TripController');
 
-Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','TripPartController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
+Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','UserReportController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
 
 Route::prefix('search')->name('search.')->group(function () {
     Route::get('/{infoSource}/autocompleteFrom', 'SearchInfoController@autocompleteFrom')->name('autocompleteFrom');
@@ -32,7 +32,8 @@ Route::prefix('search')->name('search.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
-    Route::post('/annoucements/send', 'AdminController@sendAnnouncement')->name('announcement');
+    Route::get('/announcements/{announcement}/delete','AdminController@delete')->name('deleteAnnouncement');
+    Route::post('/announcements/send', 'AdminController@sendAnnouncement')->name('announcement');
 });
 
 Route::post('/saveSubscription', 'NotificationController@saveSubscription')->name('notifications.saveSubscription');
