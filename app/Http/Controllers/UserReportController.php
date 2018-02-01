@@ -12,6 +12,12 @@ use Auth;
 
 class UserReportController extends Controller
 {
+
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 	public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
         $travelerReportEvent = new TravelerReportEvent;
         $travelerReportEvent->message = $request->message;
