@@ -18,8 +18,8 @@
         </h2>
         <br>
         <p class="has-text-centered">
-          <a class="button is-medium is-info is-outlined">
-            Learn more
+          <a href="#LearnMore" class="button is-medium is-info is-outlined">
+          <span>Learn More</span>
           </a>
         </p>
       </div>
@@ -28,6 +28,7 @@
 </div>
 <hr>
 <br><br>
+<a name="LearnMore"></a>
 <div class="container">
   <div class="columns has-text-centered">
     <div class="column">
