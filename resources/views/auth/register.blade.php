@@ -37,8 +37,18 @@
         </button>
       </form>
       <hr>
-      <a class="button" href="{{ route('social.login', 'google') }}">Login with Google</a>
-      <a class="button" href="{{ route('social.login', 'twitter') }}">Login with Twitter</a>
+      <a class="button" style="background-color:#db4437; color:white" href="{{ route('social.login', 'google') }}">
+        <span class="icon">
+          <i class="fab fa-google"></i>
+        </span>
+        <span>Login with Google</span>
+      </a>
+      <a class="button" style="background-color:#5baaf4; color:white" href="{{ route('social.login', 'twitter') }}">
+        <span class="icon">
+          <i class="fab fa-twitter"></i>
+        </span>
+        <span>Login with Twitter</span>
+      </a>
     </div>
     <p class="has-text-grey">
       <a href="{{ route('login') }}">Login</a>
