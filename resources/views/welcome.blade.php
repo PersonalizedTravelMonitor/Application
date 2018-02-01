@@ -6,7 +6,7 @@
     <div class="columns is-vcentered">
       <div class="column is-5">
         <figure class="image is-4by3">
-          <img src="https://i.imgur.com/poQbpiC.png" alt="Description">
+          <img src="{{ asset('img/logoHome.png') }}" alt="Description">
         </figure>
       </div>
       <div class="column is-6 is-offset-1">
