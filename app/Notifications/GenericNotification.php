@@ -39,7 +39,7 @@ class GenericNotification extends Notification
     {
         return (new WebPushMessage)
             ->title($this->title)
-            ->icon(url('/img/logo.png'))
+            ->icon(url('/img/logo-transparent.png'))
             ->body($this->body);
     }
 }

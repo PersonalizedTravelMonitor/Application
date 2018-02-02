@@ -94,7 +94,7 @@
                 </ul>
               @else
                 @if (\Carbon\Carbon::createFromFormat('H:i:s', $part->details->departure)->diffInMinutes(\Carbon\Carbon::now(), false) > 15)
-                  <p>There are no updates on your trip, event if it should have already departed, maybe something is wrong with the Provider API</p>
+                  <p>There are no updates on your trip, even if it should have already departed, maybe something is wrong with the Provider API</p>
                 @endif
               @endif
             </li>
