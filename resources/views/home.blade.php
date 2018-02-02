@@ -3,7 +3,8 @@
 @section('content')
   <div class="columns">
     <div class="column">
-      <h1 class="title is-1 has-text-centered">Dashboard</h1>
+      <h1 class="title is-2 has-text-centered">Dashboard</h1>
+      <h2 class="subtitle has-text-centered">Personalized Travel Monitor</h2>
       <h2 class="subtitle is-6">Welcome, <b>{{ Auth::user()->name }}</b>!</h2>
     </div>
     <div class="column is-narrow">
