@@ -5,6 +5,7 @@ namespace App\ExternalAPIs;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Carbon\Carbon;
+use Exception;
 
 class TrenordAPI
 {
