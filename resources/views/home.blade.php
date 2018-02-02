@@ -191,7 +191,7 @@
           </div>
           </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Più informazioni</a>
+          <a href="#" class="card-footer-item">More info</a>
         </footer>
       </div>
     </div>
