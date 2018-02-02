@@ -15,8 +15,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $json = Storage::disk('local')->get('trenord_stations.json');
         $stations = json_decode($json, true);
 
-        $filteredStations = self::filterStations($stations, $partialFrom);
-        return $filteredStations;
+        return self::filterStations($stations, $partialFrom);
     }
 
     public static function autocompleteTo($partialTo) {
@@ -28,7 +27,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $to = strtoupper(trim($to));
 
         if ($from==$to) {
-            self::autocompleteFrom($from);
+            return [];
         }
 
         try {
@@ -59,9 +58,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
             return [];
         }
 
-        $cleanedupResults = TrenordSearchResultsCleaner::cleanupSearchResults($searchResults);
-
-        return response()->json($cleanedupResults);
+        return TrenordSearchResultsCleaner::cleanupSearchResults($searchResults);
     }
 
     static function filterStations($stations, $partial) {

@@ -37,6 +37,6 @@ class SearchInfoController extends Controller
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
-        return $searchInfoProvider::searchSolutions($request->from, $request->to, $request->hours, $request->minutes);
+        return esponse()->json($searchInfoProvider::searchSolutions($request->from, $request->to, $request->hours, $request->minutes));
     }
 }
