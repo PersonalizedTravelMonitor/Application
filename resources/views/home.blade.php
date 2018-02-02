@@ -81,12 +81,16 @@
                   Train {{ $part->details->trainId }} @ {{ $part->details->departure }}
                   @break
               @endswitch
-              @if ($part->events->count() > 0)
+              @if ($part->todayEvents->count() > 0)
                 <ul>
                   <li>
                     {!! $part->latestEvent()->details->toHTML() !!}
                   </li>
                 </ul>
+              @else
+                @if (\Carbon\Carbon::createFromFormat('H:i:s', $part->details->departure)->diffInMinutes(\Carbon\Carbon::now(), false) > 15)
+                  <p>There are no updates on your trip, event if it should have already departed, maybe something is wrong with the Provider API</p>
+                @endif
               @endif
             </li>
           @empty

@@ -19,7 +19,7 @@ class TripPart extends Model
     }
 
     public function latestEvent() {
-        return $this->events()->orderBy('created_at', 'DESC')->first();
+        return $this->todayEvents()->orderBy('created_at', 'DESC')->first();
     }
 
     public function events()
