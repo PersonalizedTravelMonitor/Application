@@ -19,7 +19,7 @@ class SearchInfoController extends Controller
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
-        return $searchInfoProvider::autocompleteFrom($request->term);
+        return response()->json($searchInfoProvider::autocompleteFrom($request->term));
     }
 
     public function autocompleteTo($infoSource, Request $request) {
@@ -28,7 +28,7 @@ class SearchInfoController extends Controller
         }
 
         $searchInfoProvider = $this->infoSources[$infoSource];
-        return $searchInfoProvider::autocompleteTo($request->term);
+        return response()->json($searchInfoProvider::autocompleteTo($request->term));
     }
 
     public function searchSolutions($infoSource, Request $request) {

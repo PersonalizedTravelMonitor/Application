@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use DateTimeZone;
 use App\ExternalAPIs\TrenordAPI;
 use App\ExternalAPIs\TrenordSearchResultsCleaner;
+use Exception;
 
 class TrenordSearchInfoProvider implements SearchInfoProvider
 {
@@ -15,7 +16,7 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $stations = json_decode($json, true);
 
         $filteredStations = self::filterStations($stations, $partialFrom);
-        return response()->json($filteredStations);
+        return $filteredStations;
     }
 
     public static function autocompleteTo($partialTo) {
@@ -23,7 +24,40 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
     }
 
     public static function searchSolutions($from, $to, $hours, $minutes) {
-        $searchResults = TrenordAPI::search($from,$to,Carbon::createFromTime($hours, $minutes, 0, 'Europe/Rome'));
+        $from = strtoupper(trim($from));
+        $to = strtoupper(trim($to));
+
+        if ($from==$to) {
+            self::autocompleteFrom($from);
+        }
+
+        try {
+            $resultsFrom = self::autocompleteFrom($from);
+            $resultsTo = self::autocompleteTo($to);
+            $flag = false;
+            foreach ($resultsFrom as $fromSuggestion) {
+                if ($fromSuggestion['label'] == $from) {
+                    $flag = true;
+                    break;
+                }
+            }
+            if (!$flag) {
+                return [];
+            }
+            $flag = false;
+            foreach ($resultsTo as $toSuggestion) {
+                if ($toSuggestion['label'] == $to) {
+                    $flag = true;
+                }
+            }
+            if (!$flag) {
+                return [];
+            }
+
+            $searchResults = TrenordAPI::search($from,$to,Carbon::createFromTime($hours, $minutes, 0, 'Europe/Rome'));
+        } catch (Exception $e) {
+            return [];
+        }
 
         $cleanedupResults = TrenordSearchResultsCleaner::cleanupSearchResults($searchResults);
 
