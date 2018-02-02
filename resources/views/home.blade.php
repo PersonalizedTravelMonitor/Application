@@ -35,7 +35,10 @@
 
   <article id="subscribed-trip-section" style="display:none" class="message is-success">
     <div class="message-header">
-      <p>Success</p>
+      <p>
+        <i class="fas fa-check"></i>&nbsp;
+        Success
+      </p>
       <button class="delete" aria-label="delete" id="delete-message"></button>
     </div>
     <div class="message-body">
