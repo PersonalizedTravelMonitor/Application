@@ -29,7 +29,7 @@
   </div>
   <div class="notification is-light">
       Here you find the trips you are following.
-      You can view details, edit or delete them.
+      You can view details or delete them.
   </div>
 
 
