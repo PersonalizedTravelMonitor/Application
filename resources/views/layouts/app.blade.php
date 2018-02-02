@@ -51,7 +51,7 @@
         <a class="navbar-item" href="/">
         <img src={{ asset('img/logoNav.svg') }} alt="Logo" ></img>
         </a>
-        <button class="button navbar-burger" data-target="navMenu">
+        <button class="button navbar-burger" data-target="navMenu" style="border:0;outline: 0;box-shadow: none;">
           <span></span>
           <span></span>
           <span></span>
