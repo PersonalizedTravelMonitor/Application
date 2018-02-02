@@ -18,7 +18,7 @@
         <li>
           {!! $event->details->toHTML() !!}
           @auth
-            @if((Auth::user()->isAdmin)&&($event->details->message!=[]))
+            @if((Auth::user()->isAdmin)&&($event->details_type=="App\TravelerReportEvent")) 
               <span class="has-text-right" >
               <a href="{{ route('tripParts.removeTravelerReportEvent', [$trip, $part, $event]) }}" >
                 <i class="fas fa-trash-alt has-text-danger"></i>
