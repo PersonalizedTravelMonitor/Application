@@ -17,7 +17,7 @@ class CreateGenericInformationEventsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('message');
+            $table->text('message');
         });
     }
 

@@ -18,8 +18,8 @@ class CreateDelayEventsTable extends Migration
             $table->timestamps();
 
             $table->string('amount')->nullable();
-            $table->string('station')->nullable();
-            $table->string('cause')->nullable();
+            $table->text('station')->nullable();
+            $table->text('cause')->nullable();
         });
     }
 

@@ -17,7 +17,7 @@ class CreateCancellationEventsTable extends Migration
             $table->increments('id');
             $table->timestamps();
 
-            $table->string('cause')->nullable();
+            $table->text('cause')->nullable();
         });
     }
 

@@ -16,8 +16,8 @@ class CreateTripPartsTable extends Migration
         Schema::create('trip_parts', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('from');
-            $table->string('to');
+            $table->text('from');
+            $table->text('to');
 
             // this will be used to store the type of the child (TrenordTripPart, MetroTripPart) and its id on the corresponding table
             $table->integer('details_id')->unsigned();
