@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Trip;
+use App\TripPart;
+
 
 class CleanupDB extends Command
 {
@@ -30,5 +32,6 @@ class CleanupDB extends Command
     {
         // remove trips that are not repeating
         Trip::where('repeatingOn', '=', '[]')->delete();
+        TripPart::where('is_checked', '=', true)->update(['is_checked' => false]);
     }
 }
