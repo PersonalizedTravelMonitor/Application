@@ -13,12 +13,12 @@ use Auth;
 class UserReportController extends Controller
 {
 
-	public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
     }
-    
-	public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
+
+    public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
         $travelerReportEvent = new TravelerReportEvent;
         $travelerReportEvent->message = $request->message;
         $travelerReportEvent->author_id = Auth::user()->id;
@@ -38,7 +38,7 @@ class UserReportController extends Controller
 
     public function removeTravelerReportEvent(Trip $trip, TripPart $tripPart, TravelerReportEvent $reportEvent) {
         $genericEvent = $reportEvent->event();
-        $genericEvent->delete(); 
+        $genericEvent->delete();
         $reportEvent->delete();
         return redirect()->route('trips.show', $trip);
 
