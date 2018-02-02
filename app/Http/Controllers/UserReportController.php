@@ -20,7 +20,7 @@ class UserReportController extends Controller
 
     public function addTravelerReportEvent(Trip $trip, TripPart $tripPart, Request $request) {
         $travelerReportEvent = new TravelerReportEvent;
-        $travelerReportEvent->message = $request->message;
+        $travelerReportEvent->message = strip_tags($request->message);
         $travelerReportEvent->author_id = Auth::user()->id;
 
         $travelerReportEvent->save();
