@@ -127,14 +127,14 @@
         var  subscribeResult = $.post("{{route('trips.store')}}",{"trip": selectedSolutions  , "repetition": repetitionDays});
 
         subscribeResult.done(function (data, textStatus, jqXHR){
-          $("#btn-subscribe").removeClass("is-loading");
           sessionStorage.setItem("inserted",true);
           sessionStorage.setItem("message","The trip was correctly submitted");
           $(window.location).attr('href', "{{route('home')}}");
+          $("#btn-subscribe").removeClass("is-loading");
         })
         subscribeResult.fail(function( jqXHR, textStatus, errorThrown ) {
-          $("#btn-subscribe").removeClass("is-loading");
           alert("Something bad happened sendind the request");
+          $("#btn-subscribe").removeClass("is-loading");
         });
       }
     });
@@ -166,7 +166,7 @@
     $.get('{{ route('search.searchSolutions', 'trenord') }}', { "from": from, "to": to, "hours": hours, "minutes": minutes }, function(data){
 
       displaySearchResults(data);
-
+      $("#btn-search").removeClass("is-loading");
     });
     return false;
   }
