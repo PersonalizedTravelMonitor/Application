@@ -36,10 +36,10 @@ class UserReportController extends Controller
     }
 
 
-    public function removeTravelerReportEvent(Trip $trip, TripPart $tripPart, TravelerReportEvent $reportEvent) {
-        $genericEvent = $reportEvent->event();
-        $genericEvent->delete();
-        $reportEvent->delete();
+    public function removeTravelerReportEvent(Trip $trip, TripPart $tripPart, Event $event) {
+        $travelReport = $event->details;
+        $travelReport->delete();
+        $event->delete();
         return redirect()->route('trips.show', $trip);
 
     }
