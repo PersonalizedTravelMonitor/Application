@@ -33,6 +33,8 @@ Route::prefix('search')->name('search.')->group(function () {
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', 'AdminController@index')->name('index');
+    Route::get('trips/', 'AdminController@trips')->name('trips');
+    Route::get('users/', 'AdminController@users')->name('users');
     Route::get('/announcements/{announcement}/delete','AdminController@delete')->name('deleteAnnouncement');
     Route::post('/announcements/send', 'AdminController@sendAnnouncement')->name('announcement');
 });

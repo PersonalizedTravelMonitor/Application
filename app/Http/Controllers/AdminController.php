@@ -36,6 +36,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function trips()
+    {
+        return view('admin.trips');
+    }
+
+    public function users()
+    {
+        return view('admin.users');
+    }
+
     public function sendAnnouncement(Request $request)
     {
         $announcement = new Announcement;

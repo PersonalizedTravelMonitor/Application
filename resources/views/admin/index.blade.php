@@ -17,7 +17,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Show</a>
+          <a href="{{ route('admin.users') }}" class="card-footer-item" target="_blank">Show Users</a>
         </footer>
       </div>
     </div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Show</a>
+          <a href="{{ route('admin.trips') }}" target="_blank" class="card-footer-item">Show Trips</a>
         </footer>
       </div>
     </div>
