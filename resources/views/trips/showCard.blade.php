@@ -17,13 +17,13 @@
       @forelse($part->getEventsForDate($date) as $event)
         <li>
           {!! $event->details->toHTML() !!}
-           @if(Auth::user()->isAdmin)
-              <span class="has-text-right">
-              <a  href="{{ route('tripParts.removeTravelerReportEvent', [$trip, $part, $event]) }}" >
-                <i class="fas fa-trash-alt"></i>
-              </a>
-            </span>
-            @endif
+          @if((Auth::user()->isAdmin)&&($event->details->message!=[])) 
+            <span class="has-text-right" >
+            <a href="{{ route('tripParts.removeTravelerReportEvent', [$trip, $part, $event]) }}" >
+              <i class="fas fa-trash-alt has-text-danger"></i>
+            </a>
+          </span>
+          @endif
         </li>
       @empty
         No events for this trip part
