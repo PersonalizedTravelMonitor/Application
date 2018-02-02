@@ -22,7 +22,7 @@ Route::get('/auth/{provider}/callback', 'Auth\LoginController@handleProviderCall
 Route::resource('trips','TripController');
 
 Route::post('tripParts/{trip}/{tripPart}/travelerReportEvent','UserReportController@addTravelerReportEvent')->name('tripParts.addTravelerReportEvent');
-Route::get('tripParts/{trip}/{tripPart}/travelerReportEvent/{reportEvent}/delete','UserReportController@removeTravelerReportEvent')->name('tripParts.removeTravelerReportEvent');
+Route::get('trips/{trip}/tripParts/{tripPart}/travelerReportEvent/{event}/delete','UserReportController@removeTravelerReportEvent')->name('tripParts.removeTravelerReportEvent');
 
 Route::prefix('search')->name('search.')->group(function () {
     Route::get('/{infoSource}/autocompleteFrom', 'SearchInfoController@autocompleteFrom')->name('autocompleteFrom');
