@@ -124,7 +124,7 @@
 
   <hr>
 
-  <h2 class="is-size-2 has-text-centered">
+  <h2 class="is-size-2">
       <i class="fas fa-bullhorn"></i> &nbsp;
     <span>Announcements</span>
   </h2>
@@ -166,7 +166,7 @@
 
   <hr>
 
-  <h2 class="is-size-2 has-text-centered">
+  <h2 class="is-size-2">
       <i class="fas fa-chart-bar"></i>&nbsp;
       <span>Your Statistics</span>
   </h2>
