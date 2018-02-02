@@ -8,6 +8,7 @@ use App\TripPart;
 use App\TripPartManagers\TrenordTripPartManager;
 use Auth;
 use Illuminate\Http\Request;
+use Exception;
 
 class TripController extends Controller
 {
