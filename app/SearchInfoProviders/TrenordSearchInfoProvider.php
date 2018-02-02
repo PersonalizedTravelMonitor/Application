@@ -26,33 +26,13 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         $from = strtoupper(trim($from));
         $to = strtoupper(trim($to));
 
-        if ($from==$to) {
+        if ($from==$to ||
+            !self::checkIfValidStation($from, self::autocompleteFrom($from)) ||
+            !self::checkIfValidStation($to, self::autocompleteTo($to)) ) {
             return [];
         }
 
         try {
-            $resultsFrom = self::autocompleteFrom($from);
-            $resultsTo = self::autocompleteTo($to);
-            $flag = false;
-            foreach ($resultsFrom as $fromSuggestion) {
-                if ($fromSuggestion['label'] == $from) {
-                    $flag = true;
-                    break;
-                }
-            }
-            if (!$flag) {
-                return [];
-            }
-            $flag = false;
-            foreach ($resultsTo as $toSuggestion) {
-                if ($toSuggestion['label'] == $to) {
-                    $flag = true;
-                }
-            }
-            if (!$flag) {
-                return [];
-            }
-
             $searchResults = TrenordAPI::search($from,$to,Carbon::createFromTime($hours, $minutes, 0, 'Europe/Rome'));
         } catch (Exception $e) {
             return [];
@@ -61,11 +41,21 @@ class TrenordSearchInfoProvider implements SearchInfoProvider
         return TrenordSearchResultsCleaner::cleanupSearchResults($searchResults);
     }
 
+    static function checkIfValidStation($stationName, $stations) {
+        $flag = false;
+        foreach ($stations as $station) {
+            if ($station['label'] == $stationName) {
+                $flag = true;
+            }
+        }
+        return $flag;
+    }
+
     static function filterStations($stations, $partial) {
         $partial = strtoupper($partial);
         // extract only values from the composite array returned
         return array_values(array_filter($stations, function ($station) use($partial) {
-            return preg_match("/(^|\b)" . $partial . "/i", $station['label']);
+            return preg_match("/(^|\b)" . preg_quote($partial) . "/i", $station['label']);
         }));
     }
 }
