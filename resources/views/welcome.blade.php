@@ -5,7 +5,7 @@
   <div class="container has-text-centered">
     <div class="columns is-vcentered">
       <div class="column is-5">
-        <figure class="image is-4by3">
+        <figure class="image">
           <img src="{{ asset('img/logoHome.png') }}" alt="Description">
         </figure>
       </div>
