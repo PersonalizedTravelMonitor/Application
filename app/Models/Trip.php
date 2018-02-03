@@ -55,4 +55,19 @@ class Trip extends Model
         $this->tripPartsInOrder = array_merge($this->tripPartsInOrder, [$value]);
     }
 
+    public function isActiveToday() {
+        if (sizeof($this->repeatingOn) == 0) {
+            return true;
+        }
+
+        foreach($this->repeatingOn as $day)
+        {
+            if(\Carbon\Carbon::now()->dayOfWeek == $day)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

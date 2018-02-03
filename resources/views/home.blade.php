@@ -52,11 +52,20 @@
   <div class="columns is-multiline is-centered">
   @forelse(Auth::user()->trips as $trip)
     <div class="column is-half">
-      <div class="card" style="display:flex; flex-direction:column; height:100%">
+      <div class="card" style="display:flex; flex-direction:column; height:100%;
+        @if(!$trip->isActiveToday())
+          opacity:0.5;
+        @endif
+      ">
         <header class="card-header">
           <p class="card-header-title">
           <span class="icon is-small"><i class="fa fa-train"></i></span>
-          <a href="{{ route('trips.show', $trip) }}" class="level-item card-header-title">{{ $trip->from() }} - {{ $trip->to() }}</a>
+          <a href="{{ route('trips.show', $trip) }}" class="level-item card-header-title">
+            {{ $trip->from() }} - {{ $trip->to() }}
+            @if(!$trip->isActiveToday())
+              (Not followed for this weekday)
+            @endif
+          </a>
           </p>
         </header>
         <div class="card-content" style="flex:1;">
@@ -93,8 +102,10 @@
                   </li>
                 </ul>
               @else
-                @if (\Carbon\Carbon::createFromFormat('H:i:s', $part->details->departure)->diffInMinutes(\Carbon\Carbon::now(), false) > 15)
-                  <p>There are no updates on your trip, even if it should have already departed, maybe something is wrong with the Provider API</p>
+                @if ($trip->isActiveToday())
+                  @if (\Carbon\Carbon::createFromFormat('H:i:s', $part->details->departure)->diffInMinutes(\Carbon\Carbon::now(), false) > 15)
+                    <p>There are no updates on your trip, even if it should have already departed, maybe something is wrong with the Provider API</p>
+                  @endif
                 @endif
               @endif
             </li>
