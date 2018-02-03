@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="title is-4 has-text-centered">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
+  <h1 class="title is-4">Your trip from {{ $trip->from() }} to {{ $trip->to() }}</h1>
 
 @if ($trip->orderedParts->count() > 1)
   <br>
@@ -24,6 +24,9 @@
   This should never happen
 @endforelse
 </div>
+
+<h2 class="is-size-4">Share your trip</h2>
+@include("share")
 
 <hr>
 <h2 class="title is-4">Yesterday Report</h2>
