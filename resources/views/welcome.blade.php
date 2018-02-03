@@ -53,8 +53,10 @@
   </div>
 </div>
 <br><br>
+<hr>
 <div class="has-text-centered">
-  <h4 class="is-size-4">Evolution of the source code</h4>
+  <h4 class="is-size-3">Evolution of the source code</h4>
+  <br>
   <video style="width:50%" controls>
     <source src="{{ asset('video/output.mp4') }}" type="video/mp4">
     Your browser does not support the video tag.
