@@ -175,7 +175,7 @@
     results = results.slice(0, 4);
     $(".results").empty();
     if(results.length==0){
-      $(".results").text("No compatible solutions found; the only provider supported, at the moment, is Trenord");
+      $(".results").html("<br>No compatible solutions found; the only provider supported, at the moment, is Trenord!");
       return;
     }
 
