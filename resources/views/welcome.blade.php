@@ -1,31 +1,33 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="hero-body">
-  <div class="container has-text-centered">
-    <div class="columns is-vcentered">
-      <div class="column is-5">
-        <figure class="image">
-          <img src="{{ asset('img/logoHome.svg') }}" alt="Description">
-        </figure>
-      </div>
-      <div class="column is-6 is-offset-1">
-        <h1 class="title is-2">
-          Personalized Travel Monitor
-        </h1>
-        <h2 class="subtitle is-4">
-          Follow your trips, get notified and stay up to date!
-        </h2>
-        <br>
-        <p class="has-text-centered">
-          <a href="#LearnMore" class="button is-medium is-info is-outlined">
-          <span>Learn More</span>
-          </a>
-        </p>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <div class="columns is-vcentered">
+        <div class="column is-5">
+          <figure class="image">
+            <img src="{{ asset('img/logoHome.svg') }}" alt="Description">
+          </figure>
+        </div>
+        <div class="column is-6 is-offset-1">
+          <h1 class="title is-2">
+            Personalized Travel Monitor
+          </h1>
+          <h2 class="subtitle is-4">
+            Follow your trips, get notified and stay up to date!
+          </h2>
+          <br>
+          <p class="has-text-centered">
+            <a href="{{route('register')}}" class="button is-medium is-info is-outlined">
+            <span>Join Now</span>
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 <hr>
 <br><br>
 <a name="LearnMore"></a>
@@ -50,5 +52,4 @@
     </div>
   </div>
 </div>
-</section>
 @endsection
