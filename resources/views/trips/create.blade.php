@@ -52,6 +52,9 @@
 
     <div id="days-list" class="columns is-centered" style="display:none" >
       <div class="column is-narrow">
+        <a class="button is-rounded">Sunday</a>
+      </div>
+      <div class="column is-narrow">
         <a class="button is-rounded is-selected is-info">Monday</a>
       </div>
       <div class="column is-narrow">
@@ -68,9 +71,6 @@
       </div>
       <div class="column is-narrow">
         <a class="button is-rounded">Saturday</a>
-      </div>
-      <div class="column is-narrow">
-        <a class="button is-rounded">Sunday</a>
       </div>
     </div>
     <br>
