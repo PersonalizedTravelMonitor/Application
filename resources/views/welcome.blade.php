@@ -52,4 +52,12 @@
     </div>
   </div>
 </div>
+<br><br>
+<div class="has-text-centered">
+  <h4 class="is-size-4">Evolution of the source code</h4>
+  <video style="width:50%" controls>
+    <source src="{{ asset('video/output.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 @endsection
